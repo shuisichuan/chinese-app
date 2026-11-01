@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>中文学习 — Китайский язык</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -168,6 +168,27 @@ nav svg{width:26px;height:26px}nav button.cur{color:var(--sel);border-color:var(
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 <style>
+/* без масштабирования щипком и двойным касанием */
+html,body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+/* переход между экранами: короткое появление снизу; нижняя панель и кнопки не двигаются */
+@keyframes pgin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+main.in>:not(nav):not(.ft):not(.cf){animation:pgin .2s ease-out both}
+@media(prefers-reduced-motion:reduce){main.in>*,.res *{animation:none!important}.cf{display:none}}
+/* экран результата */
+.res .medal.pop svg{animation:medal .75s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes medal{0%{transform:scale(.3) rotate(-14deg);opacity:0}60%{transform:scale(1.12) rotate(4deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes stbin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.res .stb,.res .rs{animation:stbin .4s ease-out both}.res .stb:nth-child(1){animation-delay:.2s}.res .stb:nth-child(2){animation-delay:.3s}.res .stb:nth-child(3){animation-delay:.4s}
+.res .sts+.rs{animation-delay:.5s}.res .rs+.rs{animation-delay:.6s}
+.res .rt{margin-top:0;font-size:14px}.stb i{font-style:normal}
+.rs{display:flex;align-items:center;gap:14px;text-align:left;margin:10px 0}.rs.hit{border-color:var(--gold)}
+.rsi{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;flex:none}.rsi svg{width:28px;height:28px}
+.rsi.fire{background:rgba(255,150,0,.16);color:var(--fire)}.rsi.gold{background:rgba(255,200,0,.2);color:#e0a800}
+.rs b{display:block;font-size:17px;font-weight:900}.rs .gx{flex:1;min-width:0}.rs .m{display:block;font-size:14px}
+.gf{transition:width .9s cubic-bezier(.2,.8,.2,1) .7s}
+.cf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:8}
+.cf i{position:absolute;top:-16px;left:var(--x);width:8px;height:14px;border-radius:2px;background:var(--c);opacity:0;animation:cfall var(--t) var(--d) ease-in forwards}
+@keyframes cfall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(105vh) rotate(var(--r))}}
 /* прописи */
 .bt2{display:flex;gap:8px}.sp.pn{background:var(--gold);box-shadow:0 4px 0 var(--goldd)}
 .hwh{display:flex;align-items:center;gap:12px}.hwh .zh2{font-size:32px}
@@ -690,8 +711,19 @@ function DGV(){
  return shell((DG.i+(ck?1:0))/d.s.length*100,body,foot('dchk',DG.s!=null,ck?{ok,title:ok?FB:'Так говорят:',body:(ok?'':rbz(t.o[0][0],t.o[0][1],'zh2'))+'<div>'+t.o[0][2]+'</div><div>'+t.e+'</div>'}:null,'dnx'));
 }
 function RES(){
- const acc=X.n?Math.round(X.ok/X.n*100):0,s=X.sec||0;
- return `<div class="res"><div class="medal">${IC.medal}</div><h1>${acc>=80?'Отличная работа!':acc>=50?'Готово!':'Хорошая попытка!'}</h1><p class="m">${X.t}</p><div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}${X.xp}</span></div><div class="stb grn"><b>Точность</b><span>${acc}%</span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>${X.note?'<p>'+X.note+'</p>':''}</div><div class="ft"><div class="fi">${B('done','','Продолжить','big')}</div></div>`;
+ const acc=X.n?Math.round(X.ok/X.n*100):0,s=X.sec||0,tx=xpToday(),g=S.goal||30,pre=Math.max(0,tx-X.xp),st=streak(),first=X.xp>0&&tx===X.xp,hit=pre<g&&tx>=g;
+ const dn=n=>n%10===1&&n%100!==11?'день':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20))?'дня':'дней';
+ const ttl=acc===100?'Безупречно!':acc>=80?'Отличная работа!':acc>=50?'Хороший результат!':'Хорошая попытка!';
+ const sub=acc===100?'Ни одной ошибки. Так держать!':acc>=80?'Почти идеально.':acc>=50?'Каждое занятие приближает вас к цели.':'Ошибки — часть обучения. Повторите, и станет легче.';
+ const col=['var(--gold)','var(--pri)','var(--sel)','var(--pur)','var(--fire)'];
+ const cf=acc>=50?'<div class="cf" aria-hidden="true">'+Array.from({length:26},(_,i)=>`<i style="--x:${Math.round(Math.random()*100)}%;--d:${(Math.random()*.5).toFixed(2)}s;--t:${(1.3+Math.random()*.9).toFixed(2)}s;--r:${Math.round(240+Math.random()*480)}deg;--c:${col[i%5]}"></i>`).join('')+'</div>':'';
+ const stm=!st?'Ответьте верно хотя бы на один вопрос, чтобы начать серию.':first?(st===1?'Серия началась!':'Занятие засчитано: серия растёт.'):'Серия сохранена. Приходите завтра!';
+ const gp=Math.min(100,pre/g*100),gt=Math.min(100,tx/g*100);
+ return cf+`<div class="res"><div class="medal${acc>=50?' pop':''}">${IC.medal}</div><h1>${ttl}</h1><p class="m">${sub}</p><p class="m rt">${X.t}</p>`+
+ `<div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}<i data-n="${X.xp}">0</i></span></div><div class="stb grn"><b>Точность</b><span><i data-n="${acc}" data-u="%">0%</i></span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>`+
+ `<div class="card rs"><span class="rsi fire">${IC.fire}</span><div class="gx"><b>${st} ${dn(st)} подряд</b><span class="m">${stm}</span></div></div>`+
+ `<div class="card rs${hit?' hit':''}"><span class="rsi gold">${IC.bolt}</span><div class="gx"><b>${hit?'Цель дня выполнена!':'Цель дня: '+Math.min(tx,g)+' из '+g+' XP'}</b><span class="pbm"><i class="gf" style="width:${gp}%" data-to="${gt}"></i></span></div></div>`+
+ `${X.note?'<p class="m">'+X.note+'</p>':''}</div><div class="ft"><div class="fi">${B('done','','Продолжить','big')}</div></div>`;
 }
 function WTL(src,cnt,info){
  const ws=src.map(w=>[(S.w[w[0]]||{b:0}).b+Math.random(),w]).sort((a,b)=>a[0]-b[0]).slice(0,cnt).map(x=>x[1]);
@@ -717,8 +749,16 @@ function R(){
  m.innerHTML=tc(views[v]())+(LES.includes(v)?'':NAV());
  TG.sync();
  if(v==='hw')hwInit();
+ if(v==='res')resFx();
 }
-const go=v=>{if(v)V=v;R();try{if(V.v==='home'){const c=document.querySelector('.ring.on');if(c){c.scrollIntoView({block:'center'});return}}scrollTo(0,0)}catch(e){}};
+function resFx(){
+ document.querySelectorAll('.res [data-n]').forEach(e=>{const n=+e.dataset.n,u=e.dataset.u||'',t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/800);e.textContent=Math.round(n*(1-Math.pow(1-k,3)))+u;if(k<1&&e.isConnected)requestAnimationFrame(step)};requestAnimationFrame(step)});
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{const f=document.querySelector('.res .gf');if(f)f.style.width=f.dataset.to+'%'}));
+ if(X&&X.n&&X.ok/X.n>=.5){snd(true);TG.hap(true)}
+}
+const pgIn=()=>{const m=$('a');m.classList.remove('in');void m.offsetWidth;m.classList.add('in')};
+['gesturestart','gesturechange'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+const go=v=>{if(v)V=v;R();pgIn();try{if(V.v==='home'){const c=document.querySelector('.ring.on');if(c){c.scrollIntoView({block:'center'});return}}scrollTo(0,0)}catch(e){}};
 const begin=()=>{if(!LES.includes(V.v))RET={...V};SX=0;ST=Date.now();CMB=0;POP=null};
 function judge(ok){if(ok){CMB++;FB=PR[Math.floor(Math.random()*PR.length)]}else CMB=0;snd(ok);TG.hap(ok)}
 function finish(x){x.sec=Math.round((Date.now()-ST)/1000);x.xp=SX;X=x;go({v:'res'})}
