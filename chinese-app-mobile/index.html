@@ -189,6 +189,14 @@ main.in>:not(nav):not(.ft):not(.cf){animation:pgin .2s ease-out both}
 .cf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:8}
 .cf i{position:absolute;top:-16px;left:var(--x);width:8px;height:14px;border-radius:2px;background:var(--c);opacity:0;animation:cfall var(--t) var(--d) ease-in forwards}
 @keyframes cfall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(105vh) rotate(var(--r))}}
+/* VIP */
+.vipH{text-align:center;padding:14px 0 4px}.vipC{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:20px;background:rgba(255,200,0,.2);color:#e0a800}.vipC svg{width:38px;height:38px}
+.vipH h1{margin:6px 0 0;color:var(--fg)}.vipH b{display:block;color:var(--m)}
+.perk{display:flex;align-items:center;gap:14px;margin:8px 0}.perk b{display:block;font-size:17px;font-weight:900}.perk .gx{flex:1;min-width:0}.perk .m{display:block;font-size:14px}
+.vps{margin:4px 2px 14px;text-align:center}.vb{border-color:var(--gold);margin:12px 0 0}.vb b{font-size:17px}.vb p{margin:4px 0}
+.vtag{font-style:normal;font-size:11px;font-weight:900;background:var(--gold);color:#5c4300;border-radius:6px;padding:1px 5px;margin-left:6px;vertical-align:middle}
+.vipb{display:inline-grid;color:var(--gold)}.vipb svg{width:22px;height:22px}
+.chart{display:flex;align-items:flex-end;gap:3px;height:140px;margin:14px 0;border-bottom:2px solid var(--bd)}.chart i{flex:1;background:var(--bd);border-radius:4px 4px 0 0;min-height:3px}.chart i.on{background:var(--gold)}
 /* прописи */
 .bt2{display:flex;gap:8px}.sp.pn{background:var(--gold);box-shadow:0 4px 0 var(--goldd)}
 .hwh{display:flex;align-items:center;gap:12px}.hwh .zh2{font-size:32px}
@@ -417,6 +425,8 @@ function rbt(tl,pu){const ps=tp(tl),a=[];tl.forEach((t,i)=>{if(t==='，'){if(a.l
 
 /* ================= Интерфейс ================= */
 const IC={
+ crown:'<svg viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z" fill="currentColor"/></svg>',
+ lock:'<svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 10.5V8a4 4 0 018 0v2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
  share:'<svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 002 2h10a2 2 0 002-2v-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  pen:'<svg viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2 2 0 013 3L8 19l-4 1z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>',
  x:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
@@ -470,8 +480,19 @@ let AC=null;
 function snd(ok){if(S.mute)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const t0=AC.currentTime;(ok?[659,880]:[311,233]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),t=t0+i*.1;o.type=ok?'sine':'triangle';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.24);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26)})}catch(e){}}
 const td=()=>new Date().toISOString().slice(0,10);
 const yd=()=>new Date(Date.now()-864e5).toISOString().slice(0,10);
-function gx(n){const d=td();S.x=S.x||{};S.x[d]=(S.x[d]||0)+n;if(S.sd!==d){S.sn=S.sd===yd()?(S.sn||0)+1:1;S.sd=d}SX+=n;save()}
-const streak=()=>(S.sd===td()||S.sd===yd())?S.sn||0:0;
+/* серия: заморозка (VIP) спасает серию, если пропущен ровно один день */
+let FZN=0;
+const gap=()=>S.sd?Math.round((Date.parse(td())-Date.parse(S.sd))/864e5):99;
+const fzLeft=()=>S.fzm===td().slice(0,7)?(S.fz||0):2;
+const canFreeze=()=>gap()===2&&vipOn()&&fzLeft()>0;
+function gx(n){const d=td();S.x=S.x||{};S.x[d]=(S.x[d]||0)+n;
+ if(S.sd!==d){
+  if(gap()===1)S.sn=(S.sn||0)+1;
+  else if(canFreeze()){const m=d.slice(0,7);if(S.fzm!==m){S.fzm=m;S.fz=2}S.fz--;S.fzu=(S.fzu||0)+1;S.sn=(S.sn||0)+1;FZN=1}
+  else S.sn=1;
+  S.sd=d;S.bs=Math.max(S.bs||0,S.sn)}
+ SX+=n;save()}
+const streak=()=>(gap()<=1||canFreeze())?S.sn||0:0;
 const xpToday=()=>(S.x||{})[td()]||0;
 const xpTotal=()=>Object.values(S.x||{}).reduce((a,b)=>a+b,0);
 const weak=()=>WS.flatMap(s=>s.w).filter(w=>S.w[w[0]]&&S.w[w[0]].b<3);
@@ -484,7 +505,7 @@ function nodeInfo(a,p,ui){
  const ok=!!(S.ud||{})[p];return{a,p,ui,k:'U'+p,ic:'trophy',t:'Итог блока '+(p+1),ok,pr:ok?100:0};
 }
 const nodes=()=>UN.flatMap((u,ui)=>u.n.map(([a,p])=>nodeInfo(a,p,ui)));
-const TOP=()=>{const x=xpToday();return `<div class="top"><span class="crs" title="Китайский язык">中</span><span class="st fire${x?'':' off'}" title="Дней подряд">${IC.fire}${streak()}</span><span class="st bolt" title="Опыт сегодня">${IC.bolt}${x}</span><span class="st gem" title="Слов освоено">${IC.book}${mw()}</span></div>`};
+const TOP=()=>{const x=xpToday();return `<div class="top"><span class="crs" title="Китайский язык">中</span>${charging()&&paid()?'<span class="vipb" title="VIP">'+IC.crown+'</span>':''}<span class="st fire${x?'':' off'}" title="Дней подряд">${IC.fire}${streak()}</span><span class="st bolt" title="Опыт сегодня">${IC.bolt}${x}</span><span class="st gem" title="Слов освоено">${IC.book}${mw()}</span></div>`};
 function popH(n,o){
  let h=`<div class="pop" style="--o:${o}px;--u:${UC[n.ui%UC.length][0]};--ud:${UC[n.ui%UC.length][1]}"><b class="pt">${n.t}</b>`;
  if(n.a==='L')h+=`<p>${LS[n.p].g}</p>`+B('L',n.p,'Начать','w');
@@ -495,7 +516,7 @@ function popH(n,o){
 }
 function H(){
  const ns=nodes(),cur=ns.find(n=>!n.ok),g=S.goal||30,x=xpToday();
- let h=TOP()+`<div class="card goal">${IC.bolt}<span class="gx"><b>Цель дня: ${Math.min(x,g)} из ${g} XP</b>${bar(x/g*100)}</span></div>`;
+ let h=TOP()+`<div class="card goal">${IC.bolt}<span class="gx"><b>Цель дня: ${Math.min(x,g)} из ${g} XP</b>${bar(x/g*100)}</span></div>`+vipBn();
  UN.forEach((u,ui)=>{
   const c=UC[ui%UC.length],un=ns.filter(n=>n.ui===ui),dn=un.filter(n=>n.ok).length;
   h+=`<section style="--u:${c[0]};--ud:${c[1]}"><div class="ub"><div><span class="us">HSK ${u.h} · Блок ${ui+1}</span><b class="un">${u.t}</b><span class="up">Пройдено ${dn} из ${un.length}</span></div><button class="ug" data-a="UG" data-p="${ui}" aria-label="Справочник блока">${IC.book}</button></div><div class="path">`;
@@ -532,17 +553,17 @@ function RVV(){
  const wn=weak().length,qn=Object.keys(S.rev).length;
  return `<h1 class="ph">Практика</h1><p class="m">Письмо, звуки и повторение.</p>`+
  `<button class="card row" data-a="hwl" data-p=""><span class="gi gold">${IC.pen}</span><span class="gx"><b>Прописи</b><span class="m">Пишите иероглифы из выученных слов: от простых к сложным</span></span>${IC.chev}</button>`+
- `<button class="card row" data-a="PYH" data-p=""><span class="gi chat">拼</span><span class="gx"><b>Пиньинь</b><span class="m">Звуки и тоны: справочник и упражнения</span></span>${IC.chev}</button><h2>Повторение</h2>`+
+ `<button class="card row" data-a="PYH" data-p=""><span class="gi chat">拼</span><span class="gx"><b>Пиньинь</b><span class="m">Звуки и тоны: справочник и упражнения</span></span>${IC.chev}</button><h2>Повторение</h2>`+srsCard()+
  `<button class="card row" data-a="wtest" data-p="-1"${wn?'':' disabled'}><span class="gi gold">${IC.star}</span><span class="gx"><b>Слабые слова</b><span class="m">${wn?'На повторение: '+wn:'Пока нет: пройдите тест слов на пути'}</span></span>${IC.chev}</button>`+
  `<button class="card row" data-a="RV" data-p=""${qn?'':' disabled'}><span class="gi red">${IC.x}</span><span class="gx"><b>Ошибки в уроках</b><span class="m">${qn?'Вопросов: '+qn+'. Вопрос уходит после двух верных ответов подряд':'Ошибок нет'}</span></span>${IC.chev}</button>`;
 }
 const stat=(ic,c,v,l)=>`<div class="sc"><span class="c-${c}">${IC[ic]}</span><div><b>${v}</b><span>${l}</span></div></div>`;
 function PFV(){
  const g=S.goal||30;
- return `<h1 class="ph">Профиль</h1><div class="pfh"><span class="pav">我</span><div><b>${TG.name||'Ученик'}</b><span class="m">Китайский для русскоязычных · HSK 3.0 (программа 2025)</span></div></div>`+
+ return `<h1 class="ph">Профиль</h1><div class="pfh"><span class="pav">我</span><div><b>${TG.name||'Ученик'}</b><span class="m">Китайский для русскоязычных · HSK 3.0 (программа 2025)</span></div></div>`+vipCard()+
  `<h2>Статистика</h2><div class="sg">${stat('fire','fire',streak(),'дней подряд')}${stat('bolt','bolt',xpTotal(),'всего опыта')}${stat('book','gem',mw()+'/'+NW,'слов освоено')}${stat('star','gold',Object.keys(S.done).length+'/'+LS.length,'уроков')}${stat('chat','blu',Object.keys(S.dd||{}).length+'/'+DLG.length,'диалогов')}${stat('trophy','pur',Object.keys(S.ud||{}).length+'/'+UN.length,'блоков')}</div>`+
  `<h2>Цель на день</h2><div class="gs">${[[10,'Легко'],[20,'Нормально'],[30,'Серьёзно'],[50,'Интенсивно']].map(([v,l])=>`<button class="gch${v===g?' on':''}" data-a="goal" data-p="${v}"><b>${v} XP</b><span>${l}</span></button>`).join('')}</div>`+
- `<h2>Друзья</h2><button class="card row" data-a="share" data-p=""><span class="gi">${IC.share}</span><span class="gx"><b>Пригласить друга</b><span class="m">Отправьте ссылку на приложение в Telegram</span></span>${IC.chev}</button><h2>Настройки</h2><button class="card row" data-a="snd" data-p=""><span class="gx"><b>Звуковые эффекты</b><span class="m">Сигнал при верном и неверном ответе</span></span><span class="tg${S.mute?'':' on'}"><i></i></span></button><p class="m">Произношение использует китайский голос вашего устройства.</p>`;
+ `<h2>Друзья</h2><button class="card row" data-a="share" data-p=""><span class="gi">${IC.share}</span><span class="gx"><b>Пригласить друга</b><span class="m">${charging()&&TG.on?'Вам и другу по '+(vp().r||3)+' дня VIP':'Отправьте ссылку на приложение в Telegram'}</span></span>${IC.chev}</button>${statsCard()}<h2>Настройки</h2>${notifyCard()}<button class="card row" data-a="snd" data-p=""><span class="gx"><b>Звуковые эффекты</b><span class="m">Сигнал при верном и неверном ответе</span></span><span class="tg${S.mute?'':' on'}"><i></i></span></button><p class="m">Произношение использует китайский голос вашего устройства.</p>`;
 }
 /* ---------- прописи (Hanzi Writer) ---------- */
 let HWW=null,HWL=null;
@@ -717,7 +738,8 @@ function RES(){
  const sub=acc===100?'Ни одной ошибки. Так держать!':acc>=80?'Почти идеально.':acc>=50?'Каждое занятие приближает вас к цели.':'Ошибки — часть обучения. Повторите, и станет легче.';
  const col=['var(--gold)','var(--pri)','var(--sel)','var(--pur)','var(--fire)'];
  const cf=acc>=50?'<div class="cf" aria-hidden="true">'+Array.from({length:26},(_,i)=>`<i style="--x:${Math.round(Math.random()*100)}%;--d:${(Math.random()*.5).toFixed(2)}s;--t:${(1.3+Math.random()*.9).toFixed(2)}s;--r:${Math.round(240+Math.random()*480)}deg;--c:${col[i%5]}"></i>`).join('')+'</div>':'';
- const stm=!st?'Ответьте верно хотя бы на один вопрос, чтобы начать серию.':first?(st===1?'Серия началась!':'Занятие засчитано: серия растёт.'):'Серия сохранена. Приходите завтра!';
+ const fz=FZN;FZN=0;
+ const stm=fz?'Заморозка VIP сохранила вашу серию!':!st?'Ответьте верно хотя бы на один вопрос, чтобы начать серию.':first?(st===1?'Серия началась!':'Занятие засчитано: серия растёт.'):'Серия сохранена. Приходите завтра!';
  const gp=Math.min(100,pre/g*100),gt=Math.min(100,tx/g*100);
  return cf+`<div class="res"><div class="medal${acc>=50?' pop':''}">${IC.medal}</div><h1>${ttl}</h1><p class="m">${sub}</p><p class="m rt">${X.t}</p>`+
  `<div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}<i data-n="${X.xp}">0</i></span></div><div class="stb grn"><b>Точность</b><span><i data-n="${acc}" data-u="%">0%</i></span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>`+
@@ -741,10 +763,10 @@ function sbn(){
  SB.t=shf([...tl,ex[Math.floor(Math.random()*ex.length)]]);SB.p=[];SB.c=null;
 }
 const LES=['q','wq','sb','dg','ls','res'],TABS=['home','wl','dl','rv','pf'],SUB=['ws','ug'];
-const NAV=()=>{const c={home:'home',ug:'home',wl:'wl',ws:V.from==='wl'?'wl':'home',dl:'dl',rv:'rv',pf:'pf',hw:V.back&&V.back.v==='ws'?(V.back.from==='wl'?'wl':'home'):'rv',hwl:'rv',pyh:'rv',pyr:'rv'}[V.v];
+const NAV=()=>{const c={home:'home',ug:'home',wl:'wl',ws:V.from==='wl'?'wl':'home',dl:'dl',rv:'rv',pf:'pf',hw:V.back&&V.back.v==='ws'?(V.back.from==='wl'?'wl':'home'):'rv',hwl:'rv',pyh:'rv',pyr:'rv',vip:'pf',st:'pf'}[V.v];
  return '<nav>'+[['home','home','Путь'],['WL','wl','Слова'],['DL','dl','Диалоги'],['RVT','rv','Практика'],['PF','pf','Профиль']].map(([a,k,t])=>`<button class="${c===k?'cur':''}" data-a="${a}" data-p="" aria-label="${t}">${IC['n_'+k]}<span>${t}</span></button>`).join('')+'</nav>'};
 function R(){
- const v=V.v,m=$('a'),views={home:H,ug:UGV,wl:WLV,ws:WSV,hw:HWV,hwl:HWLV,pyh:PYV,pyr:PYRV,dl:DLV,rv:RVV,pf:PFV,ls:LE,q:QV,wq:WQV,sb:SBV,dg:DGV,res:RES};
+ const v=V.v,m=$('a'),views={home:H,ug:UGV,wl:WLV,ws:WSV,hw:HWV,hwl:HWLV,pyh:PYV,pyr:PYRV,vip:VPV,st:STV,dl:DLV,rv:RVV,pf:PFV,ls:LE,q:QV,wq:WQV,sb:SBV,dg:DGV,res:RES};
  m.className=LES.includes(v)?'les':'tab';
  m.innerHTML=tc(views[v]())+(LES.includes(v)?'':NAV());
  TG.sync();
@@ -764,7 +786,7 @@ function judge(ok){if(ok){CMB++;FB=PR[Math.floor(Math.random()*PR.length)]}else 
 function finish(x){x.sec=Math.round((Date.now()-ST)/1000);x.xp=SX;X=x;go({v:'res'})}
 /* ---------- Telegram Mini App ---------- */
 const TG=(()=>{
- const w=window.Telegram&&Telegram.WebApp,on=!!(w&&w.platform&&w.platform!=='unknown'),T={on,name:'',sync(){},hap(){},push(){}};
+ const w=window.Telegram&&Telegram.WebApp,on=!!(w&&w.platform&&w.platform!=='unknown'),T={on,name:'',sync(){},hap(){},push(){},msg(t){try{alert(t)}catch(e){}}};
  if(!on)return T;
  const ok=v=>w.isVersionAtLeast(v),run=f=>{try{f()}catch(e){}};
  const u=w.initDataUnsafe&&w.initDataUnsafe.user;
@@ -776,11 +798,12 @@ const TG=(()=>{
   if(ok('7.10'))run(()=>w.setBottomBarColor(bg))};
  theme();w.onEvent('themeChanged',theme);
  let bv=null,cc=null;
- w.BackButton.onClick(()=>{const v=V.v;if(v==='res')F.done();else if(LES.includes(v))F.quit();else if(v==='hw')F.hwback();else if(v==='hwl'||v==='pyh')F.RVT();else if(v==='pyr')F.PYH();else if(v==='ws'&&V.from==='wl')F.WL();else F.home()});
+ w.BackButton.onClick(()=>{const v=V.v;if(v==='res')F.done();else if(LES.includes(v))F.quit();else if(v==='hw')F.hwback();else if(v==='hwl'||v==='pyh')F.RVT();else if(v==='vip'||v==='st')F.PF();else if(v==='pyr')F.PYH();else if(v==='ws'&&V.from==='wl')F.WL();else F.home()});
  T.sync=()=>{const v=V.v,b=v!=='home',c=LES.includes(v)&&v!=='res';
   if(b!==bv){bv=b;run(()=>b?w.BackButton.show():w.BackButton.hide())}
   if(c!==cc){cc=c;run(()=>c?w.enableClosingConfirmation():w.disableClosingConfirmation())}};
  T.hap=g=>run(()=>w.HapticFeedback.notificationOccurred(g?'success':'error'));
+ T.msg=t=>run(()=>w.showPopup({message:t}));
  /* прогресс в облаке Telegram: общий для всех устройств аккаунта */
  const CS=ok('6.9')&&w.CloudStorage;
  if(CS){
@@ -793,6 +816,7 @@ const TG=(()=>{
   const merge=(a,b)=>{const nw=(b.ts||0)>(a.ts||0),p=nw?b:a,o=nw?a:b,r=Object.assign({},p);
    r.done=mx(a.done,b.done);r.x=mx(a.x,b.x);r.dd=Object.assign({},a.dd,b.dd);r.ud=Object.assign({},a.ud,b.ud);r.w=Object.assign({},o.w,p.w);
    if((o.sd||'')>(p.sd||'')||(o.sd===p.sd&&(o.sn||0)>(p.sn||0))){r.sd=o.sd;r.sn=o.sn}
+   const t0=[a.t0,b.t0].filter(Boolean);if(t0.length)r.t0=Math.min(...t0);r.bs=Math.max(a.bs||0,b.bs||0);
    r.ts=Math.max(a.ts||0,b.ts||0);return r};
   const flush=()=>{clearTimeout(tm);tm=0;const j=JSON.stringify(S),c=[],ts=S.ts;
    for(let i=0;i<j.length;i+=N)c.push(j.slice(i,i+N));
@@ -812,12 +836,89 @@ const TG=(()=>{
  }
  return T;
 })();
+/* ---------- VIP: пробная неделя, подписка за Telegram Stars, привилегии ---------- */
+// api: адрес сервера бота (Cloudflare Worker, см. bot/README.md). Плату включает и выключает владелец командой /charging в боте.
+// Пока плата выключена (или нет связи с сервером), всё в приложении доступно бесплатно.
+const VC={api:'https://zhongwenbot.shuisichuan.workers.dev',trial:7};
+if(!S.t0){S.t0=Date.now();save()}
+const dayN=()=>Math.floor(Date.now()/864e5);
+const dword=n=>n%10===1&&n%100!==11?'день':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20))?'дня':'дней';
+const vp=()=>S.vp||{};
+const charging=()=>!!VC.api&&!!vp().c;
+const vend=u=>u>4e12?'бессрочно':'до '+new Date(u).toLocaleDateString('ru-RU');
+const trialEnd=()=>vp().ts?vp().t:S.t0+VC.trial*864e5;
+const paid=()=>Date.now()<(vp().u||0);
+const trial=()=>Date.now()<trialEnd();
+const vipOn=()=>!charging()||paid()||trial();
+const dleft=t=>Math.max(1,Math.ceil((t-Date.now())/864e5));
+const gate=()=>vipOn()||(F.vip(),false);
+const vtag=()=>charging()?'<i class="vtag">VIP</i>':'';
+const api=(p,b)=>fetch(VC.api+p,{method:'POST',headers:{'content-type':'application/json',authorization:'tma '+Telegram.WebApp.initData},body:JSON.stringify(b||{})}).then(r=>r.ok?r.json():Promise.reject(r.status));
+function vipSync(){
+ if(!VC.api||!TG.on)return Promise.resolve();
+ return api('/api/me',{ref:(Telegram.WebApp.initDataUnsafe||{}).start_param||''}).then(j=>{
+  S.vp={u:j.vipUntil,t:j.trialUntil,ts:Date.now(),p:j.plans,r:j.refDays,c:j.charging?1:0,a:j.admin?1:0,m:j.rem?1:0};
+  try{localStorage.setItem('zhru1',JSON.stringify(S))}catch(e){}
+  if(j.bonus)TG.msg('Вас пригласил друг: добавлено '+j.bonus+' '+dword(j.bonus)+' VIP!');
+  if(!LES.includes(V.v)&&V.v!=='hw')R();
+ }).catch(()=>{});
+}
+const vipPoll=(n=0)=>vipSync().then(()=>{if(!paid()&&n<8)setTimeout(()=>vipPoll(n+1),2000)});
+/* умное повторение: слова возвращаются через 1, 3, 7 дней и дальше реже */
+const due=()=>WS.flatMap(s=>s.w).filter(w=>{const x=S.w[w[0]];return x&&(x.d!=null?x.d<=dayN():x.b>0)}).sort((a,b)=>(S.w[a[0]].d||0)-(S.w[b[0]].d||0));
+function srsCard(){const n=due().length,on=vipOn();
+ return `<button class="card row" data-a="srs" data-p=""${on&&!n?' disabled':''}><span class="gi gold">${on?IC.star:IC.lock}</span><span class="gx"><b>Умное повторение ${vtag()}</b><span class="m">${on?(n?'Сегодня к повторению: '+n:'На сегодня всё повторено'):'Слова возвращаются в нужный день: запоминание надолго'}</span></span>${IC.chev}</button>`}
+const statsCard=()=>`<button class="card row" data-a="stats" data-p=""><span class="gi gold">${vipOn()?IC.trophy:IC.lock}</span><span class="gx"><b>Подробная статистика ${vtag()}</b><span class="m">График занятий за 30 дней и достижения</span></span>${IC.chev}</button>`;
+const notifyCard=()=>VC.api&&TG.on&&vp().m?`<button class="card row" data-a="notify" data-p=""><span class="gx"><b>Напоминания</b><span class="m">${S.nt?'Бот напомнит, если вы сегодня не занимались':'Бот напомнит о занятии раз в день'}</span></span><span class="tg${S.nt?' on':''}"><i></i></span></button>`:'';
+function vipCard(){
+ if(!charging())return '';
+ const isP=paid(),tr=!isP&&trial(),n=dleft(trialEnd());
+ const t=isP?'VIP активен':tr?'Пробный VIP: ещё '+n+' '+dword(n):'VIP';
+ const s=isP?vend(vp().u):tr?'Все функции открыты. Основные уроки бесплатны всегда.':'Заморозка серии, умное повторение, статистика';
+ return `<button class="card row vb" data-a="vip" data-p=""><span class="gi gold">${IC.crown}</span><span class="gx"><b>${t}</b><span class="m">${s}</span></span>${IC.chev}</button>`;
+}
+function vipBn(){
+ if(!charging()||paid())return '';
+ if(trial()){const n=dleft(trialEnd());return `<button class="card row vb" data-a="vip" data-p=""><span class="gi gold">${IC.crown}</span><span class="gx"><b>VIP бесплатно: ещё ${n} ${dword(n)}</b><span class="m">Все функции открыты. Что входит?</span></span>${IC.chev}</button>`}
+ if(!S.vne)return `<div class="card vb"><b>Пробный период закончился</b><p class="m">Всё пройденное осталось: уроки, слова, пиньинь и прописи бесплатны. VIP добавляет заморозку серии, умное повторение и статистику.</p><div class="dual">${B('vne','','Понятно','g')}${B('vip','','Подробнее')}</div></div>`;
+ return '';
+}
+const PERKS=[['fire','Заморозка серии','Пропустили день — серия не сгорит. Две заморозки в месяц.'],['star','Умное повторение','Слова возвращаются в нужный день: запоминание надолго.'],['trophy','Подробная статистика','График занятий за 30 дней и все достижения.'],['crown','Золотая корона','Отметка VIP в шапке приложения.']];
+function VPV(){
+ const p=vp(),pl=p.p||{},isP=paid(),tr=!isP&&trial(),n=dleft(trialEnd());
+ const st=!charging()?'Все функции сейчас бесплатны':isP?'VIP активен '+vend(p.u):tr?'Пробный период: ещё '+n+' '+dword(n):'Сейчас у вас бесплатный тариф';
+ let h=K('PF','','Назад')+`<div class="vipH"><span class="vipC">${IC.crown}</span><h1 class="ph">VIP</h1><b>${st}</b></div>`+
+  `<p class="m">Основные уроки, слова, пиньинь и прописи остаются бесплатными. VIP добавляет удобства:</p>`+
+  PERKS.map(([ic,t,d])=>`<div class="card perk"><span class="rsi gold">${IC[ic]}</span><div class="gx"><b>${t}</b><span class="m">${d}</span></div></div>`).join('');
+ if(!charging())return h+`<p class="m">Платная подписка пока не включена: все функции доступны бесплатно.</p>`;
+ if(!TG.on)return h+`<div class="card note"><p>Оформить VIP можно в Telegram: откройте приложение по ссылке t.me/zhongwen_ru_bot/learn.</p></div>`;
+ h+=`<h2>Оформить VIP</h2>`;
+ if(pl.year)h+=`<button class="b" data-a="buy" data-p="year">1 год · ${pl.year.stars} ⭐</button><p class="m vps">Разовая оплата, без автопродления${pl.month?'. Выгода '+Math.round((1-pl.year.stars/(pl.month.stars*12))*100)+'%':''}.</p>`;
+ if(pl.month)h+=`<button class="b g" data-a="buy" data-p="month">1 месяц · ${pl.month.stars} ⭐</button><p class="m vps">Продлевается каждые 30 дней. Отменить можно в настройках Telegram, в разделе «Мои звёзды».</p>`;
+ if(!pl.year&&!pl.month)h+=`<p class="m">Загрузка…</p>`;
+ if(p.r)h+=`<div class="card note"><b class="nt">${IC.share}Бесплатные дни</b><p>Пригласите друга: вам и ему по ${p.r} ${dword(p.r)} VIP.</p>${B('share','','Пригласить друга','g')}</div>`;
+ return h;
+}
+function STV(){
+ const x=S.x||{},days=[];for(let i=29;i>=0;i--){const d=new Date(Date.now()-i*864e5).toISOString().slice(0,10);days.push([d,x[d]||0])}
+ const mx=Math.max(30,...days.map(a=>a[1])),act=Object.values(x).filter(v=>v>0).length;
+ return K('PF','','Назад')+`<h1 class="ph">Статистика</h1><p class="m">Опыт по дням за последние 30 дней.</p><div class="chart">${days.map(([d,v])=>`<i class="${v?'on':''}" style="height:${Math.max(2,v/mx*100)}%" title="${d}: ${v} XP"></i>`).join('')}</div>`+
+  `<div class="sg">${stat('fire','fire',streak(),'серия сейчас')}${stat('trophy','gold',S.bs||streak(),'лучшая серия')}${stat('bolt','bolt',xpTotal(),'всего опыта')}${stat('book','gem',act,'дней занятий')}${stat('star','gold',mw()+'/'+NW,'слов освоено')}${stat('fire','fire',fzLeft(),'заморозок в этом месяце')}</div>`;
+}
+vipSync();
 const F={
+ vip:()=>go({v:'vip'}),stats:()=>{if(gate())go({v:'st'})},vne:()=>{S.vne=1;save();R()},
+ srs:()=>{if(!gate())return;const d=due();if(!d.length)return;begin();WTL(d.slice(0,10),10,{sr:1})},
+ buy:p=>{if(!TG.on||!charging())return;
+  api('/api/invoice',{plan:p}).then(j=>Telegram.WebApp.openInvoice(j.link,s=>{if(s==='paid'){TG.msg('Спасибо! Включаем VIP…');vipPoll()}else if(s==='failed')TG.msg('Оплата не прошла. Попробуйте ещё раз.')})).catch(()=>TG.msg('Не удалось создать счёт. Проверьте интернет и попробуйте позже.'))},
+ notify:()=>{
+  if(S.nt){S.nt=0;save();R();return api('/api/notify',{on:0}).catch(()=>{})}
+  try{Telegram.WebApp.requestWriteAccess(a=>{if(!a)return TG.msg('Без разрешения бот не сможет писать вам. Включить можно позже.');S.nt=1;save();R();api('/api/notify',{on:1}).catch(()=>{})})}catch(e){TG.msg('Обновите Telegram, чтобы включить напоминания.')}},
  home:()=>{POP=null;go({v:'home'})},WL:()=>go({v:'wl'}),DL:()=>go({v:'dl'}),RVT:()=>go({v:'rv'}),PF:()=>go({v:'pf'}),
  UG:i=>go({v:'ug',i:+i}),
  pop:k=>{POP=POP===k?null:k;R();try{const p=document.querySelector('.pop');p&&p.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}},
  WS:i=>go({v:'ws',i:+i,from:V.v==='wl'?'wl':'home'}),
- share:()=>{const u='https://t.me/zhongwen_ru_bot/learn',t='Учу китайский в Telegram: HSK, иероглифы и диалоги, бесплатно. Присоединяйся!',l='https://t.me/share/url?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t);
+ share:()=>{const me=window.Telegram&&Telegram.WebApp&&(Telegram.WebApp.initDataUnsafe||{}).user,ref=charging()&&TG.on&&me?'?startapp=r'+me.id:'',u='https://t.me/zhongwen_ru_bot/learn'+ref,t='Учу китайский в Telegram: HSK, иероглифы и диалоги, бесплатно. Присоединяйся!'+(ref?' Нам обоим подарят дни VIP.':''),l='https://t.me/share/url?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t);
   if(TG.on)try{return Telegram.WebApp.openTelegramLink(l)}catch(e){}
   if(navigator.share)navigator.share({text:t,url:u}).catch(()=>{});else open(l,'_blank')},
  hw:i=>hwGo(hwQ([WS[V.i].w[+i]]),{...V}),hwback:()=>go(V.back),hwc:i=>go({...V,qi:+i}),hwredo:()=>go({...V}),
@@ -841,11 +942,11 @@ const F={
  wtest:i=>{i=+i;const src=i<0?weak():WS[i].w;if(!src.length)return;begin();WTL(src,8,{s:i})},
  ustart:u=>{u=+u;begin();WTL(uw(u),10,{u})},
  wpick:j=>{if(W.p!=null)return;W.s=+j;R()},
- wchk:()=>{if(W.s==null||W.p!=null)return;const q=W.it[W.i],ok=q.o[W.s]===q.w,k=q.w[0],x=S.w[k]=S.w[k]||{b:0,u:0};W.p=W.s;if(ok){W.ok++;gx(10)}judge(ok);x.b=ok?Math.min(3,x.b+1):0;save();R()},
+ wchk:()=>{if(W.s==null||W.p!=null)return;const q=W.it[W.i],ok=q.o[W.s]===q.w,k=q.w[0],x=S.w[k]=S.w[k]||{b:0,u:0};W.p=W.s;if(ok){W.ok++;gx(10)}judge(ok);const pb=x.b;x.b=ok?Math.min(3,x.b+1):0;x.i=ok?(pb>=3&&x.i?Math.min(90,x.i*2):[0,1,3,7][x.b]):0;x.d=dayN()+x.i;save();R()},
  wnxt:()=>{W.i++;W.p=null;W.s=null;
   if(W.i>=W.it.length){let t,note='';
    if(W.src.u!=null){t='Итог блока '+(W.src.u+1)+': '+UN[W.src.u].t;if(W.ok/W.it.length>=.7){S.ud=S.ud||{};S.ud[W.src.u]=1;save();note='Блок пройден!'}else note='Чтобы пройти блок, нужно 70% верных ответов. Попробуйте ещё раз.'}
-   else t=W.src.s>=0?'Тест слов: '+WS[W.src.s].t:'Повторение слов';
+   else t=W.src.sr?'Умное повторение':W.src.s>=0?'Тест слов: '+WS[W.src.s].t:'Повторение слов';
    return finish({t,ok:W.ok,n:W.it.length,note})}
   go({v:'wq'})},
  sbstart:i=>{i=+i;begin();SB={s:i,it:shf(WS[i].s.map(x=>[x[0].filter(t=>t!=='，'&&!(S.w[t]&&S.w[t].u)).length+Math.random(),x]).sort((a,b)=>b[0]-a[0]).slice(0,5).map(y=>y[1])),i:0,ok:0};sbn();go({v:'sb'})},
