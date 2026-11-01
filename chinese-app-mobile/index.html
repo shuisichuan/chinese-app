@@ -173,9 +173,9 @@ html,body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%;text-size-adjus
 /* переход между экранами: короткое появление снизу; нижняя панель и кнопки не двигаются */
 @keyframes pgin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 main.in>:not(nav):not(.ft):not(.cf){animation:pgin .2s ease-out both}
-@media(prefers-reduced-motion:reduce){main.in>*,.res *{animation:none!important}.cf{display:none}}
+@media(prefers-reduced-motion:reduce){main.in>*,.res *,.opt,.ft,.fic,.xpf,.pnd svg,.ring,.pop,.chip,nav svg,.tip,.b{animation:none!important}.cf{display:none}}
 /* экран результата */
-.res .medal.pop svg{animation:medal .75s cubic-bezier(.2,1.4,.4,1) both}
+.res .medal.mp svg{animation:medal .75s cubic-bezier(.2,1.4,.4,1) both}
 @keyframes medal{0%{transform:scale(.3) rotate(-14deg);opacity:0}60%{transform:scale(1.12) rotate(4deg);opacity:1}100%{transform:none;opacity:1}}
 @keyframes stbin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .res .stb,.res .rs{animation:stbin .4s ease-out both}.res .stb:nth-child(1){animation-delay:.2s}.res .stb:nth-child(2){animation-delay:.3s}.res .stb:nth-child(3){animation-delay:.4s}
@@ -197,6 +197,39 @@ main.in>:not(nav):not(.ft):not(.cf){animation:pgin .2s ease-out both}
 .vtag{font-style:normal;font-size:11px;font-weight:900;background:var(--gold);color:#5c4300;border-radius:6px;padding:1px 5px;margin-left:6px;vertical-align:middle}
 .vipb{display:inline-grid;color:var(--gold)}.vipb svg{width:22px;height:22px}
 .chart{display:flex;align-items:flex-end;gap:3px;height:140px;margin:14px 0;border-bottom:2px solid var(--bd)}.chart i{flex:1;background:var(--bd);border-radius:4px 4px 0 0;min-height:3px}.chart i.on{background:var(--gold)}
+/* живость: ответы, панель результата, путь */
+.opt,.chip,.card{transition:background-color .15s,border-color .15s,color .15s}
+.opt.sel{animation:sel .18s ease-out}@keyframes sel{50%{transform:scale(1.03)}}
+.opt.ok{animation:okb .45s cubic-bezier(.3,1.5,.5,1)}@keyframes okb{40%{transform:scale(1.05)}}
+.opt.no{animation:shk .45s ease-in-out}@keyframes shk{20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
+.ft.okf,.ft.nof{animation:upS .34s cubic-bezier(.2,1.15,.35,1)}@keyframes upS{from{transform:translateY(100%)}}
+.fic{animation:icp .5s .1s cubic-bezier(.3,1.7,.5,1) both}@keyframes icp{from{transform:scale(0) rotate(-40deg)}}
+.fi{position:relative}
+.xpf{position:absolute;right:2px;top:-46px;font-weight:900;font-size:20px;color:var(--okt);animation:xpf 1.1s .2s ease-out both;pointer-events:none}
+@keyframes xpf{0%{opacity:0;transform:translateY(14px) scale(.8)}25%{opacity:1;transform:translateY(0) scale(1.15)}100%{opacity:0;transform:translateY(-34px)}}
+.ft .b.big:not(:disabled){animation:bpop .26s cubic-bezier(.3,1.6,.5,1)}@keyframes bpop{from{transform:scale(.94)}}
+.ring.on{animation:ringp 1.8s ease-in-out infinite}@keyframes ringp{50%{transform:scale(1.045)}}
+.pop{animation:popin .22s ease-out}@keyframes popin{from{opacity:0;transform:scale(.94) translateY(-6px)}}
+nav button.cur svg{animation:navpop .35s cubic-bezier(.3,1.7,.5,1)}@keyframes navpop{from{transform:scale(.7)}}
+.pb i{transition:width .6s cubic-bezier(.3,1.2,.4,1)}
+.chip.new{animation:chipin .22s cubic-bezier(.3,1.6,.5,1)}@keyframes chipin{from{transform:scale(.7);opacity:.4}}
+/* панда Бао */
+.pnd svg{display:block;overflow:visible}
+.av.pa{background:none;width:64px;height:64px;overflow:visible}.av.pa svg{width:100%;height:100%}
+.hero{position:relative;width:200px;height:176px;margin:0 auto}.hero .pnd svg{width:172px;height:172px;margin:0 auto}
+.hero .medal{position:absolute;right:-4px;bottom:-6px}.hero .medal svg{width:88px;height:88px}
+.hop svg{animation:hop 1.5s ease-in-out infinite;transform-origin:50% 100%}@keyframes hop{0%,100%{transform:translateY(0)}35%{transform:translateY(-12px) rotate(-2.5deg)}55%{transform:translateY(0)}}
+.sway svg{animation:sway 3s ease-in-out infinite;transform-origin:50% 100%}@keyframes sway{50%{transform:rotate(2deg)}}
+.hi{margin:14px 0 4px}
+/* серия за неделю на экране результата */
+.rsi.fire svg{animation:flame 1.2s ease-in-out infinite alternate;transform-origin:50% 90%}@keyframes flame{from{transform:scale(1) rotate(-3deg)}to{transform:scale(1.12) rotate(3deg)}}
+.wk{display:flex;gap:8px;margin-top:10px}
+.wd{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:800;color:var(--m)}
+.wd i{width:26px;height:26px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;color:#fff}.wd i svg{width:16px;height:16px}
+.wd.on i{background:var(--gold);border-color:var(--gold)}.wd.td i{border-color:var(--fire)}.wd.td.on i{border-color:var(--gold);animation:wdp .5s .9s cubic-bezier(.3,1.8,.5,1) both}@keyframes wdp{from{transform:scale(0)}}
+/* урок выезжает снизу */
+@keyframes pgup{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+main.in.up>:not(nav):not(.ft):not(.cf){animation:pgup .3s cubic-bezier(.2,.9,.3,1) both}
 /* прописи */
 .bt2{display:flex;gap:8px}.sp.pn{background:var(--gold);box-shadow:0 4px 0 var(--goldd)}
 .hwh{display:flex;align-items:center;gap:12px}.hwh .zh2{font-size:32px}
@@ -476,16 +509,81 @@ const B=(a,p,t,c)=>`<button class="b ${c||''}" data-a="${a}" data-p="${p}">${t}<
 const K=(a,p,t)=>`<button class="bk" data-a="${a}" data-p="${p}">${IC.back}<span>${t}</span></button>`;
 const SP=(t,big)=>`<button class="sp${big?' big':''}" data-s="${t}" aria-label="Прослушать">${IC.spk}</button>`;
 function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
-let AC=null;
-function snd(ok){if(S.mute)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const t0=AC.currentTime;(ok?[659,880]:[311,233]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),t=t0+i*.1;o.type=ok?'sine':'triangle';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.24);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26)})}catch(e){}}
+/* ---------- звук: тёплые «колокольчики» с лёгким эхом; с каждым верным ответом подряд тон выше ---------- */
+const mkFx=c=>{
+ const inp=c.createGain(),dry=c.createGain(),wet=c.createGain(),cv=c.createConvolver(),cp=c.createDynamicsCompressor(),n=Math.floor(c.sampleRate*.55),b=c.createBuffer(2,n,c.sampleRate);
+ for(let ch=0;ch<2;ch++){const d=b.getChannelData(ch);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.6)}
+ cv.buffer=b;dry.gain.value=.85;wet.gain.value=.3;
+ inp.connect(dry);inp.connect(cv);cv.connect(wet);dry.connect(cp);wet.connect(cp);cp.connect(c.destination);return inp};
+function bell(c,out,f,t,d,g=.2,br=1){
+ [[1,1,1],[2,.38*br,.62],[3.01,.2*br,.4],[4.2,.1*br,.28]].forEach(([r,a,k])=>{
+  const o=c.createOscillator(),v=c.createGain(),e=t+d*k+.02;o.frequency.value=f*r;
+  v.gain.setValueAtTime(.0001,t);v.gain.exponentialRampToValueAtTime(g*a,t+.006);v.gain.exponentialRampToValueAtTime(.0001,e);
+  o.connect(v);v.connect(out);o.start(t);o.stop(e+.03)})}
+function bonk(c,out,f,t,d,g=.24){
+ const o=c.createOscillator(),v=c.createGain(),lp=c.createBiquadFilter();o.type='triangle';
+ o.frequency.setValueAtTime(f*1.12,t);o.frequency.exponentialRampToValueAtTime(f*.9,t+d);lp.type='lowpass';lp.frequency.value=900;
+ v.gain.setValueAtTime(.0001,t);v.gain.exponentialRampToValueAtTime(g,t+.012);v.gain.exponentialRampToValueAtTime(.0001,t+d);
+ o.connect(lp);lp.connect(v);v.connect(out);o.start(t);o.stop(t+d+.03)}
+function voice(c,out,kind,o={},t0=0){
+ const t=c.currentTime+t0+.01;
+ if(kind==='ok'){const st=[0,2,4,5,7,9,11,12][Math.min(7,Math.max(0,(o.combo||1)-1))],r=523.25*Math.pow(2,st/12);
+  bell(c,out,r,t,.3,.24);bell(c,out,r*1.5,t+.08,.55,.26);bell(c,out,r*3,t+.08,.16,.07)}
+ else if(kind==='no'){bonk(c,out,196,t,.2);bonk(c,out,147,t+.15,.34,.22)}
+ else if(kind==='tap'){const x=c.createOscillator(),v=c.createGain();x.frequency.setValueAtTime(640,t);x.frequency.exponentialRampToValueAtTime(430,t+.04);
+  v.gain.setValueAtTime(.0001,t);v.gain.exponentialRampToValueAtTime(.24,t+.006);v.gain.exponentialRampToValueAtTime(.0001,t+.06);x.connect(v);v.connect(out);x.start(t);x.stop(t+.08)}
+ else if(kind==='done'){[523.25,659.25,783.99,1046.5].forEach((f,i)=>bell(c,out,f,t+i*.11,.55,.24));
+  [1046.5,1318.5,1568].forEach(f=>bell(c,out,f,t+.52,1.2,.15));
+  [2093,2637,3136,2349].forEach((f,i)=>bell(c,out,f,t+.66+i*.09,.35,.06,.6));
+  if(o.perfect)[1568,1976,2349].forEach((f,i)=>bell(c,out,f,t+1+i*.1,.6,.1))}
+ else if(kind==='goal'){[783.99,987.77,1174.7,1568].forEach((f,i)=>bell(c,out,f,t+i*.09,.7,.2))}
+ else if(kind==='soft'){bell(c,out,392,t,.55,.17);bell(c,out,329.6,t+.2,.9,.17)}}
+let AC=null,FX=null;
+function sfx(kind,o){if(S.mute)return;try{if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();FX=mkFx(AC)}if(AC.state==='suspended')AC.resume();voice(AC,FX,kind,o,0)}catch(e){}}
+const snd=(ok,o)=>sfx(ok?'ok':'no',o);
+const tap=()=>{sfx('tap');if(TG.on)TG.tick();else try{navigator.vibrate&&navigator.vibrate(6)}catch(e){}};
+/* ---------- панда Бао: талисман ---------- */
+const PANDA=(m='happy')=>{
+ const k='#23292c',ln='#cfd8dc',ol='stroke="#5d717a" stroke-width="1.8"';
+ const eyes=m==='cheer'?`<path d="M35 59q7-9 14 0M71 59q7-9 14 0" fill="none" stroke="#fff" stroke-width="3.8" stroke-linecap="round"/>`
+  :m==='sleep'?`<path d="M35 58q7 7 14 0M71 58q7 7 14 0" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>`
+  :`<circle cx="42" cy="58" r="6.4" fill="#fff"/><circle cx="78" cy="58" r="6.4" fill="#fff"/><circle cx="43" cy="${m==='sad'?60.5:59.5}" r="3.7" fill="${k}"/><circle cx="77" cy="${m==='sad'?60.5:59.5}" r="3.7" fill="${k}"/><circle cx="44.3" cy="58" r="1.3" fill="#fff"/><circle cx="78.3" cy="58" r="1.3" fill="#fff"/>`;
+ const brows=m==='sad'?`<path d="M30 46l14-6M90 46l-14-6" stroke="${k}" stroke-width="3.2" stroke-linecap="round"/>`:'';
+ const mouth=m==='cheer'?`<path d="M48 76q12 18 24 0z" fill="${k}"/><path d="M53 85q7 6 14 0q-7-5-14 0z" fill="#ff7a8a"/>`
+  :m==='sad'?`<path d="M51 84q9-9 18 0" fill="none" stroke="${k}" stroke-width="3.2" stroke-linecap="round"/>`
+  :m==='sleep'?`<ellipse cx="60" cy="81" rx="3.2" ry="2.8" fill="${k}"/>`
+  :`<path d="M51 77q9 9 18 0" fill="none" stroke="${k}" stroke-width="3.2" stroke-linecap="round"/>`;
+ const extra=m==='sad'?`<path d="M81 68q-5 8 0 11q5-3 0-11z" fill="#6cc4ff"/>`:m==='sleep'?`<text x="92" y="26" font-size="17" font-weight="900" fill="#8fb1c9" font-family="Nunito,system-ui">z</text><text x="101" y="14" font-size="12" font-weight="900" fill="#8fb1c9" font-family="Nunito,system-ui">z</text>`:'';
+ const arm=d=>`<path d="${d}" fill="none" stroke="#5d717a" stroke-width="17.6" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${k}" stroke-width="14" stroke-linecap="round"/>`;
+ const arms=m==='cheer'?arm('M30 108Q6 100 10 66')+arm('M90 108Q114 100 110 66')
+  :`<ellipse cx="32" cy="106" rx="8.5" ry="15" transform="rotate(18 32 106)" fill="${k}" ${ol}/><ellipse cx="88" cy="106" rx="8.5" ry="15" transform="rotate(-18 88 106)" fill="${k}" ${ol}/>`;
+ return `<svg viewBox="0 0 120 120" aria-hidden="true">`+
+  `<ellipse cx="60" cy="110" rx="29" ry="21" fill="#fff" stroke="${ln}" stroke-width="2.5"/>`+arms+
+  `<circle cx="28" cy="30" r="13" fill="${k}" ${ol}/><circle cx="92" cy="30" r="13" fill="${k}" ${ol}/>`+
+  `<ellipse cx="60" cy="62" rx="41" ry="35" fill="#fff" stroke="${ln}" stroke-width="2.5"/>`+
+  `<ellipse cx="42" cy="58" rx="10.5" ry="13.5" transform="rotate(24 42 58)" fill="${k}"/><ellipse cx="78" cy="58" rx="10.5" ry="13.5" transform="rotate(-24 78 58)" fill="${k}"/>`+
+  eyes+brows+`<path d="M54 67q6-3.5 12 0q-1 6-6 7q-5-1-6-7z" fill="${k}"/>`+mouth+
+  `<circle cx="31" cy="73" r="5.5" fill="#ff9aa8" opacity=".5"/><circle cx="89" cy="73" r="5.5" fill="#ff9aa8" opacity=".5"/>`+extra+`</svg>`;
+};
+/* полоска «неделя» для экрана результата: пн–вс, дни с занятиями отмечены */
+const weekStrip=()=>{const x=S.x||{},dow=(new Date().getUTCDay()+6)%7,L='ПВСЧПСВ';
+ return [...Array(7)].map((_,i)=>{const d=new Date(Date.now()+(i-dow)*864e5).toISOString().slice(0,10),on=(x[d]||0)>0;
+  return `<span class="wd${on?' on':''}${d===td()?' td':''}"><i>${on?IC.check:''}</i><small>${L[i]}</small></span>`}).join('')};
+/* приветствие панды на главной */
+function homeHi(){
+ const x=xpToday(),g=S.goal||30,st=streak(),n=Object.keys(S.done).length+Object.keys(S.dd||{}).length;
+ const t=!n&&!x?'Привет! Я Бао. Начнём с первого урока?':x>=g?'Цель дня выполнена! Так держать!':x>0?'Отлично идёте! До цели осталось '+(g-x)+' XP.':st>1?'Ваша серия — '+st+' '+dword(st)+'. Не прерывайте её!':'Время для урока! Хватит и пяти минут.';
+ return `<div class="say hi"><span class="av pa">${PANDA(x>=g?'cheer':'happy')}</span><div class="bub">${t}</div></div>`}
+/* полоса прогресса в уроке плавно доезжает до нового значения */
+function pbRun(){const i=document.querySelector('.pb i[data-to]');if(!i)return;const to=+i.dataset.to;requestAnimationFrame(()=>requestAnimationFrame(()=>{i.style.width=to+'%'}));PBP=to}
 const td=()=>new Date().toISOString().slice(0,10);
 const yd=()=>new Date(Date.now()-864e5).toISOString().slice(0,10);
 /* серия: заморозка (VIP) спасает серию, если пропущен ровно один день */
-let FZN=0;
+let FZN=0,LXP=0,PBP=0;
 const gap=()=>S.sd?Math.round((Date.parse(td())-Date.parse(S.sd))/864e5):99;
 const fzLeft=()=>S.fzm===td().slice(0,7)?(S.fz||0):2;
 const canFreeze=()=>gap()===2&&vipOn()&&fzLeft()>0;
-function gx(n){const d=td();S.x=S.x||{};S.x[d]=(S.x[d]||0)+n;
+function gx(n){LXP=n;const d=td();S.x=S.x||{};S.x[d]=(S.x[d]||0)+n;
  if(S.sd!==d){
   if(gap()===1)S.sn=(S.sn||0)+1;
   else if(canFreeze()){const m=d.slice(0,7);if(S.fzm!==m){S.fzm=m;S.fz=2}S.fz--;S.fzu=(S.fzu||0)+1;S.sn=(S.sn||0)+1;FZN=1}
@@ -516,7 +614,7 @@ function popH(n,o){
 }
 function H(){
  const ns=nodes(),cur=ns.find(n=>!n.ok),g=S.goal||30,x=xpToday();
- let h=TOP()+`<div class="card goal">${IC.bolt}<span class="gx"><b>Цель дня: ${Math.min(x,g)} из ${g} XP</b>${bar(x/g*100)}</span></div>`+vipBn();
+ let h=TOP()+homeHi()+`<div class="card goal">${IC.bolt}<span class="gx"><b>Цель дня: ${Math.min(x,g)} из ${g} XP</b>${bar(x/g*100)}</span></div>`+vipBn();
  UN.forEach((u,ui)=>{
   const c=UC[ui%UC.length],un=ns.filter(n=>n.ui===ui),dn=un.filter(n=>n.ok).length;
   h+=`<section style="--u:${c[0]};--ud:${c[1]}"><div class="ub"><div><span class="us">HSK ${u.h} · Блок ${ui+1}</span><b class="un">${u.t}</b><span class="up">Пройдено ${dn} из ${un.length}</span></div><button class="ug" data-a="UG" data-p="${ui}" aria-label="Справочник блока">${IC.book}</button></div><div class="path">`;
@@ -602,7 +700,7 @@ function HWV(){
 function hwQuiz(){
  HWW.quiz({onMistake:()=>{TG.hap(false);hwSay('Не та чёрточка. Попробуйте ещё раз.')},onCorrectStroke:()=>hwSay(''),
   onComplete:()=>{
-   const c=V.q[V.qi].c;if(!V.dn[V.qi]){gx(5);S.hw=(S.hw||0)+1;S.hwc=S.hwc||{};S.hwc[c]=(S.hwc[c]||0)+1;save()}V.dn[V.qi]=1;snd(true);TG.hap(true);hwSay('Верно! +5 XP');
+   const c=V.q[V.qi].c;if(!V.dn[V.qi]){gx(5);S.hw=(S.hw||0)+1;S.hwc=S.hwc||{};S.hwc[c]=(S.hwc[c]||0)+1;save()}V.dn[V.qi]=1;sfx('ok',{combo:Object.keys(V.dn).length});TG.hap(true);hwSay('Верно! +5 XP');
    const b=document.querySelector('[data-a="hwnext"]');if(b){b.className='b ok';b.textContent=hwLast()?'Готово':'Дальше'}
    const k=document.querySelectorAll('.hwk button')[V.qi];if(k)k.classList.add('dn')}});
 }
@@ -689,17 +787,17 @@ function PYRV(){
  r.e.map(x=>typeof x==='string'?`<h2>${x}</h2>`:x.length===3&&/[一-鿿]/.test(x[0])?`<div class="card exr"><div><span class="zh2">${x[0]}</span> <b>${x[1]}</b><div class="m">${x[2]}</div></div>${SP(x[0])}</div>`:`<div class="card note"><b class="nt">${x[0]}</b><p>${x[1]}</p></div>`).join('');
 }
 /* ---------- упражнения ---------- */
-const shell=(p,body,ft)=>`<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:${p}%"></i></span>${CMB>=2?`<span class="cmbt">${IC.fire}${CMB}</span>`:''}</div>${body}${ft}`;
+const shell=(p,body,ft)=>`<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:${PBP}%" data-to="${p}"></i></span>${CMB>=2?`<span class="cmbt">${IC.fire}${CMB}</span>`:''}</div>${body}${ft}`;
 function opts(list,sel,chk,cor,act,grid){
  return `<div class="${grid?'g2':'ol'}">`+list.map(o=>{let c='opt';if(chk!=null)c+=o.i===cor?' ok':o.i===chk?' no':' dim';else if(o.i===sel)c+=' sel';return `<button class="${c}" data-a="${act}" data-p="${o.i}">${o.h}</button>`}).join('')+'</div>';
 }
 function foot(chkAct,can,res,nextAct){
  if(!res)return `<div class="ft"><div class="fi"><button class="b big" data-a="${chkAct}" data-p=""${can?'':' disabled'}>Проверить</button></div></div>`;
- return `<div class="ft ${res.ok?'okf':'nof'}" role="status"><div class="fi"><div class="fh"><span class="fic">${res.ok?IC.check:IC.x}</span><div><b class="ftt">${res.title}${res.ok&&CMB>=3?`<span class="cmb">${IC.fire}${CMB} подряд</span>`:''}</b>${res.body?'<div class="ftb">'+res.body+'</div>':''}</div></div><button class="b big ${res.ok?'ok':'no'}" data-a="${nextAct}" data-p="">Продолжить</button></div></div>`;
+ return `<div class="ft ${res.ok?'okf':'nof'}" role="status"><div class="fi">${res.ok&&LXP?`<span class="xpf">+${LXP} XP</span>`:''}<div class="fh"><span class="fic">${res.ok?IC.check:IC.x}</span><div><b class="ftt">${res.title}${res.ok&&CMB>=3?`<span class="cmb">${IC.fire}${CMB} подряд</span>`:''}</b>${res.body?'<div class="ftb">'+res.body+'</div>':''}</div></div><button class="b big ${res.ok?'ok':'no'}" data-a="${nextAct}" data-p="">Продолжить</button></div></div>`;
 }
 function LE(){
  const i=V.i,s=LS[i];
- return `<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:0%"></i></span></div><div class="lk">Новая тема</div><div class="lt">Урок ${i+1}. ${s.t}</div><p class="m">Цель: ${s.g}</p><div class="card note">${s.x}</div>`+
+ return `<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:0%"></i></span></div><div class="say"><span class="av pa">${PANDA('happy')}</span><div class="bub">Привет! Сегодня новая тема. Давайте разберёмся вместе.</div></div><div class="lk">Новая тема</div><div class="lt">Урок ${i+1}. ${s.t}</div><p class="m">Цель: ${s.g}</p><div class="card note">${s.x}</div>`+
  s.ex.map(e=>`<div class="card exr"><div>${rbz(e[0],e[1],'zh')}<div>${e[2]}</div></div>${SP(e[0])}</div>`).join('')+`<div class="ft"><div class="fi">${B('start',i,'Начать упражнения','big')}</div></div>`;
 }
 function QV(){
@@ -711,7 +809,7 @@ function QV(){
 function WQV(){
  const q=W.it[W.i],w=q.w,ck=W.p!=null,cor=q.o.indexOf(w),ok=W.p===cor;
  const lab=['Что означает это слово?','Как это по-китайски?','Что вы слышите?'][q.t];
- const stem=q.t===0?`<div class="say">${SP(w[0])}<div class="bub"><span class="zh">${w[0]}</span></div></div>`:q.t===1?`<div class="say"><span class="av">师</span><div class="bub">${w[2]}</div></div>`:`<div class="ctr">${SP(w[0],1)}<span class="m">Нажмите, чтобы прослушать</span></div>`;
+ const stem=q.t===0?`<div class="say">${SP(w[0])}<div class="bub"><span class="zh">${w[0]}</span></div></div>`:q.t===1?`<div class="say"><span class="av pa">${PANDA('happy')}</span><div class="bub">${w[2]}</div></div>`:`<div class="ctr">${SP(w[0],1)}<span class="m">Нажмите, чтобы прослушать</span></div>`;
  const body=`<div class="lt">${lab}</div>${stem}`+opts(q.o.map((x,j)=>({i:j,h:q.t===0?x[2]:`<span class="zh2">${x[0]}</span>`})),W.s,ck?W.p:null,cor,'wpick',q.t!==0);
  const info=`<span class="zh2">${w[0]}</span> ${w[1]} — ${w[2]}<br>${SP(w[0])}`;
  return shell((W.i+(ck?1:0))/W.it.length*100,body,foot('wchk',W.s!=null,ck?{ok,title:ok?FB:'Правильный ответ:',body:info}:null,'wnxt'));
@@ -719,8 +817,8 @@ function WQV(){
 function SBV(){
  const[tl,pu,ru]=SB.it[SB.i],ck=SB.c!=null;
  const inner=i=>`<span class="zh2">${SB.t[i]}</span><small>${SB.t[i]==='，'?'&nbsp;':D[SB.t[i]][1]}</small>`;
- const chip=(i,a)=>`<button class="chip" data-a="${a}" data-p="${i}"${ck?' disabled':''}>${inner(i)}</button>`;
- const body=`<div class="lt">Составьте предложение по-китайски</div><div class="say"><span class="av">师</span><div class="bub">${ru}</div></div><div class="ans">${SB.p.map(i=>chip(i,'tu')).join('')}</div><div class="bank">${SB.t.map((_,i)=>SB.p.includes(i)?`<span class="chip ph" aria-hidden="true">${inner(i)}</span>`:chip(i,'tp')).join('')}</div>`;
+ const chip=(i,a)=>`<button class="chip${a==='tu'&&i===SB.n?' new':''}" data-a="${a}" data-p="${i}"${ck?' disabled':''}>${inner(i)}</button>`;
+ const body=`<div class="lt">Составьте предложение по-китайски</div><div class="say"><span class="av pa">${PANDA('happy')}</span><div class="bub">${ru}</div></div><div class="ans">${SB.p.map(i=>chip(i,'tu')).join('')}</div><div class="bank">${SB.t.map((_,i)=>SB.p.includes(i)?`<span class="chip ph" aria-hidden="true">${inner(i)}</span>`:chip(i,'tp')).join('')}</div>`;
  return shell((SB.i+(ck?1:0))/SB.it.length*100,body,foot('chk',SB.p.length>0,ck?{ok:SB.c,title:SB.c?FB:'Правильный ответ:',body:rbt(tl,pu)+'<div>'+ru+'</div>'+(SB.c?'':'<div>В наборе было одно лишнее слово.</div>')+SP(tl.join(''))}:null,'snx'));
 }
 function DGV(){
@@ -741,9 +839,9 @@ function RES(){
  const fz=FZN;FZN=0;
  const stm=fz?'Заморозка VIP сохранила вашу серию!':!st?'Ответьте верно хотя бы на один вопрос, чтобы начать серию.':first?(st===1?'Серия началась!':'Занятие засчитано: серия растёт.'):'Серия сохранена. Приходите завтра!';
  const gp=Math.min(100,pre/g*100),gt=Math.min(100,tx/g*100);
- return cf+`<div class="res"><div class="medal${acc>=50?' pop':''}">${IC.medal}</div><h1>${ttl}</h1><p class="m">${sub}</p><p class="m rt">${X.t}</p>`+
+ return cf+`<div class="res"><div class="hero"><div class="pnd ${acc>=80?'hop':acc>=50?'sway':''}">${PANDA(acc>=80?'cheer':acc>=50?'happy':'sad')}</div>${acc>=50?`<div class="medal mp">${IC.medal}</div>`:''}</div><h1>${ttl}</h1><p class="m">${sub}</p><p class="m rt">${X.t}</p>`+
  `<div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}<i data-n="${X.xp}">0</i></span></div><div class="stb grn"><b>Точность</b><span><i data-n="${acc}" data-u="%">0%</i></span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>`+
- `<div class="card rs"><span class="rsi fire">${IC.fire}</span><div class="gx"><b>${st} ${dn(st)} подряд</b><span class="m">${stm}</span></div></div>`+
+ `<div class="card rs"><span class="rsi fire">${IC.fire}</span><div class="gx"><b>${st} ${dn(st)} подряд</b><span class="m">${stm}</span><div class="wk">${weekStrip()}</div></div></div>`+
  `<div class="card rs${hit?' hit':''}"><span class="rsi gold">${IC.bolt}</span><div class="gx"><b>${hit?'Цель дня выполнена!':'Цель дня: '+Math.min(tx,g)+' из '+g+' XP'}</b><span class="pbm"><i class="gf" style="width:${gp}%" data-to="${gt}"></i></span></div></div>`+
  `${X.note?'<p class="m">'+X.note+'</p>':''}</div><div class="ft"><div class="fi">${B('done','','Продолжить','big')}</div></div>`;
 }
@@ -772,21 +870,22 @@ function R(){
  TG.sync();
  if(v==='hw')hwInit();
  if(v==='res')resFx();
+ pbRun();
 }
 function resFx(){
  document.querySelectorAll('.res [data-n]').forEach(e=>{const n=+e.dataset.n,u=e.dataset.u||'',t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/800);e.textContent=Math.round(n*(1-Math.pow(1-k,3)))+u;if(k<1&&e.isConnected)requestAnimationFrame(step)};requestAnimationFrame(step)});
  requestAnimationFrame(()=>requestAnimationFrame(()=>{const f=document.querySelector('.res .gf');if(f)f.style.width=f.dataset.to+'%'}));
- if(X&&X.n&&X.ok/X.n>=.5){snd(true);TG.hap(true)}
+ if(X&&X.n){const a=X.ok/X.n;sfx(a>=.5?'done':'soft',{perfect:a===1});if(a>=.5)TG.hap(true);if(document.querySelector('.res .rs.hit'))setTimeout(()=>sfx('goal'),1500)}
 }
-const pgIn=()=>{const m=$('a');m.classList.remove('in');void m.offsetWidth;m.classList.add('in')};
+const pgIn=pv=>{const m=$('a');m.classList.remove('in','up');void m.offsetWidth;m.classList.add('in');if(LES.includes(V.v)&&!LES.includes(pv))m.classList.add('up')};
 ['gesturestart','gesturechange'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
-const go=v=>{if(v)V=v;R();pgIn();try{if(V.v==='home'){const c=document.querySelector('.ring.on');if(c){c.scrollIntoView({block:'center'});return}}scrollTo(0,0)}catch(e){}};
-const begin=()=>{if(!LES.includes(V.v))RET={...V};SX=0;ST=Date.now();CMB=0;POP=null};
-function judge(ok){if(ok){CMB++;FB=PR[Math.floor(Math.random()*PR.length)]}else CMB=0;snd(ok);TG.hap(ok)}
+const go=v=>{const pv=V.v;if(v)V=v;R();pgIn(pv);try{if(V.v==='home'){const c=document.querySelector('.ring.on');if(c){c.scrollIntoView({block:'center'});return}}scrollTo(0,0)}catch(e){}};
+const begin=()=>{if(!LES.includes(V.v))RET={...V};PBP=0;SX=0;ST=Date.now();CMB=0;POP=null};
+function judge(ok){if(ok){CMB++;FB=PR[Math.floor(Math.random()*PR.length)]}else CMB=0;sfx(ok?'ok':'no',{combo:CMB});TG.hap(ok)}
 function finish(x){x.sec=Math.round((Date.now()-ST)/1000);x.xp=SX;X=x;go({v:'res'})}
 /* ---------- Telegram Mini App ---------- */
 const TG=(()=>{
- const w=window.Telegram&&Telegram.WebApp,on=!!(w&&w.platform&&w.platform!=='unknown'),T={on,name:'',sync(){},hap(){},push(){},msg(t){try{alert(t)}catch(e){}}};
+ const w=window.Telegram&&Telegram.WebApp,on=!!(w&&w.platform&&w.platform!=='unknown'),T={on,name:'',sync(){},hap(){},tick(){},push(){},msg(t){try{alert(t)}catch(e){}}};
  if(!on)return T;
  const ok=v=>w.isVersionAtLeast(v),run=f=>{try{f()}catch(e){}};
  const u=w.initDataUnsafe&&w.initDataUnsafe.user;
@@ -804,6 +903,7 @@ const TG=(()=>{
   if(c!==cc){cc=c;run(()=>c?w.enableClosingConfirmation():w.disableClosingConfirmation())}};
  T.hap=g=>run(()=>w.HapticFeedback.notificationOccurred(g?'success':'error'));
  T.msg=t=>run(()=>w.showPopup({message:t}));
+ T.tick=()=>run(()=>w.HapticFeedback.selectionChanged());
  /* прогресс в облаке Telegram: общий для всех устройств аккаунта */
  const CS=ok('6.9')&&w.CloudStorage;
  if(CS){
@@ -933,7 +1033,7 @@ const F={
  L:i=>{begin();go({v:'ls',i:+i})},
  start:i=>{i=+i;begin();Q={m:'l',li:i,it:LS[i].q.map((_,j)=>[i,j]),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
  RV:()=>{if(!Object.keys(S.rev).length)return;begin();Q={m:'r',it:Object.keys(S.rev).slice(0,8).map(k=>k.split('.').map(Number)),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
- pick:j=>{if(Q.p!=null)return;Q.s=+j;R()},
+ pick:j=>{if(Q.p!=null)return;Q.s=+j;tap();R()},
  qchk:()=>{if(Q.s==null||Q.p!=null)return;const[l,n]=Q.it[Q.i],ok=Q.s===LQ(l).q[n].c,k=l+'.'+n;Q.p=Q.s;if(ok){Q.ok++;gx(10)}judge(ok);if(ok){if(S.rev[k]&&++S.rev[k].s>=2)delete S.rev[k]}else S.rev[k]={s:0};save();R()},
  nxt:()=>{Q.i++;Q.o=null;Q.p=null;Q.s=null;
   if(Q.i>=Q.it.length){if(Q.m==='p'){S.pd=S.pd||{};S.pd[Q.li-100]=Math.max(S.pd[Q.li-100]||0,Math.round(Q.ok/Q.it.length*100));save()}if(Q.m==='l'){S.done[Q.li]=Math.max(S.done[Q.li]||0,Math.round(Q.ok/Q.it.length*100));save()}
@@ -941,7 +1041,7 @@ const F={
   go({v:'q'})},
  wtest:i=>{i=+i;const src=i<0?weak():WS[i].w;if(!src.length)return;begin();WTL(src,8,{s:i})},
  ustart:u=>{u=+u;begin();WTL(uw(u),10,{u})},
- wpick:j=>{if(W.p!=null)return;W.s=+j;R()},
+ wpick:j=>{if(W.p!=null)return;W.s=+j;tap();R()},
  wchk:()=>{if(W.s==null||W.p!=null)return;const q=W.it[W.i],ok=q.o[W.s]===q.w,k=q.w[0],x=S.w[k]=S.w[k]||{b:0,u:0};W.p=W.s;if(ok){W.ok++;gx(10)}judge(ok);const pb=x.b;x.b=ok?Math.min(3,x.b+1):0;x.i=ok?(pb>=3&&x.i?Math.min(90,x.i*2):[0,1,3,7][x.b]):0;x.d=dayN()+x.i;save();R()},
  wnxt:()=>{W.i++;W.p=null;W.s=null;
   if(W.i>=W.it.length){let t,note='';
@@ -950,14 +1050,14 @@ const F={
    return finish({t,ok:W.ok,n:W.it.length,note})}
   go({v:'wq'})},
  sbstart:i=>{i=+i;begin();SB={s:i,it:shf(WS[i].s.map(x=>[x[0].filter(t=>t!=='，'&&!(S.w[t]&&S.w[t].u)).length+Math.random(),x]).sort((a,b)=>b[0]-a[0]).slice(0,5).map(y=>y[1])),i:0,ok:0};sbn();go({v:'sb'})},
- tp:i=>{if(SB.c!=null)return;SB.p.push(+i);R()},
- tu:i=>{if(SB.c!=null)return;SB.p=SB.p.filter(x=>x!==+i);R()},
+ tp:i=>{if(SB.c!=null)return;SB.p.push(+i);SB.n=+i;tap();R()},
+ tu:i=>{if(SB.c!=null)return;SB.p=SB.p.filter(x=>x!==+i);SB.n=null;tap();R()},
  rst:()=>{SB.p=[];R()},
- chk:()=>{if(!SB.p.length||SB.c!=null)return;const tl=SB.it[SB.i][0];SB.c=SB.p.map(i=>SB.t[i]).join('|')===tl.join('|');
+ chk:()=>{SB.n=null;if(!SB.p.length||SB.c!=null)return;const tl=SB.it[SB.i][0];SB.c=SB.p.map(i=>SB.t[i]).join('|')===tl.join('|');
   if(SB.c){SB.ok++;gx(15);tl.forEach(w=>{const x=S.w[w]=S.w[w]||{b:0,u:0};x.u++});save()}judge(SB.c);R()},
  snx:()=>{SB.i++;if(SB.i>=SB.it.length)return finish({t:'Предложения: '+WS[SB.s].t,ok:SB.ok,n:SB.it.length});sbn();go({v:'sb'})},
  dstart:i=>{begin();DG={d:+i,i:0,ok:0,p:null,s:null,o:shf([0,1,2])};go({v:'dg'})},
- dpick:j=>{if(DG.p!=null)return;DG.s=+j;R()},
+ dpick:j=>{if(DG.p!=null)return;DG.s=+j;tap();R()},
  dchk:()=>{if(DG.s==null||DG.p!=null)return;DG.p=DG.s;const ok=DG.p===0;if(ok){DG.ok++;gx(10)}judge(ok);R()},
  dnx:()=>{DG.i++;DG.p=null;DG.s=null;DG.o=shf([0,1,2]);
   if(DG.i>=DLG[DG.d].s.length){S.dd=S.dd||{};S.dd[DG.d]=1;save();return finish({t:'Диалог: '+DLG[DG.d].t,ok:DG.ok,n:DLG[DG.d].s.length})}
