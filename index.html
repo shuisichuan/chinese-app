@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>中文学习 — Китайский язык</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;--fn:"Nunito",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--cjk:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+--bg:#ffffff;--fg:#3c3c3c;--m:#777777;--m2:#afafaf;--cd:#ffffff;--bd:#e5e5e5;--bd2:#cecece;
+--pri:#12a99f;--prid:#0b8179;--pril:#d9f4f1;--sel:#1cb0f6;--seld:#1899d6;--sell:#ddf4ff;
+--ok:#58b730;--okd:#43951f;--okl:#d7ffb8;--okt:#4a8b1f;--no:#ff4b4b;--nod:#e02b2b;--nol:#ffdfe0;--not:#d33131;
+--gold:#ffc800;--goldd:#e0a800;--fire:#ff9600;--pur:#a560f0;--t1:#e5484d;--t2:#30a46c;--t3:#0090ff;--t4:#8e4ec6}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131f24;--fg:#f1f7fb;--m:#a8b8c0;--m2:#52656d;--cd:#131f24;--bd:#37464f;--bd2:#24333a;--pril:#16393a;--sell:#10334a;--okl:#1f3514;--okt:#79d634;--nol:#3f1d20;--not:#ff8a8a;--t1:#ff6b6e;--t2:#4cc38a;--t3:#4fb1ff;--t4:#bf7af0}}
+:root[data-theme="dark"]{--bg:#131f24;--fg:#f1f7fb;--m:#a8b8c0;--m2:#52656d;--cd:#131f24;--bd:#37464f;--bd2:#24333a;--pril:#16393a;--sell:#10334a;--okl:#1f3514;--okt:#79d634;--nol:#3f1d20;--not:#ff8a8a;--t1:#ff6b6e;--t2:#4cc38a;--t3:#4fb1ff;--t4:#bf7af0}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--fg);font:600 17px/1.5 var(--fn);-webkit-tap-highlight-color:transparent}
+main{max-width:560px;margin:0 auto;padding:0 16px calc(24px + env(safe-area-inset-bottom,0px));padding-top:env(safe-area-inset-top,0px)}
+main.tab{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+main.les{padding-bottom:calc(260px + env(safe-area-inset-bottom,0px))}
+svg{width:1.2em;height:1.2em;flex:none}
+p{margin:6px 0}.m{color:var(--m);font-size:15px}.d{display:block}
+h1.ph{font-size:26px;font-weight:900;margin:14px 0 4px;line-height:1.25}
+h2{font-size:18px;font-weight:900;margin:24px 0 8px}
+.zh{font:500 30px/1.3 var(--cjk)}.zh2{font:500 22px/1.3 var(--cjk)}.py{font-size:16px;color:var(--m)}
+u{text-decoration:none;font-weight:800}.t1{color:var(--t1)}.t2{color:var(--t2)}.t3{color:var(--t3)}.t4{color:var(--t4)}
+button{font-family:var(--fn)}
+button:focus-visible{outline:3px solid var(--sel);outline-offset:2px}
+.row{display:flex;align-items:center;gap:12px}
+.card{background:var(--cd);border:2px solid var(--bd);border-radius:16px;padding:14px 16px;margin:10px 0}
+button.card{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;border-bottom-width:4px}
+button.card:active{transform:translateY(2px);border-bottom-width:2px}
+.bk{display:inline-flex;align-items:center;gap:4px;background:none;border:0;color:var(--m);font:800 15px var(--fn);padding:14px 0 2px;cursor:pointer}.bk svg{width:20px;height:20px}
+/* buttons */
+.b{display:block;width:100%;margin-top:10px;padding:13px 16px;border:0;border-radius:16px;background:var(--pri);color:#fff;font:800 16px/1.2 var(--fn);text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 0 var(--prid);cursor:pointer}
+.b.big{margin-top:0;padding:15px 16px}
+.b:active{transform:translateY(4px);box-shadow:none}
+.b:disabled{background:var(--bd);color:var(--m2);box-shadow:none;cursor:default;transform:none}
+.b.ok{background:var(--ok);box-shadow:0 4px 0 var(--okd)}.b.no{background:var(--no);box-shadow:0 4px 0 var(--nod)}
+.b.g{background:var(--cd);color:var(--sel);border:2px solid var(--bd);box-shadow:0 4px 0 var(--bd)}
+.b.w{background:#fff;color:var(--ud);box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.b.w2{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75);box-shadow:none}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.dual .b{margin-top:0}
+/* top bar */
+.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;background:var(--bg);border-bottom:2px solid var(--bd);margin:0 -16px;padding:10px 18px}
+.crs{width:42px;height:34px;border-radius:10px;background:#e8423f;color:#fff;display:grid;place-items:center;font:600 20px var(--cjk);box-shadow:0 3px 0 #b52f2c}
+.st{display:flex;align-items:center;gap:5px;font-weight:900;font-size:17px}.st svg{width:26px;height:26px}
+.st.fire svg{color:var(--fire)}.st.fire.off svg{color:var(--m2)}.st.bolt svg{color:var(--gold)}.st.gem svg{color:var(--pri)}
+.goal{display:flex;align-items:center;gap:12px;margin-top:14px}.goal>svg{width:34px;height:34px;color:var(--gold)}
+.pbm{display:block;height:12px;border-radius:99px;background:var(--bd);overflow:hidden;margin-top:6px}.pbm i{display:block;height:100%;background:var(--gold);border-radius:99px}
+/* path */
+.ub{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--u);color:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 4px 0 var(--ud);margin:22px 0 6px}
+.us{display:block;font-size:13px;font-weight:800;opacity:.9}.un{display:block;font-size:20px;font-weight:900;line-height:1.25}.up{display:block;font-size:13px;font-weight:700;opacity:.9;margin-top:2px}
+.ug{width:50px;height:50px;border-radius:14px;border:2px solid rgba(255,255,255,.5);background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}.ug svg{width:26px;height:26px}
+.path{display:flex;flex-direction:column;align-items:center;padding:12px 0 18px}
+.nd{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:10px}
+.nd.hastip{margin-top:52px}
+.ring{position:relative;display:grid;place-items:center;width:96px;height:96px;border-radius:50%}
+.ring.on{background:conic-gradient(var(--u) var(--p),var(--bd) 0)}
+.ring.on::before{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--bg)}
+.node{position:relative;z-index:1;width:72px;height:64px;margin-top:-6px;border:0;border-radius:50%;background:var(--u);color:#fff;box-shadow:0 7px 0 var(--ud);display:grid;place-items:center;cursor:pointer}
+.node svg{width:32px;height:32px}
+.node:active{transform:translateY(5px);box-shadow:0 2px 0 var(--ud)}
+.node.ok{background:var(--gold);box-shadow:0 7px 0 var(--goldd)}
+.node.fu{background:var(--bd);box-shadow:0 7px 0 var(--bd2);color:var(--m2)}
+.tip{position:absolute;top:-46px;left:50%;transform:translateX(-50%);z-index:2;background:var(--cd);color:var(--u);border:2px solid var(--bd);border-radius:12px;padding:7px 14px;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;animation:bob 1s ease-in-out infinite alternate}
+.tip::after{content:"";position:absolute;left:50%;bottom:-8px;width:12px;height:12px;background:var(--cd);border-right:2px solid var(--bd);border-bottom:2px solid var(--bd);transform:translateX(-50%) rotate(45deg)}
+@keyframes bob{to{transform:translate(-50%,-6px)}}
+.pop{position:relative;width:min(340px,100%);background:var(--u);color:#fff;border-radius:18px;padding:16px;margin:16px auto 6px;box-shadow:0 4px 0 var(--ud)}
+.pop::before{content:"";position:absolute;top:-8px;left:calc(50% + var(--o) - 9px);width:18px;height:18px;background:var(--u);border-radius:3px;transform:rotate(45deg)}
+.pt{display:block;font-size:18px;font-weight:900;line-height:1.3}.pop p{opacity:.92;font-size:15px}
+.lk2{display:block;margin:12px auto 0;background:none;border:0;color:#fff;font:800 15px var(--fn);text-decoration:underline;cursor:pointer}
+.soon{text-align:center;color:var(--m2);font-weight:800;padding:22px 0 8px;border-top:2px dashed var(--bd);margin-top:10px}
+/* nav */
+nav{position:fixed;bottom:0;left:0;right:0;z-index:6;background:var(--bg);border-top:2px solid var(--bd);display:flex;justify-content:center;gap:2px;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;max-width:100px;display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:2px solid transparent;border-radius:14px;padding:5px 0;color:var(--m2);font:800 11px var(--fn);cursor:pointer}
+nav svg{width:26px;height:26px}nav button.cur{color:var(--sel);border-color:var(--sel);background:var(--sell)}
+/* exercise shell */
+.lh{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;align-items:center;gap:14px;padding:14px 0 10px}
+.x{background:none;border:0;color:var(--m2);padding:4px;cursor:pointer;display:grid}.x svg{width:28px;height:28px}
+.pb{flex:1;height:16px;border-radius:99px;background:var(--bd);overflow:hidden}
+.pb i{display:block;height:100%;border-radius:99px;background:var(--ok) linear-gradient(to bottom,transparent 3px,rgba(255,255,255,.3) 3px,rgba(255,255,255,.3) 6px,transparent 6px);transition:width .45s ease}
+.cmbt{display:flex;align-items:center;gap:2px;color:var(--fire);font-weight:900}.cmbt svg{width:22px;height:22px}
+.lk{color:var(--pur);font-weight:900;font-size:14px;letter-spacing:.03em;margin-top:6px}
+.lt{font-size:23px;font-weight:900;line-height:1.3;margin:6px 0 16px}
+.say{display:flex;align-items:center;gap:12px;margin:8px 0 16px}
+.av{width:58px;height:58px;border-radius:50%;background:var(--pril);color:var(--pri);display:grid;place-items:center;font:600 26px var(--cjk);flex:none}.av svg{width:28px;height:28px}
+.bub{position:relative;flex:1;border:2px solid var(--bd);border-radius:16px;padding:12px 16px;font-size:18px;font-weight:700}
+.bub::before{content:"";position:absolute;left:-9px;top:50%;width:14px;height:14px;background:var(--bg);border-left:2px solid var(--bd);border-bottom:2px solid var(--bd);transform:translateY(-50%) rotate(45deg)}
+.ctr{display:flex;flex-direction:column;align-items:center;gap:10px;margin:22px 0 10px}
+.sp{width:46px;height:46px;border:0;border-radius:14px;background:var(--sel);color:#fff;box-shadow:0 4px 0 var(--seld);display:grid;place-items:center;cursor:pointer;flex:none}
+.sp svg{width:24px;height:24px}.sp:active{transform:translateY(4px);box-shadow:none}
+.sp.big{width:116px;height:116px;border-radius:28px;box-shadow:0 6px 0 var(--seld)}.sp.big svg{width:56px;height:56px}
+.ol{display:grid;gap:10px;margin:14px 0}.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.opt{width:100%;min-height:58px;padding:12px 16px;background:var(--cd);color:var(--fg);border:2px solid var(--bd);border-bottom-width:4px;border-radius:16px;font:700 17px/1.35 var(--fn);text-align:left;cursor:pointer}
+.g2 .opt{text-align:center;min-height:86px;display:grid;place-items:center}
+.opt:active{transform:translateY(2px);border-bottom-width:2px}
+.opt.sel{border-color:var(--sel);background:var(--sell);color:var(--seld)}
+.opt.ok{border-color:var(--ok);background:var(--okl);color:var(--okt)}
+.opt.no{border-color:var(--no);background:var(--nol);color:var(--not)}
+.opt.dim{opacity:.5}
+.ft{position:fixed;left:0;right:0;bottom:0;z-index:7;background:var(--bg);border-top:2px solid var(--bd);padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.fi{max-width:560px;margin:0 auto}
+.ft.okf{background:var(--okl);border-color:transparent;animation:up .22s ease-out}.ft.nof{background:var(--nol);border-color:transparent;animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(100%)}}
+.fh{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.fic{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}.fic svg{width:26px;height:26px}
+.okf .fic{color:var(--ok)}.nof .fic{color:var(--no)}
+.ftt{display:block;font-size:22px;font-weight:900;line-height:1.25}.okf .ftt,.okf .ftb{color:var(--okt)}.nof .ftt,.nof .ftb{color:var(--not)}
+.ftb{font-size:16px;font-weight:700;margin-top:2px;max-height:36vh;overflow:auto}
+.ftb .sp{width:38px;height:38px;border-radius:12px;margin-top:8px}.ftb .sp svg{width:20px;height:20px}
+.cmb{display:inline-flex;align-items:center;gap:2px;color:var(--fire);font-weight:900;margin-left:8px}.cmb svg{width:20px;height:20px}
+/* sentence builder */
+.ans{min-height:132px;margin:6px 0 20px;padding-top:3px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 63px,var(--bd) 63px,var(--bd) 65px)}
+.bank{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;height:58px;min-width:52px;padding:4px 12px;background:var(--cd);color:var(--fg);border:2px solid var(--bd);border-bottom-width:4px;border-radius:14px;cursor:pointer}
+.chip .zh2{font-size:22px;line-height:1.15}.chip small{font-size:12px;color:var(--m);line-height:1.1}
+.chip:active{transform:translateY(2px);border-bottom-width:2px}.chip:disabled{cursor:default;transform:none}
+.chip.ph{background:var(--bd);border-color:var(--bd);cursor:default}.chip.ph>*{visibility:hidden}
+/* dialogue */
+.dt{font-weight:900;color:var(--m);font-size:15px;margin:2px 0 6px}
+.msg{display:flex;gap:10px;align-items:flex-end;margin:12px 0}
+.msg .av{width:44px;height:44px}.msg .bub{flex:0 1 auto;max-width:84%;padding:10px 14px}
+.msg .bub::before{top:auto;bottom:10px;transform:rotate(45deg)}
+.msg.me{justify-content:flex-end}.msg.me .bub{background:var(--sell);border-color:var(--sel)}.msg.me .bub::before{display:none}
+.bub .sp{width:34px;height:34px;border-radius:10px;margin-top:6px;box-shadow:0 3px 0 var(--seld)}.bub .sp svg{width:18px;height:18px}
+.tk{font-weight:800;margin:18px 0 2px}
+/* ruby: pinyin above each word */
+.rb{display:flex;flex-wrap:wrap;align-items:flex-end;gap:4px 10px;margin:4px 0}
+.rwp{display:inline-flex;align-items:flex-end}.rw{display:inline-flex;flex-direction:column;align-items:center}
+.rw small{font:700 14px/1.3 var(--fn);color:var(--m)}.rw b{font-weight:500;position:relative}.pu{position:absolute;left:100%;bottom:0;font-style:normal}.rwp.hp{margin-right:.6em}
+.opt .rb{margin:0}
+/* lists & cards */
+.gi{width:54px;height:54px;border-radius:14px;background:var(--pril);color:var(--pri);display:grid;place-items:center;font:600 24px var(--cjk);flex:none}.gi svg{width:28px;height:28px}
+.gi.chat{background:var(--sell);color:var(--sel)}.gi.red{background:var(--nol);color:var(--no)}.gi.gold{background:#fff4cc;color:#d99a00}
+.gx{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0}.gx b{font-weight:900;line-height:1.3}
+.chv{color:var(--m2)}.okm{color:var(--gold);display:grid}.okm svg{width:28px;height:28px}
+.note .nt{display:flex;align-items:center;gap:8px;font-weight:900;color:var(--pri);margin-bottom:4px}.note .nt svg{width:22px;height:22px}
+.exr{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wl{display:grid;gap:8px;margin-top:10px}
+.wc{display:flex;justify-content:space-between;align-items:center;gap:10px;border:2px solid var(--bd);border-radius:16px;padding:10px 14px}
+.wc.ok{border-color:var(--gold)}.wz{display:flex;flex-direction:column}.wz .zh{font-size:28px;line-height:1.25}
+.wr{display:flex;flex-direction:column;align-items:center;gap:8px}
+.dots{display:flex;gap:4px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--bd)}.dots i.on{background:var(--gold)}
+.sum b{font-size:22px;font-weight:900}
+/* results */
+.res{text-align:center;padding:36px 0 10px}.medal svg{width:150px;height:150px}
+.res h1{font-size:28px;font-weight:900;margin:10px 0 2px;color:var(--pri)}
+.sts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 10px}
+.stb{border:2px solid var(--c);border-radius:16px;background:var(--c);overflow:hidden}
+.stb b{display:block;color:#fff;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;padding:5px 2px}
+.stb span{display:flex;justify-content:center;align-items:center;gap:4px;background:var(--bg);border-radius:13px;padding:14px 4px;font-size:20px;font-weight:900;color:var(--c)}
+.stb.gold{--c:#f5b400}.stb.grn{--c:var(--ok)}.stb.blu{--c:var(--sel)}
+/* profile */
+.pfh{display:flex;gap:14px;align-items:center;margin:14px 0}
+.pav{width:76px;height:76px;border-radius:50%;background:var(--pril);color:var(--pri);border:3px solid var(--pri);display:grid;place-items:center;font:600 36px var(--cjk);flex:none}
+.pfh b{display:block;font-size:21px;font-weight:900}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sc{display:flex;gap:10px;align-items:center;border:2px solid var(--bd);border-radius:16px;padding:12px}.sc svg{width:28px;height:28px}
+.sc b{display:block;font-size:20px;font-weight:900;line-height:1.1}.sc div span{font-size:13px;color:var(--m);font-weight:700}
+.c-fire{color:var(--fire)}.c-bolt{color:var(--gold)}.c-gem{color:var(--pri)}.c-gold{color:#e0a000}.c-blu{color:var(--sel)}.c-pur{color:var(--pur)}
+.gs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gch{border:2px solid var(--bd);border-bottom-width:4px;border-radius:16px;background:var(--cd);color:var(--fg);padding:12px 14px;font:inherit;cursor:pointer;text-align:left}
+.gch b{display:block;font-weight:900}.gch span{font-size:13px;color:var(--m)}.gch.on{border-color:var(--sel);background:var(--sell)}
+.tg{width:54px;height:32px;border-radius:99px;background:var(--bd);position:relative;flex:none;transition:background .2s}
+.tg i{position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}.tg.on{background:var(--ok)}.tg.on i{left:26px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+/* прописи */
+.bt2{display:flex;gap:8px}.sp.pn{background:var(--gold);box-shadow:0 4px 0 var(--goldd)}
+.hwh{display:flex;align-items:center;gap:12px}.hwh .zh2{font-size:32px}
+.hwk{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}.hwk button{min-width:52px;height:52px;border:2px solid var(--bd);border-bottom-width:4px;border-radius:14px;background:var(--cd);color:var(--fg);cursor:pointer}
+.hwk button.cur{border-color:var(--sel);background:var(--sell)}.hwk button.dn{border-color:var(--ok)}
+.hwb{position:relative;margin:10px auto;max-width:280px;aspect-ratio:1;border:2px solid var(--bd);border-radius:16px;background:linear-gradient(var(--bd),var(--bd)) center/100% 1px no-repeat,linear-gradient(var(--bd),var(--bd)) center/1px 100% no-repeat}
+#hw{position:absolute;inset:0}#hw svg{display:block;width:100%;height:100%;touch-action:none}
+.hws{text-align:center;min-height:26px}
+.hwg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.hwt{height:62px;border:2px solid var(--bd);border-bottom-width:4px;border-radius:14px;background:var(--cd);color:var(--fg);cursor:pointer;line-height:1.1}
+.hwt small{display:block;font-size:11px;color:var(--m)}.hwt.dn{border-color:var(--ok)}.hwt:active{transform:translateY(2px)}
+</style>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#12a99f">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="中文学习">
+</head>
+<body>
+<main id="a"></main>
+<script>
+const LV=[
+{n:'Базовый уровень',z:'基础',g:'HSK 1 (300 слов): тоны, первые предложения, знакомство, магазин, еда.'},
+{n:'Начальный уровень',z:'初级',g:'HSK 2 (всего около 500 слов): время, даты, повседневные диалоги. Скоро.'},
+{n:'Средний уровень',z:'中级',g:'HSK 3 (всего около 1000 слов): рассказ о событиях, просьбы, свободные диалоги. Скоро.'}];
+const CH=[['Глава 1. Звуки и тоны',[0]],['Глава 2. Первые предложения',[1,2,3]]];
+const LS=[
+{t:'Четыре тона',g:'Различать четыре тона и слышать разницу между ними.',
+x:'<p>В русском языке ударение — это громкость и длительность слога. В китайском у каждого слога есть <b>тон</b> — «мелодия», и она меняет значение слова.</p><p>1-й тон ā — высокий ровный. 2-й á — восходящий, как удивлённое «а?». 3-й ǎ — низкий, с небольшим изгибом вниз-вверх. 4-й à — резкий падающий, как команда «а!».</p><p>Слог ma с разными тонами — это четыре разных слова.</p>',
+ex:[['妈','mā','мама'],['麻','má','конопля (не из HSK 1)'],['马','mǎ','лошадь'],['骂','mà','ругать (не из HSK 1)']],
+q:[{k:'Аудирование',q:'Послушайте и выберите, что вы услышали.',a:'马',o:['mā','má','mǎ','mà'],c:2,e:'Это 马 (mǎ) — 3-й тон, «лошадь».'},
+{k:'Выберите',q:'Что означает 妈 (mā)?',o:['мама','лошадь','конопля','ругать'],c:0,e:'妈 mā — «мама». Лошадь — 马 mǎ.'},
+{k:'Выберите',q:'Какой тон у слога mà (骂)?',o:['1-й','2-й','3-й','4-й'],c:3,e:'Значок над a (à) показывает 4-й тон — резкое падение.'}]},
+{t:'Глагол 是: «я — студент»',g:'Строить предложения вида «А есть Б».',
+x:'<p>В китайском глаголы не изменяются по лицам и числам: <b>是</b> (shì) одинаков для «я», «ты», «он».</p><p>Порядок слов: подлежащее + 是 + существительное. По-русски связку в настоящем времени обычно опускают («Я студент»), а в китайском в таких предложениях она нужна.</p>',
+ex:[['我是学生。','Wǒ shì xuésheng.','Я студент.'],['他是老师。','Tā shì lǎoshī.','Он учитель.'],['她是中国人。','Tā shì Zhōngguórén.','Она китаянка.']],
+q:[{k:'Заполните пропуск',q:'我 ___ 学生。 (Я студент.)',o:['是','吗','学','他'],c:0,e:'Между «я» и существительным нужен глагол 是: 我是学生。'},
+{k:'Переведите',q:'Как сказать «Он учитель»?',o:['他是老师。','他老师是。','老师是他。','是他老师。'],c:0,e:'Порядок: подлежащее + 是 + существительное. 他 (tā) — «он», 老师 (lǎoshī) — «учитель».'},
+{k:'Выберите',q:'Как меняется 是 для «я», «ты», «он»?',o:['Не меняется: везде 是','Получает окончания','Меняет тон'],c:0,e:'В китайском нет спряжения: 我是, 你是, 他是 — форма одна.'}]},
+{t:'Отрицание 不',g:'Говорить «не есть» и применять правило «不 + 4-й тон».',
+x:'<p>Отрицание <b>不</b> (bù) ставится прямо перед глаголом: 不 + 是 = 不是, «не является».</p><p>Правило: если 不 стоит перед слогом в 4-м тоне, оно читается во 2-м тоне. 是 (shì) — 4-й тон, поэтому 不是 произносится и пишется в пиньине <b>bú shì</b>.</p>',
+ex:[['我不是老师。','Wǒ bú shì lǎoshī.','Я не учитель.'],['他不是学生。','Tā bú shì xuésheng.','Он не студент.'],['她不是中国人。','Tā bú shì Zhōngguórén.','Она не китаянка.']],
+q:[{k:'Выберите',q:'Как читается 不 в слове 不是?',o:['bù','bú','bǔ','bū'],c:1,e:'Перед 4-м тоном (shì) 不 читается во 2-м тоне: bú shì.'},
+{k:'Заполните пропуск',q:'我 ___ 老师。 (Я не учитель.)',o:['不是','是不','不','吗'],c:0,e:'Отрицание ставится перед глаголом: 不 + 是 = 不是。'},
+{k:'Аудирование',q:'Что вы услышали?',a:'他不是学生',o:['Он не студент.','Он студент.','Я не студент.','Он не учитель.'],c:0,e:'Слышим bú shì — это отрицание. Кстати, 他 («он») и 她 («она») звучат одинаково: tā.'}]},
+{t:'Вопрос с частицей 吗',g:'Задавать вопросы «да/нет» и коротко отвечать.',
+x:'<p>Чтобы задать вопрос «да/нет», добавьте в конец утверждения частицу <b>吗</b> (ma). Порядок слов не меняется.</p><p>В русском вопрос выражается интонацией, а в китайском — частицей в конце. 吗 произносится коротко и легко, без тона.</p><p>Краткий ответ: 是。(«да») или 不是。(«нет»).</p>',
+ex:[['你是学生吗？','Nǐ shì xuésheng ma?','Ты студент?'],['他是老师吗？','Tā shì lǎoshī ma?','Он учитель?'],['不是，我不是中国人。','Bú shì, wǒ bú shì Zhōngguórén.','Нет, я не китаец.']],
+q:[{k:'Переведите',q:'Как спросить «Ты студент?»',o:['你是学生吗？','吗你是学生？','你吗是学生？','你是吗学生？'],c:0,e:'吗 всегда стоит в конце предложения.'},
+{k:'Заполните пропуск',q:'他是老师___？',o:['吗','是','不','我'],c:0,e:'Вопрос «да/нет» — частица 吗 в конце: 他是老师吗？'},
+{k:'Аудирование',q:'Что вы услышали?',a:'你是中国人吗',o:['Ты китаец?','Он китаец?','Ты студент?','Я китаец.'],c:0,e:'nǐ — «ты», Zhōngguórén — «китаец», в конце ma — вопрос.'}]}
+];
+const WS=[
+{t:'Люди и первые слова',g:'Кто есть кто: местоимения, профессии и служебные слова.',
+w:[['我','wǒ','я'],['你','nǐ','ты'],['他','tā','он'],['她','tā','она'],['是','shì','быть, являться'],['不','bù','не (перед 4-м тоном читается bú)'],['吗','ma','вопросительная частица'],['学生','xuésheng','студент, учащийся'],['老师','lǎoshī','учитель'],['朋友','péngyou','друг'],['中国人','Zhōngguórén','китаец, китаянка']],
+s:[[['我','是','学生'],'。','Я студент.'],[['他','是','老师'],'。','Он учитель.'],[['她','不','是','中国人'],'。','Она не китаянка.'],[['你','是','老师','吗'],'？','Ты учитель?'],[['他','是','我','朋友'],'。','Он мой друг.']]},
+{t:'Еда и напитки',g:'Простые предложения: кто + что делает + что.',
+w:[['喝','hē','пить'],['吃','chī','есть, кушать'],['水','shuǐ','вода'],['茶','chá','чай'],['米饭','mǐfàn','варёный рис'],['想','xiǎng','хотеть (что-то сделать)']],
+s:[[['我','喝','水'],'。','Я пью воду.'],[['她','吃','米饭'],'。','Она ест рис.'],[['你','想','喝','茶','吗'],'？','Ты хочешь выпить чаю?'],[['我','不','想','吃','米饭'],'。','Я не хочу есть рис.']]}];
+WS.push(
+{t:'Числа и счётное слово 个',g:'Считаем людей и предметы: число + 个 + предмет.',
+w:[['一','yī','один'],['二','èr','два (в счёте)'],['三','sān','три'],['四','sì','четыре'],['五','wǔ','пять'],['六','liù','шесть'],['七','qī','семь'],['八','bā','восемь'],['九','jiǔ','девять'],['十','shí','десять'],['两','liǎng','два (перед счётным словом)'],['个','gè','счётное слово (люди, предметы)']],
+s:[[['我','有','三','个','朋友'],'。','У меня три друга.'],[['他','有','两','个','朋友'],'。','У него два друга.'],[['老师','有','九','个','学生'],'。','У учителя девять учеников.']]},
+{t:'Семья и дом',g:'Родные и слова «есть / нет».',
+w:[['爸爸','bàba','папа'],['妈妈','māma','мама'],['哥哥','gēge','старший брат'],['姐姐','jiějie','старшая сестра'],['弟弟','dìdi','младший брат'],['妹妹','mèimei','младшая сестра'],['家','jiā','дом, семья'],['有','yǒu','иметь; есть'],['没有','méiyǒu','не иметь; нет']],
+s:[[['我','有','哥哥'],'。','У меня есть старший брат.'],[['她','没有','姐姐'],'。','У неё нет старшей сестры.'],[['你','有','弟弟','吗'],'？','У тебя есть младший брат?'],[['我','爸爸','是','老师'],'。','Мой папа — учитель.'],[['我','家','有','三','个','人'],'。','В моей семье три человека.']]},
+{t:'Покупки',g:'Спросить цену, выбрать, сказать «слишком дорого».',
+w:[['买','mǎi','покупать'],['要','yào','хотеть, брать, заказывать'],['苹果','píngguǒ','яблоко'],['这','zhè','этот, это'],['多少','duōshao','сколько'],['钱','qián','деньги'],['块','kuài','юань (разг.)'],['贵','guì','дорогой'],['便宜','piányi','дешёвый'],['太','tài','слишком'],['了','le','частица: 太…了 «слишком…»'],['什么','shénme','что, какой']],
+s:[[['这','个','苹果','多少','钱'],'？','Сколько стоит это яблоко?'],[['我','要','两','个','苹果'],'。','Мне два яблока.'],[['太','贵','了'],'！','Слишком дорого!'],[['你','要','买','什么'],'？','Что вы хотите купить?'],[['这','个','便宜'],'。','Этот дешёвый.']]}
+);
+WS.push(
+{t:'Места и движение',g:'Куда идти, где находиться, на чём ехать.',n:'在 + место — «находиться где-то»: 他在医院. Направление: 去 / 来 / 回 + место, без предлогов: 去商店 («в магазин»), 回家 («домой»).',
+w:[['去','qù','идти, ехать (туда)'],['来','lái','приходить (сюда)'],['回','huí','возвращаться'],['在','zài','находиться (где-то)'],['学校','xuéxiào','школа'],['医院','yīyuàn','больница'],['商店','shāngdiàn','магазин'],['哪儿','nǎr','где? куда?'],['这儿','zhèr','здесь, сюда'],['那儿','nàr','там, туда'],['坐','zuò','сидеть; ехать (на транспорте)'],['出租车','chūzūchē','такси']],
+s:[[['你','去','哪儿'],'？','Куда ты идёшь?'],[['我','去','商店'],'。','Я иду в магазин.'],[['他','在','医院'],'。','Он в больнице.'],[['你','在','哪儿'],'？','Где ты?'],[['我','坐','出租车','回','家'],'。','Я еду домой на такси.']]},
+{t:'Время',g:'Сегодня, завтра, который час, день недели.',n:'Время ставится в начале фразы или сразу после подлежащего, перед глаголом: 我明天去学校. В конец, как часто по-русски, его не ставят. «Который час?» — 现在几点?',
+w:[['今天','jīntiān','сегодня'],['明天','míngtiān','завтра'],['昨天','zuótiān','вчера'],['现在','xiànzài','сейчас'],['几','jǐ','сколько? (обычно до 10)'],['点','diǎn','час (о времени)'],['上午','shàngwǔ','утро, до полудня'],['下午','xiàwǔ','после полудня, днём'],['晚上','wǎnshang','вечер'],['星期','xīngqī','неделя']],
+s:[[['现在','几','点'],'？','Который час?'],[['今天','星期','几'],'？','Какой сегодня день недели?'],[['我','明天','去','学校'],'。','Завтра я пойду в школу.'],[['他','今天','不','在','家'],'。','Сегодня его нет дома.'],[['你','晚上','想','吃','什么'],'？','Что ты хочешь съесть вечером?']]},
+{t:'Действия и занятия',g:'Учиться, работать, читать, уметь.',n:'会 — «уметь» (навык, которому научились): 会说汉语. Где работать или учиться: 在 + место + глагол: 在医院工作 («работать в больнице»).',
+w:[['看','kàn','смотреть; читать'],['听','tīng','слушать'],['说','shuō','говорить'],['读','dú','читать (вслух)'],['写','xiě','писать'],['学习','xuéxí','учиться, изучать'],['工作','gōngzuò','работать; работа'],['做','zuò','делать'],['喜欢','xǐhuan','нравиться, любить'],['会','huì','уметь'],['汉语','Hànyǔ','китайский язык'],['书','shū','книга'],['电视','diànshì','телевизор'],['汉字','hànzì','иероглиф']],
+s:[[['我','喜欢','看','书'],'。','Я люблю читать книги.'],[['你','会','说','汉语','吗'],'？','Ты говоришь по-китайски?'],[['我','学习','汉语'],'。','Я изучаю китайский.'],[['他','不','会','写','汉字'],'。','Он не умеет писать иероглифы.'],[['我','爸爸','在','医院','工作'],'。','Мой папа работает в больнице.']]},
+{t:'Какой? Прилагательные',g:'Погода, размер, «занят», «красивый».',n:'Прилагательное само служит сказуемым, 是 не нужен: 今天很冷, а не 今天是冷. 很 здесь часто почти не значит «очень»: без него фраза звучит как сравнение.',
+w:[['大','dà','большой'],['小','xiǎo','маленький'],['多','duō','много'],['少','shǎo','мало'],['好','hǎo','хороший'],['冷','lěng','холодный'],['热','rè','жаркий, горячий'],['忙','máng','занятой'],['漂亮','piàoliang','красивый'],['很','hěn','очень'],['非常','fēicháng','очень, чрезвычайно'],['天气','tiānqì','погода']],
+s:[[['今天','很','冷'],'。','Сегодня холодно.'],[['你','妈妈','很','漂亮'],'。','Твоя мама очень красивая.'],[['我','今天','非常','忙'],'。','Я сегодня очень занят.'],[['这','个','苹果','很','大'],'。','Это яблоко большое.'],[['今天','天气','很','热'],'。','Сегодня жарко.']]},
+{t:'Вежливость и вопросы',g:'Здороваться, благодарить, извиняться, спрашивать.',n:'您 — вежливое «Вы». 请问 — «скажите, пожалуйста» перед вопросом. На 谢谢 отвечают 不客气, на 对不起 — 没关系.',
+w:[['你好','nǐ hǎo','здравствуй'],['您','nín','Вы (вежливо)'],['谢谢','xièxie','спасибо'],['不客气','bú kèqi','пожалуйста (в ответ на «спасибо»)'],['对不起','duìbuqǐ','извините'],['没关系','méi guānxi','ничего, не страшно'],['再见','zàijiàn','до свидания'],['请','qǐng','пожалуйста (просьба)'],['请问','qǐngwèn','скажите, пожалуйста'],['谁','shéi','кто'],['怎么样','zěnmeyàng','как? каков?'],['叫','jiào','звать(ся)'],['名字','míngzi','имя']],
+s:[[['请问','你','叫','什么','名字'],'？','Скажи, пожалуйста, как тебя зовут?'],[['您','是','老师','吗'],'？','Вы учитель?'],[['他','是','谁'],'？','Кто он?'],[['今天','天气','怎么样'],'？','Какая сегодня погода?']]}
+);
+const DLG=[
+{t:'Знакомство',g:'Имя, «очень рад», «вы студент?»',s:[
+{n:['你好！我叫李明。你叫什么名字？','Nǐ hǎo! Wǒ jiào Lǐ Míng. Nǐ jiào shénme míngzi?','Здравствуйте! Меня зовут Ли Мин. А вас как зовут?'],g:'назовите своё имя (например, Анна).',o:[['我叫安娜。','Wǒ jiào Ānnà.','Меня зовут Анна.'],['我是叫安娜。','Wǒ shì jiào Ānnà.'],['你好，名字安娜。','Nǐ hǎo, míngzi Ānnà.']],e:'Модель: 我叫 + имя. Глагол 叫 уже значит «зваться», связка 是 не нужна.'},
+{n:['认识你很高兴。','Rènshi nǐ hěn gāoxìng.','Очень рад с вами познакомиться.'],g:'скажите, что вы тоже рады.',o:[['我也很高兴。','Wǒ yě hěn gāoxìng.','Я тоже очень рад.'],['我很也高兴。','Wǒ hěn yě gāoxìng.'],['我也高兴很。','Wǒ yě gāoxìng hěn.']],e:'«Тоже» — 也, оно стоит перед 很 и перед прилагательным: 我也很高兴.'},
+{n:['你是学生吗？','Nǐ shì xuésheng ma?','Вы студент?'],g:'ответьте «да, я студент».',o:[['是，我是学生。','Shì, wǒ shì xuésheng.','Да, я студент.'],['吗，我是学生。','Ma, wǒ shì xuésheng.'],['不是，我是学生。','Bú shì, wǒ shì xuésheng.']],e:'На вопрос с 吗 отвечают повтором глагола: 是 («да») или 不是 («нет»). Частица 吗 в ответе не нужна, а «不是» значило бы «нет».'}]},
+{t:'В магазине',g:'Заказать, возразить против цены, согласиться.',s:[
+{n:['你好，你想买什么？','Nǐ hǎo, nǐ xiǎng mǎi shénme?','Здравствуйте, что вы хотите купить?'],g:'скажите «мне два яблока».',o:[['我要两个苹果。','Wǒ yào liǎng gè píngguǒ.','Мне два яблока.'],['我要二个苹果。','Wǒ yào èr gè píngguǒ.'],['我要苹果两个。','Wǒ yào píngguǒ liǎng gè.']],e:'Перед счётным словом «два» говорят 两, а не 二. Порядок: число + 个 + предмет.'},
+{n:['十块钱。','Shí kuài qián.','Десять юаней.'],g:'скажите «слишком дорого! Есть подешевле?»',o:[['太贵了！有便宜的吗？','Tài guì le! Yǒu piányi de ma?','Слишком дорого! Есть подешевле?'],['太了贵！有便宜的吗？','Tài le guì! Yǒu piányi de ma?'],['太贵！有便宜吗？','Tài guì! Yǒu piányi ma?']],e:'Модель «太 + прилагательное + 了» значит «слишком …». 便宜的 — «дешёвое».'},
+{n:['这个便宜，五块钱。','Zhège piányi, wǔ kuài qián.','Этот дешёвый — пять юаней.'],g:'согласитесь и скажите, что берёте этот.',o:[['好，我买这个。','Hǎo, wǒ mǎi zhège.','Хорошо, я куплю этот.'],['好，我买这。','Hǎo, wǒ mǎi zhè.'],['好，买我这个。','Hǎo, mǎi wǒ zhège.']],e:'«Этот» как предмет покупки — 这个. Подлежащее 我 стоит перед глаголом: 我买这个.'}]},
+{t:'В кафе',g:'Заказать еду и напиток, ответить на комплимент.',s:[
+{n:['你好，你想吃什么？','Nǐ hǎo, nǐ xiǎng chī shénme?','Здравствуйте, что вы хотите съесть?'],g:'скажите «хочу рис и яйца».',o:[['我想吃米饭和鸡蛋。','Wǒ xiǎng chī mǐfàn hé jīdàn.','Хочу рис и яйца.'],['我吃想米饭和鸡蛋。','Wǒ chī xiǎng mǐfàn hé jīdàn.'],['我想吃和米饭鸡蛋。','Wǒ xiǎng chī hé mǐfàn jīdàn.']],e:'想 («хочу») стоит перед основным глаголом: 想吃. 和 («и») соединяет два существительных: 米饭和鸡蛋.'},
+{n:['你想喝什么？','Nǐ xiǎng hē shénme?','Что вы хотите выпить?'],g:'скажите «хочу воды, спасибо».',o:[['我想喝水，谢谢。','Wǒ xiǎng hē shuǐ, xièxie.','Хочу воды, спасибо.'],['我想喝水，对不起。','Wǒ xiǎng hē shuǐ, duìbuqǐ.'],['我想水喝，谢谢。','Wǒ xiǎng shuǐ hē, xièxie.']],e:'谢谢 — «спасибо», 对不起 — «извините» (когда вы виноваты). Дополнение стоит после глагола: 喝水.'},
+{n:['这里的菜很好吃！','Zhèlǐ de cài hěn hǎochī!','Здешние блюда очень вкусные!'],g:'согласитесь: «да, очень вкусно!»',o:[['对，非常好吃！','Duì, fēicháng hǎochī!','Да, очень вкусно!'],['对，好吃非常！','Duì, hǎochī fēicháng!'],['对，非常吃好！','Duì, fēicháng chī hǎo!']],e:'Наречие степени 非常 («очень») стоит перед прилагательным: 非常好吃. 对 — «верно, да».'}]}
+];
+DLG.push({t:'Договориться о встрече',g:'Куда, во сколько, «до завтра».',s:[
+{n:['你明天下午去哪儿？','Nǐ míngtiān xiàwǔ qù nǎr?','Куда ты пойдёшь завтра днём?'],g:'скажите «пойду в магазин».',o:[['我去商店。','Wǒ qù shāngdiàn.','Пойду в магазин.'],['我商店去。','Wǒ shāngdiàn qù.'],['我去在商店。','Wǒ qù zài shāngdiàn.']],e:'Направление: 去 + место, без предлогов и без 在: 去商店.'},
+{n:['你想几点去？','Nǐ xiǎng jǐ diǎn qù?','Во сколько хочешь пойти?'],g:'ответьте «в три часа дня».',o:[['下午三点去。','Xiàwǔ sān diǎn qù.','В три часа дня.'],['三点下午去。','Sān diǎn xiàwǔ qù.'],['去下午三点。','Qù xiàwǔ sān diǎn.']],e:'Время идёт от крупного к мелкому (下午 → 三点) и стоит перед глаголом.'},
+{n:['我也去，好吗？','Wǒ yě qù, hǎo ma?','Я тоже пойду, хорошо?'],g:'согласитесь и скажите «до завтра».',o:[['好，明天见！','Hǎo, míngtiān jiàn!','Хорошо, до завтра!'],['好，再见明天！','Hǎo, zàijiàn míngtiān!'],['不客气，明天见！','Bú kèqi, míngtiān jiàn!']],e:'明天见 — «до завтра» (букв. «завтра увидимся»). 不客气 отвечают только на «спасибо».'}]});
+DLG.push(
+{h:2,t:'Плохое самочувствие',g:'Болит голова, где аптека, «сейчас же иду».',s:[
+{n:['你怎么了？','Nǐ zěnme le?','Что с тобой?'],g:'скажите «у меня болит голова».',o:[['我头疼。','Wǒ tóu téng.','У меня болит голова.'],['我疼头。','Wǒ téng tóu.'],['我是头疼。','Wǒ shì tóu téng.']],e:'Боль: часть тела + 疼: 我头疼. Связка 是 здесь не нужна.'},
+{n:['你去药店买药吧。','Nǐ qù yàodiàn mǎi yào ba.','Сходи в аптеку, купи лекарство.'],g:'спросите «аптека далеко отсюда?»',o:[['药店离这儿远吗？','Yàodiàn lí zhèr yuǎn ma?','Аптека далеко отсюда?'],['药店远离这儿吗？','Yàodiàn yuǎn lí zhèr ma?'],['这儿离药店吗远？','Zhèr lí yàodiàn ma yuǎn?']],e:'Модель: A 离 B 远 / 近. Прилагательное стоит после B, а 吗 — в самом конце.'},
+{n:['不远，就在超市旁边。','Bù yuǎn, jiù zài chāoshì pángbiān.','Недалеко, прямо рядом с супермаркетом.'],g:'поблагодарите и скажите «сейчас же иду».',o:[['谢谢，我现在就去。','Xièxie, wǒ xiànzài jiù qù.','Спасибо, сейчас же иду.'],['谢谢，我就现在去。','Xièxie, wǒ jiù xiànzài qù.'],['不客气，我现在就去。','Bú kèqi, wǒ xiànzài jiù qù.']],e:'就 ставится после слова времени и перед глаголом: 现在就去 «сейчас же иду». 不客气 — ответ на «спасибо», а не благодарность.'}]},
+{h:2,t:'Как пройти к метро?',g:'Объяснить дорогу, сказать «десять минут пешком», «я иностранец».',s:[
+{n:['请问，地铁站怎么走？','Qǐngwèn, dìtiězhàn zěnme zǒu?','Скажите, как пройти к станции метро?'],g:'объясните: «идите прямо, станция слева».',o:[['往前走，地铁站在左边。','Wǎng qián zǒu, dìtiězhàn zài zuǒbian.','Идите прямо, станция слева.'],['走往前，地铁站在左边。','Zǒu wǎng qián, dìtiězhàn zài zuǒbian.'],['往前走，地铁站左边在。','Wǎng qián zǒu, dìtiězhàn zuǒbian zài.']],e:'Направление: 往 + сторона + глагол (往前走). Место: предмет + 在 + сторона (在左边).'},
+{n:['离这儿远不远？','Lí zhèr yuǎn bu yuǎn?','Далеко отсюда?'],g:'ответьте «недалеко, десять минут пешком».',o:[['不远，走路十分钟。','Bù yuǎn, zǒulù shí fēnzhōng.','Недалеко, десять минут пешком.'],['不远，走路十个分钟。','Bù yuǎn, zǒulù shí gè fēnzhōng.'],['没远，走路十分钟。','Méi yuǎn, zǒulù shí fēnzhōng.']],e:'分钟, 天, 年 сами служат счётными словами, 个 с ними не ставят: 十分钟 (но 一个小时). Прилагательное отрицают через 不, а не 没. Вопрос «远不远?» равен «远吗?».'},
+{n:['你是这儿的人吗？','Nǐ shì zhèr de rén ma?','Вы местный?'],g:'«Нет, я иностранец, учусь здесь».',o:[['不是，我是外国人，在这儿学习。','Bú shì, wǒ shì wàiguórén, zài zhèr xuéxí.','Нет, я иностранец, учусь здесь.'],['不是，我是外国人，学习在这儿。','Bú shì, wǒ shì wàiguórén, xuéxí zài zhèr.'],['没有，我是外国人，在这儿学习。','Méiyǒu, wǒ shì wàiguórén, zài zhèr xuéxí.']],e:'На вопрос «是…吗?» отвечают 不是, а не 没有. Место действия (在这儿) стоит перед глаголом: 在这儿学习.'}]},
+{h:2,t:'Воскресенье и хобби',g:'Что делаешь обычно, как у тебя получается, договориться.',s:[
+{n:['星期天你经常做什么？','Xīngqītiān nǐ jīngcháng zuò shénme?','Что ты обычно делаешь в воскресенье?'],g:'скажите «часто хожу плавать».',o:[['我经常去游泳。','Wǒ jīngcháng qù yóuyǒng.','Я часто хожу плавать.'],['我去游泳经常。','Wǒ qù yóuyǒng jīngcháng.'],['经常我游泳去。','Jīngcháng wǒ yóuyǒng qù.']],e:'Наречие частоты (经常, 有时) стоит после подлежащего и перед глаголом: 我经常去游泳.'},
+{n:['你游得怎么样？','Nǐ yóu de zěnmeyàng?','Как ты плаваешь?'],g:'ответьте «плаваю неплохо, но медленно».',o:[['游得不错，但是很慢。','Yóu de búcuò, dànshì hěn màn.','Неплохо, но медленно.'],['游不错得，但是很慢。','Yóu búcuò de, dànshì hěn màn.'],['不错游得，但是很慢。','Búcuò yóu de, dànshì hěn màn.']],e:'Оценка действия: глагол + 得 + оценка (游得不错). 但是 — «но».'},
+{n:['下个星期天我们一起去吧！','Xià gè xīngqītiān wǒmen yìqǐ qù ba!','В следующее воскресенье давай пойдём вместе!'],g:'согласитесь и скажите «я тебе позвоню».',o:[['好啊！我给你打电话。','Hǎo a! Wǒ gěi nǐ dǎ diànhuà.','Давай! Я тебе позвоню.'],['好啊！我给打电话你。','Hǎo a! Wǒ gěi dǎ diànhuà nǐ.'],['好啊！我电话给你打。','Hǎo a! Wǒ diànhuà gěi nǐ dǎ.']],e:'Кому звонить: 给 + человек + 打电话 (我给你打电话). 啊 делает ответ тёплым и живым.'}]}
+);
+WS.push(
+{t:'Мы, они и люди',g:'Множественное число, обращения, профессии.',n:'们 образует множественное число местоимений и слов о людях: 我们, 老师们. С числами 们 не ставят: 三个学生, а не 三个学生们.',w:'我们|wǒmen|мы;你们|nǐmen|вы (мн. ч.);他们|tāmen|они;她们|tāmen|они (о женщинах);它|tā|оно (о животных и предметах);它们|tāmen|они (о животных и предметах);们|men|суффикс множественного числа;大家|dàjiā|все;人|rén|человек, люди;男|nán|мужской;女|nǚ|женский;先生|xiānsheng|господин;女士|nǚshì|госпожа;同学|tóngxué|одноклассник, однокурсник;医生|yīshēng|врач',s:['我们 是 同学|。|Мы однокурсники.','大家 好|！|Всем привет!','他 是 医生|。|Он врач.','她们 是 老师 吗|？|Они учительницы?']},
+{t:'Близкие и животные',g:'Дети, пары, домашние животные, «любить».',n:'爱 — сильное чувство («любить» человека). О вкусах и занятиях чаще говорят 喜欢: 我喜欢猫.',w:'孩子|háizi|ребёнок;小朋友|xiǎopéngyǒu|ребёнок, малыш (обращение);家人|jiārén|члены семьи;儿子|érzi|сын;女儿|nǚ’ér|дочь;男朋友|nánpéngyou|парень (бойфренд);女朋友|nǚpéngyou|девушка (возлюбленная);爱|ài|любить;猫|māo|кошка;狗|gǒu|собака',s:['我 有 一 个 儿子|。|У меня есть сын.','我 爱 我 的 家人|。|Я люблю свою семью.','他 女儿 很 漂亮|。|Его дочь очень красивая.','你 有 女朋友 吗|？|У тебя есть девушка?']},
+{t:'Этот, тот, который',g:'Указательные слова и частицы 呢 и 吧.',n:'Перед существительным после 这, 那, 哪 ставят счётное слово: 这个人, 那个苹果. 呢 после слова значит «а как насчёт…?»: 我很好，你呢? 吧 смягчает предложение: 我们去吧 — «давай пойдём».',w:'那|nà|тот, то;这个|zhège|этот;那个|nàge|тот;哪|nǎ|какой? который?;哪个|nǎge|какой? который? (с 个);这里|zhèlǐ|здесь;那里|nàli|там;哪里|nǎlǐ|где?;这边|zhèbiān|эта сторона, здесь;那边|nàbian|та сторона, там;这些|zhèxiē|эти;那些|nàxiē|те;哪些|nǎxiē|какие?;怎么|zěnme|как?;呢|ne|частица «а …?»;吧|ba|частица предложения «давай…»',s:['哪个 是 你 的 书|？|Какая книга твоя?','我们 去 吧|。|Давай пойдём.','你 怎么 去 学校|？|Как ты добираешься до школы?','这里 有 超市 吗|？|Здесь есть супермаркет?']},
+{t:'Еда и посуда',g:'Блюда, приёмы пищи, «вкусно».',n:'Приём пищи + 吃: 吃早饭 «завтракать», 吃午饭 «обедать». 好 + глагол значит «приятно делать»: 好吃 «вкусный», 好看 «красивый», 好听 «приятный на слух».',w:'饭|fàn|еда, варёный рис;菜|cài|блюдо, овощи;包子|bāozi|баоцзы (паровой пирожок);饺子|jiǎozi|цзяоцзы (пельмени);面包|miànbāo|хлеб;面条儿|miàntiáor|лапша;鸡蛋|jīdàn|куриное яйцо;牛奶|niúnǎi|молоко;水果|shuǐguǒ|фрукты;杯子|bēizi|стакан, чашка;早饭|zǎofàn|завтрак;午饭|wǔfàn|обед;晚饭|wǎnfàn|ужин;好吃|hǎochī|вкусный;做饭|zuòfàn|готовить еду;饭店|fàndiàn|ресторан, гостиница',s:['我 早上 吃 面包|。|Утром я ем хлеб.','饺子 很 好吃|。|Цзяоцзы очень вкусные.','妈妈 在 做饭|。|Мама готовит еду.','我 想 喝 牛奶|。|Я хочу молока.']},
+{t:'Даты и возраст',g:'Год, месяц, число, дни недели, сколько лет.',n:'Дата идёт от большего к меньшему: год → месяц → число: 十月三号. Воскресенье — 星期天 или 星期日. Возраст: 你几岁? (ребёнку), 他九岁 — 是 не нужен.',w:'年|nián|год;月|yuè|месяц;日|rì|день, число (письм.);号|hào|число (в дате), номер;天|tiān|день, небо;今年|jīnnián|в этом году;明年|míngnián|в следующем году;去年|qùnián|в прошлом году;星期日|xīngqīrì|воскресенье;星期天|xīngqītiān|воскресенье (разг.);岁|suì|год (о возрасте)',s:['今天 几 号|？|Какое сегодня число?','你 几 岁|？|Сколько тебе лет? (ребёнку)','我 明年 去 中国|。|В следующем году я поеду в Китай.','星期天 我 不 上班|。|В воскресенье я не работаю.']},
+{t:'Время суток и длительность',g:'Утро, полдень, час и минута, «половина».',n:'点 — «час» на циферблате (三点), 小时 — продолжительность (三个小时). Так же 分 (三点十分) и 分钟 (十分钟). Половина: 三点半 — «половина четвёртого».',w:'早上|zǎoshang|утро;中午|zhōngwǔ|полдень;白天|báitiān|днём, в светлое время;早|zǎo|рано;晚|wǎn|поздно;时候|shíhou|время, момент;时间|shíjiān|время;小时|xiǎoshí|час (длительность);分钟|fēnzhōng|минута (длительность);分|fēn|минута (на часах);半|bàn|половина',s:['现在 三 点 半|。|Сейчас половина четвёртого.','你 什么 时候 起床|？|Когда ты встаёшь?','我 没有 时间|。|У меня нет времени.','我 明天 学习 一 个 小时|。|Завтра я позанимаюсь один час.']},
+{t:'Сколько? Числа и счётные слова',g:'Сто, тысяча, юань, «немного», порядковые числа.',n:'У предметов свои счётные слова: 一本书, 一件衣服, 三口人 (о семье). Порядковое число — 第 + число: 第一. 有点儿 + прилагательное — «немного (и это плохо)»: 有点儿贵. 一 перед 4-м тоном читается yí, перед остальными — yì: 一个 yí gè, 一百 yì bǎi.',w:'零|líng|ноль;百|bǎi|сто;千|qiān|тысяча;元|yuán|юань;一半|yíbàn|половина;一点儿|yìdiǎnr|немного;一些|yìxiē|несколько, немного;些|xiē|несколько (счётное слово);有的|yǒude|некоторые;有些|yǒuxiē|некоторые, немного;有点儿|yǒudiǎnr|слегка, немного (о неприятном);第|dì|приставка порядкового числа;口|kǒu|рот, счётное слово для членов семьи;本|běn|счётное слово для книг;件|jiàn|счётное слово для одежды и дел;一下|yíxià|разок, немного (после глагола)',s:['我 家 有 三 口 人|。|У нас в семье три человека.','这 本 书 一 百 元|。|Эта книга стоит сто юаней.','今天 有点儿 冷|。|Сегодня немного холодно.','我 看 一下|。|Дай-ка я посмотрю.']},
+{t:'Учёба и работа',g:'Школа, урок, вопрос, компания, «знать».',n:'上 и 下 с уроком и работой: 上课 — «урок начинается», 下课 — «урок окончен», 上班 и 下班 — начало и конец рабочего дня. 知道 — «знать факт», 认识 — «быть знакомым с человеком».',w:'学|xué|учить(ся);上学|shàngxué|ходить в школу;上课|shàngkè|идти на урок;下课|xiàkè|заканчивать урок;课|kè|урок;问|wèn|спрашивать;问题|wèntí|вопрос, проблема;字|zì|иероглиф;中文|Zhōngwén|китайский язык;读书|dúshū|читать, учиться;小学|xiǎoxué|начальная школа;中学|zhōngxué|средняя школа;大学|dàxué|университет;小学生|xiǎoxuéshēng|младший школьник;中学生|zhōngxuéshēng|школьник (средней школы);大学生|dàxuéshēng|студент вуза;上班|shàngbān|ходить на работу;下班|xiàbān|заканчивать работу;公司|gōngsī|компания;知道|zhīdào|знать',s:['我 有 一 个 问题|。|У меня есть вопрос.','我 哥哥 在 公司 上班|。|Мой старший брат работает в компании.','你 知道 吗|？|Ты знаешь?','她 是 大学生|。|Она студентка.','我们 几 点 上课|？|Во сколько у нас урок?']},
+{t:'Распорядок дня',g:'Вставать, спать, одеваться, отдыхать.',n:'Многие глаголы идут парой с дополнением: 起床, 睡觉, 唱歌. 给 + человек + глагол: 给妈妈打电话 — «позвонить маме».',w:'起床|qǐchuáng|вставать с постели;睡|shuì|спать;睡觉|shuìjiào|спать, ложиться спать;休息|xiūxi|отдыхать;穿|chuān|надевать, носить;衣服|yīfu|одежда;玩|wán|играть, развлекаться;唱|chàng|петь;歌|gē|песня;找|zhǎo|искать;给|gěi|давать, для (кого-то);开|kāi|открывать, включать',s:['我 七 点 起床|。|Я встаю в семь часов.','我们 去 唱 歌 吧|。|Давай пойдём петь.','你 在 找 什么|？|Что ты ищешь?','我 想 休息 一下|。|Я хочу немного отдохнуть.']},
+{t:'Телефон, кино, досуг',g:'Звонить, компьютер, фильм, «интересно».',n:'看 и 听 — процесс («смотреть», «слушать»), 看见 и 听见 — результат («увидеть», «услышать»).',w:'打电话|dǎ diànhuà|звонить по телефону;电话|diànhuà|телефон;手机|shǒujī|мобильный телефон;电脑|diànnǎo|компьютер;电影|diànyǐng|фильм;电影院|diànyǐngyuàn|кинотеатр;说话|shuōhuà|разговаривать;听见|tīngjiàn|услышать;看见|kànjiàn|увидеть;好看|hǎokàn|красивый, интересный (о фильме);好听|hǎotīng|приятный на слух;好玩儿|hǎowánr|весёлый, интересный',s:['我 给 妈妈 打电话|。|Я звоню маме.','这个 电影 很 好看|。|Этот фильм очень интересный.','我们 去 电影院 吧|。|Давай сходим в кино.']},
+{t:'Транспорт и жильё',g:'Поезд, самолёт, машина, комната, «жить».',n:'На транспорте едут с 坐: 坐火车, 坐飞机; машину водят — 开车. Где живёшь: 住在 + место: 我住在这儿.',w:'车|chē|машина, транспорт;开车|kāichē|водить машину;火车|huǒchē|поезд;飞机|fēijī|самолёт;到|dào|прибывать, до;超市|chāoshì|супермаркет;店|diàn|магазин, лавка;书店|shūdiàn|книжный магазин;房间|fángjiān|комната;桌子|zhuōzi|стол;椅子|yǐzi|стул;住|zhù|жить, проживать;中国|Zhōngguó|Китай;国|guó|страна',s:['我 坐 火车 去 中国|。|Я еду в Китай на поезде.','你 会 开车 吗|？|Ты умеешь водить машину?','你 住 在 哪儿|？|Где ты живёшь?','我 的 房间 很 小|。|Моя комната маленькая.']},
+{t:'Где? Стороны и направления',g:'На, под, внутри, впереди, снаружи.',n:'«На», «в», «под» выражают словом после существительного: 桌子上 «на столе», 房间里 «в комнате». Вместе с 在: 书在桌子上.',w:'上|shàng|верх, на;下|xià|низ, под;里|lǐ|внутри, в;前|qián|перед, впереди;后|hòu|сзади, после;外|wài|снаружи;外边|wàibian|снаружи, на улице;边|biān|сторона, край',s:['书 在 桌子 上|。|Книга на столе.','猫 在 房间 里|。|Кошка в комнате.','外边 很 冷|。|На улице холодно.']},
+{t:'Погода и здоровье',g:'Дождь, снег, болеть, сходить к врачу.',n:'Осадки описывают глаголом 下: 下雨 «идёт дождь», 下雪 «идёт снег». 了 в конце показывает новое состояние: 他生病了 — «он заболел».',w:'雨|yǔ|дождь;下雨|xiàyǔ|идёт дождь;雪|xuě|снег;病|bìng|болезнь, болеть;生病|shēngbìng|заболеть;看病|kànbìng|сходить к врачу, лечить',s:['明天 下雨 吗|？|Завтра будет дождь?','我 去 医院 看病|。|Я иду в больницу к врачу.','他 生病 了|。|Он заболел.']},
+{t:'Служебные слова и частые глаголы',g:'Тоже, все, ещё, можно, знакомы, «мой».',n:'也 и 都 стоят перед глаголом: 我们都是学生, 我也去. 会 — «умею (научился)», 能 — «могу (есть возможность)», 可以 — «можно (разрешение)». 的 значит «чей»: 我的书 «моя книга»; с близкими людьми 的 часто опускают: 我妈妈.',w:'的|de|частица принадлежности (我的 «мой»);和|hé|и (между существительными);也|yě|тоже;都|dōu|все, оба;还|hái|ещё;再|zài|снова, ещё раз;真|zhēn|по-настоящему, очень;只|zhǐ|только;对|duì|верно, правильно;正在|zhèngzài|как раз сейчас (делать);可以|kěyǐ|можно;能|néng|мочь (есть возможность);觉得|juéde|считать, чувствовать;认识|rènshi|быть знакомым, знать (человека);高兴|gāoxìng|радостный;不要|búyào|не надо (запрет);没事|méishì|ничего, всё в порядке;喂|wéi|алло (по телефону);事|shì|дело;东西|dōngxi|вещь;卖|mài|продавать;新|xīn|новый;见|jiàn|видеть, встречаться',s:['我们 都 是 学生|。|Мы все студенты.','这 是 我 的 手机|。|Это мой телефон.','我 可以 坐 这儿 吗|？|Можно мне сесть здесь?','你 觉得 怎么样|？|Как тебе?','他 正在 睡觉|。|Он сейчас спит.']}
+);
+WS.push(
+{h:2,t:'Тело и самочувствие',g:'Части тела, рост, усталость, боль, аптека.',n:'Боль: часть тела + 疼: 我头疼 «у меня болит голова». О росте говорят 个子高: 他个子很高 «он высокий».',w:'身体|shēntǐ|тело, здоровье;头|tóu|голова;手|shǒu|рука (кисть);眼睛|yǎnjing|глаза;个子|gèzi|рост;高|gāo|высокий;长|cháng|длинный;累|lèi|усталый;疼|téng|болеть (о боли);舒服|shūfu|удобный, хорошо (о самочувствии);药|yào|лекарство;药店|yàodiàn|аптека;笑|xiào|смеяться, улыбаться',s:['我 头 疼|。|У меня болит голова.','你 身体 怎么样|？|Как твоё здоровье?','我 今天 很 累|。|Я сегодня очень устал.','他 个子 很 高|。|Он высокий.']},
+{h:2,t:'Цвета и вещи',g:'Цвет, одежда, школьные вещи, дом.',n:'Цвет как определение: 红色的包 «красная сумка». В конце фразы — конструкция 是…的: 我的手表是黑色的. Счётное слово 条 — для длинных предметов: 一条裤子.',w:'颜色|yánsè|цвет;白色|báisè|белый цвет;黑色|hēisè|чёрный цвет;红色|hóngsè|красный цвет;绿色|lǜsè|зелёный цвет;裤子|kùzi|брюки;手表|shǒubiǎo|наручные часы;书包|shūbāo|школьный рюкзак;本子|běnzi|тетрадь;笔|bǐ|ручка, карандаш;包|bāo|сумка;床|chuáng|кровать;门|mén|дверь',s:['你 喜欢 什么 颜色|？|Какой цвет тебе нравится?','这 条 裤子 很 贵|。|Эти брюки дорогие.','我 的 手表 是 黑色 的|。|Мои часы чёрные.']},
+{h:2,t:'Люди и знакомство',g:'Дедушки и бабушки, муж и жена, фамилия, «представить».',n:'Вежливо о фамилии: 您贵姓? — «Как ваша фамилия?», ответ: 我姓… 位 — вежливое счётное слово для людей: 这位老师. 自己 — «сам, себя»: 我自己去.',w:'爷爷|yéye|дедушка (по отцу);奶奶|nǎinai|бабушка (по отцу);丈夫|zhàngfu|муж;妻子|qīzi|жена;男孩儿|nánháir|мальчик;女孩儿|nǚháir|девочка;小孩儿|xiǎoháir|ребёнок;自己|zìjǐ|сам, себя;姓|xìng|фамилия, носить фамилию;姓名|xìngmíng|фамилия и имя;名|míng|имя, счётное слово для людей;位|wèi|вежливое счётное слово для людей;介绍|jièshào|представлять, знакомить',s:['您 贵 姓|？|Как ваша фамилия?','我 来 介绍 一下|。|Позвольте представить.','这 位 是 我 爷爷|。|Это мой дедушка.','我 丈夫 是 医生|。|Мой муж врач.']},
+{h:2,t:'Кофе, чай и ресторан',g:'Напитки, мясо и рыба, «или» в вопросе.',n:'Внимание: 红茶 (букв. «красный чай») — это наш чёрный чай. «Или» в вопросе — 还是: 你吃肉还是吃鱼?',w:'咖啡|kāfēi|кофе;红茶|hóngchá|чёрный чай;绿茶|lǜchá|зелёный чай;奶茶|nǎichá|чай с молоком;肉|ròu|мясо;鱼|yú|рыба;面|miàn|лапша, лицо, сторона;饭馆|fànguǎn|ресторан, кафе;拿|ná|брать, держать;送|sòng|дарить, доставлять, провожать',s:['我 想 喝 咖啡|。|Я хочу кофе.','你 吃 肉 还是 吃 鱼|？|Ты будешь мясо или рыбу?','我们 去 饭馆 吃 饭|。|Мы идём поесть в кафе.']},
+{h:2,t:'Транспорт и дорога',g:'Метро, автобус, аэропорт, билеты, пешком.',n:'Транспорт: 坐地铁, 坐公交车, 打车 «взять такси». Направление: 往 + сторона + глагол: 往前走 «идите вперёд».',w:'地铁|dìtiě|метро;公交车|gōngjiāochē|автобус;车站|chēzhàn|остановка, вокзал;机场|jīchǎng|аэропорт;机票|jīpiào|авиабилет;打车|dǎchē|ехать на такси;票|piào|билет;门票|ménpiào|входной билет;路|lù|дорога, маршрут;路上|lùshang|в пути, по дороге;站|zhàn|стоять, станция;往|wǎng|в направлении, к;走|zǒu|идти, уходить;走路|zǒulù|идти пешком',s:['我 坐 地铁 去 机场|。|Я еду в аэропорт на метро.','车站 离 这儿 远 吗|？|Остановка далеко отсюда?','我们 走路 去 吧|。|Давай пойдём пешком.','往 前 走|。|Идите вперёд.']},
+{h:2,t:'Места в городе',g:'Вход, торговый центр, отель, туалет, «далеко — близко».',n:'Расстояние: A 离 B 远 / 近: 我家离学校很近 «мой дом близко от школы».',w:'门口|ménkǒu|вход, у дверей;楼|lóu|здание, этаж;商场|shāngchǎng|торговый центр;酒店|jiǔdiàn|отель;洗手间|xǐshǒujiān|туалет;离|lí|от (о расстоянии);远|yuǎn|далёкий;近|jìn|близкий;外国|wàiguó|заграница, иностранный',s:['洗手间 在 哪儿|？|Где туалет?','我 家 离 学校 很 近|。|Мой дом близко от школы.','我 在 门口 等 你|。|Я жду тебя у входа.']},
+{h:2,t:'Где именно? Стороны',g:'Рядом, спереди, сзади, слева, справа.',n:'Место: предмет + 在 + ориентир + сторона: 超市在学校旁边 «супермаркет рядом со школой». В русском предлог стоит перед словом, в китайском слово-сторона — после.',w:'旁边|pángbiān|рядом, сбоку;前面|qiánmiàn|впереди;后面|hòumian|сзади;左边|zuǒbian|слева;右边|yòubian|справа;左|zuǒ|левый;右|yòu|правый;里面|lǐmiàn|внутри;外面|wàimiàn|снаружи;上面|shàngmiàn|сверху;下面|xiàmiàn|снизу;间|jiān|между, счётное слово для комнат',s:['超市 在 学校 旁边|。|Супермаркет рядом со школой.','他 在 我 后面|。|Он позади меня.','医院 在 左边|。|Больница слева.']},
+{h:2,t:'Глаголы направления',g:'Войти, выйти, вернуться, подняться: сюда или туда.',n:'Первая часть — направление: 进 «внутрь», 出 «наружу», 上 «вверх», 下 «вниз», 回 «обратно», 过 «через, мимо». Вторая — к говорящему (来) или от него (去): 进来 «войди сюда», 进去 «войди туда».',w:'出|chū|выходить;进|jìn|входить;出来|chūlái|выйти (сюда);出去|chūqù|выйти (туда);进来|jìnlái|войти (сюда);进去|jìnqù|войти (туда);回来|huílai|вернуться (сюда);回去|huíqu|вернуться (туда);过来|guòlái|подойти (сюда);过去|guòqù|пройти (туда), прошлое;上来|shànglái|подняться (сюда);上去|shàngqù|подняться (туда);下来|xiàlai|спуститься (сюда);下去|xiàqù|спуститься (туда);起来|qǐlai|встать, подняться;出门|chūmén|выйти из дома;出国|chūguó|поехать за границу',s:['请 进来|。|Входите, пожалуйста.','我 明天 回来|。|Я вернусь завтра.','你 下来 吧|。|Спускайся!','他 出去 了|。|Он вышел.']},
+{h:2,t:'Спорт и увлечения',g:'Хобби, бег, плавание, мяч, путешествия, интернет.',n:'Игры с мячом: 踢足球 (ногами), 打篮球 (руками). Хобби: 我的爱好是… «Каждый день» — 每天, 每 ставится перед единицей счёта.',w:'爱好|àihào|увлечение, хобби;运动|yùndòng|спорт, заниматься спортом;跑|pǎo|бегать;跑步|pǎobù|бег трусцой;游|yóu|плавать;游泳|yóuyǒng|плавание, плавать;踢|tī|бить ногой, играть (в футбол);足球|zúqiú|футбол;篮球|lánqiú|баскетбол;球|qiú|мяч;打|dǎ|бить, играть (руками);跳舞|tiàowǔ|танцевать;画|huà|рисовать, картина;花|huā|цветок, тратить;鸟|niǎo|птица;旅游|lǚyóu|путешествовать;上网|shàngwǎng|выходить в интернет;网上|wǎngshàng|в интернете',s:['我 的 爱好 是 游泳|。|Моё хобби — плавание.','他们 在 踢 足球|。|Они играют в футбол.','我 每 天 跑步|。|Я бегаю каждый день.','你 喜欢 旅游 吗|？|Ты любишь путешествовать?']},
+{h:2,t:'Учёба: уроки и экзамены',g:'Класс, слово, задание, экзамен, «понимать».',n:'意思 — «смысл»: 这个词是什么意思? «что значит это слово?». 有意思 — «интересно», 没意思 — «скучно». 懂 — «понимать смысл».',w:'教|jiāo|учить, преподавать;教室|jiàoshì|класс, аудитория;班|bān|класс, группа;词|cí|слово;题|tí|задание, вопрос;考|kǎo|сдавать экзамен;考试|kǎoshì|экзамен;开学|kāixué|начало учебного года;懂|dǒng|понимать;记得|jìde|помнить;忘|wàng|забыть;意思|yìsi|смысл, значение;有意思|yǒu yìsi|интересный;没意思|méi yìsi|скучный;高中|gāozhōng|старшая школа;打开|dǎkāi|открыть, включить',s:['这个 词 是 什么 意思|？|Что значит это слово?','明天 有 考试|。|Завтра экзамен.','我 不 懂|。|Я не понимаю.','这个 电影 很 有意思|。|Этот фильм очень интересный.']},
+{h:2,t:'Время и частота',g:'Каждый, часто, уже, вот-вот, с детства, день рождения.',n:'Частота: 每周 + число + 次: 每周两次 «два раза в неделю». 已经…了 — «уже»: 我已经吃了. 快要…了 — «вот-вот»: 快要下雨了.',w:'时|shí|время, час;次|cì|раз;周|zhōu|неделя;每|měi|каждый;经常|jīngcháng|часто;有时|yǒushí|иногда;已经|yǐjīng|уже;快要|kuàiyào|вот-вот;一会儿|yíhuìr|немного (о времени), скоро;开始|kāishǐ|начинать;完|wán|заканчивать;从|cóng|от, с (времени, места);从小|cóngxiǎo|с детства;小时候|xiǎoshíhou|в детстве;过年|guònián|встречать Новый год (праздник Весны);生日|shēngrì|день рождения;等|děng|ждать;准备|zhǔnbèi|готовиться, собираться',s:['我 已经 吃 了|。|Я уже поел.','请 等 一下|。|Подождите немного.','我 每 周 去 两 次|。|Я хожу туда два раза в неделю.','今天 是 我 的 生日|。|Сегодня мой день рождения.']},
+{h:2,t:'Сравнение и оценка',g:'«Выше, чем», «самый», быстро — медленно, погода.',n:'Сравнение: A 比 B + прилагательное: 他比我高 «он выше меня». 很 и 非常 с 比 не ставят: нельзя 他比我很高. 最 — «самый»: 最好吃.',w:'比|bǐ|чем (при сравнении);最|zuì|самый;快|kuài|быстрый;慢|màn|медленный;快乐|kuàilè|радостный, счастливый;不错|búcuò|неплохой, хороший;坏|huài|плохой, сломанный;晴|qíng|ясный (о погоде);阴|yīn|пасмурный;这么|zhème|так, настолько;那么|nàme|так, тогда;这样|zhèyàng|такой, так;那样|nàyàng|такой (как тот)',s:['他 比 我 高|。|Он выше меня.','今天 比 昨天 冷|。|Сегодня холоднее, чем вчера.','这个 最 好吃|。|Это самое вкусное.','今天 天气 不错|。|Сегодня хорошая погода.']},
+{h:2,t:'Союзы и вопросы',g:'Потому что, поэтому, хотя, но, «или», «почему».',n:'Пары союзов: 因为…所以… «потому что… поэтому…», 虽然…但是… «хотя… но…». В китайском обе части обычно есть, в русском — только одна. 还是 — «или» только в вопросе.',w:'因为|yīnwèi|потому что;所以|suǒyǐ|поэтому;虽然|suīrán|хотя;但是|dànshì|но;但|dàn|но;还是|háishi|или (в вопросе), всё-таки;可能|kěnéng|возможно;为什么|wèi shénme|почему;就|jiù|сразу, именно;不好意思|bù hǎoyìsi|извините (неловко);啊|a|частица эмоции',s:['你 为什么 不 去|？|Почему ты не идёшь?','你 喝 茶 还是 咖啡|？|Ты будешь чай или кофе?','他 可能 不 来|。|Он, возможно, не придёт.']},
+{h:2,t:'Частицы 过, 着, 得',g:'Опыт, состояние, оценка действия.',n:'过 после глагола — опыт: 我去过中国 «я бывал в Китае». 得 + оценка: 说得很好 «хорошо говорит». 着 — длящееся состояние: 门开着 «дверь открыта».',w:'过|guo|частица прошлого опыта;着|zhe|частица длящегося состояния;得|de|частица оценки действия;地|de|частица образа действия;正|zhèng|как раз, ровно;错|cuò|ошибка, неправильный;条|tiáo|счётное слово для длинных предметов;万|wàn|десять тысяч',s:['你 去 过 中国 吗|？|Ты бывал в Китае?','他 说 得 很 好|。|Он хорошо говорит.','门 开 着|。|Дверь открыта.']},
+{h:2,t:'Помощь, просьбы, действия',g:'Помочь, сказать, «не надо», вместе, надеяться.',n:'别 + глагол — «не надо»: 别忘了 «не забудь». 让 — «велеть, позволить»: 妈妈让我洗衣服. 一起 — «вместе», стоит перед глаголом.',w:'让|ràng|позволять, велеть;跟|gēn|с (кем-то);帮|bāng|помогать;帮忙|bāngmáng|помогать, оказывать помощь;告诉|gàosu|сказать, сообщить;希望|xīwàng|надеяться, надежда;别|bié|не надо (запрет);一起|yìqǐ|вместе;事情|shìqing|дело, событие;洗|xǐ|мыть, стирать;动|dòng|двигать(ся);飞|fēi|летать',s:['我 帮 你|。|Я тебе помогу.','我们 一起 去 吧|。|Давай пойдём вместе.','别 忘 了|。|Не забудь!','妈妈 让 我 洗 衣服|。|Мама велит мне постирать одежду.','请 告诉 我|。|Скажите мне, пожалуйста.']}
+);
+WS.forEach(s=>{if(typeof s.w=='string')s.w=s.w.split(';').map(x=>x.split('|'));s.s=s.s.map(x=>typeof x=='string'?(y=>[y[0].split(' '),y[1],y[2]])(x.split('|')):x)});
+/* Дополнительные предложения: каждое слово встречается в предложениях своего набора */
+const XS2=[[["我","有","四","个","朋友"],"。","У меня четыре друга.","Числа и счётное слово 个"],[["他","家","有","五","个","人"],"。","В его семье пять человек.","Числа и счётное слово 个"],[["我","要","六","个","苹果"],"。","Мне шесть яблок.","Числа и счётное слово 个"],[["老师","有","八","个","学生"],"。","У учителя восемь учеников.","Числа и счётное слово 个"],[["现在","十","点"],"。","Сейчас десять часов.","Числа и счётное слово 个"],[["今天","星期","二"],"。","Сегодня вторник.","Числа и счётное слово 个"],[["我","有","一","个","哥哥"],"。","У меня есть старший брат.","Числа и счётное слово 个"],[["他","有","七","个","苹果"],"。","У него семь яблок.","Числа и счётное слово 个"],[["我","没有","妹妹"],"。","У меня нет младшей сестры.","Семья и дом"],[["我","妈妈","是","医生"],"。","Моя мама — врач.","Семья и дом"],[["一","个","苹果","三","块","钱"],"。","Одно яблоко стоит три юаня.","Покупки"],[["他","在","那儿"],"。","Он там.","Места и движение"],[["你","什么","时候","来"],"？","Когда ты придёшь?","Места и движение"],[["他","在","学校"],"。","Он в школе.","Места и движение"],[["我","在","这儿"],"。","Я здесь.","Места и движение"],[["我","上午","去","学校"],"。","Утром я иду в школу.","Время"],[["你","下午","去","哪儿"],"？","Куда ты пойдёшь после обеда?","Время"],[["昨天","我","不","在","家"],"。","Вчера меня не было дома.","Время"],[["我","喜欢","听","歌"],"。","Я люблю слушать песни.","Действия и занятия"],[["请","读","这个","字"],"。","Прочитайте, пожалуйста, этот иероглиф.","Действия и занятия"],[["你","在","做","什么"],"？","Что ты делаешь?","Действия и занятия"],[["我","晚上","看","电视"],"。","Вечером я смотрю телевизор.","Действия и занятия"],[["我","的","朋友","很","多"],"。","У меня много друзей.","Какой? Прилагательные"],[["这儿","人","很","少"],"。","Здесь мало людей.","Какой? Прилагательные"],[["我","的","家","很","小"],"。","Мой дом маленький.","Какой? Прилагательные"],[["今天","天气","很","好"],"。","Сегодня хорошая погода.","Какой? Прилагательные"],[["你好","，","我","是","老师"],"。","Здравствуйте, я учитель.","Вежливость и вопросы"],[["谢谢","你"],"！","Спасибо тебе!","Вежливость и вопросы"],[["不客气","，","再见"],"！","Не за что, до свидания!","Вежливость и вопросы"],[["对不起","，","我","不","知道"],"。","Извините, я не знаю.","Вежливость и вопросы"],[["没关系","，","我","明天","再","来"],"。","Ничего страшного, я приду ещё раз завтра.","Вежливость и вопросы"],[["请","坐"],"。","Садитесь, пожалуйста.","Вежливость и вопросы"],[["你们","好"],"！","Здравствуйте! (обращение к нескольким людям)","Мы, они и люди"],[["它","是","我","的","猫"],"。","Это моя кошка.","Мы, они и люди"],[["它们","是","我","的","狗"],"。","Это мои собаки.","Мы, они и люди"],[["老师","们","好"],"！","Здравствуйте, учителя!","Мы, они и люди"],[["这个","医生","是","男","的"],"。","Этот врач — мужчина.","Мы, они и люди"],[["我","的","老师","是","女","的"],"。","Мой учитель — женщина.","Мы, они и люди"],[["先生","，","您","要","什么"],"？","Что вы желаете, господин?","Мы, они и люди"],[["女士","，","请","坐"],"。","Садитесь, пожалуйста, госпожа.","Мы, они и люди"],[["他们","是","我","的","朋友"],"。","Они мои друзья.","Мы, они и люди"],[["这儿","有","很","多","人"],"。","Здесь много людей.","Мы, они и люди"],[["她","有","两","个","孩子"],"。","У неё двое детей.","Близкие и животные"],[["小朋友","，","你","几","岁"],"？","Малыш, сколько тебе лет?","Близкие и животные"],[["她","的","男朋友","是","医生"],"。","Её парень — врач.","Близкие и животные"],[["我","喜欢","狗"],"。","Я люблю собак.","Близкие и животные"],[["我","爱","我","的","猫"],"。","Я люблю свою кошку.","Близкие и животные"],[["那","是","我","的","书"],"。","Вон то — моя книга.","Этот, тот, который"],[["那个","人","是","谁"],"？","Кто тот человек?","Этот, тот, который"],[["你","是","哪","国","人"],"？","Из какой ты страны?","Этот, тот, который"],[["那里","有","一","个","商店"],"。","Там есть магазин.","Этот, тот, который"],[["你","家","在","哪里"],"？","Где твой дом?","Этот, тот, который"],[["请","到","这边","来"],"。","Подойдите сюда, пожалуйста.","Этот, тот, который"],[["医院","在","那边"],"。","Больница вон там.","Этот, тот, который"],[["这些","是","我","的","书"],"。","Это мои книги.","Этот, тот, который"],[["那些","苹果","很","贵"],"。","Те яблоки дорогие.","Этот, тот, который"],[["你","喜欢","哪些","水果"],"？","Какие фрукты ты любишь?","Этот, тот, который"],[["我","很","好","，","你","呢"],"？","У меня всё хорошо, а у тебя?","Этот, тот, который"],[["这个","是","什么"],"？","Что это такое?","Этот, тот, который"],[["这个","菜","很","好吃"],"。","Это блюдо очень вкусное.","Еда и посуда"],[["我","早上","吃","包子"],"。","Утром я ем баоцзы.","Еда и посуда"],[["我","喜欢","吃","面条儿"],"。","Я люблю лапшу.","Еда и посуда"],[["我","要","两","个","鸡蛋"],"。","Мне два яйца.","Еда и посуда"],[["水果","很","便宜"],"。","Фрукты дешёвые.","Еда и посуда"],[["这","是","我","的","杯子"],"。","Это моя чашка.","Еда и посуда"],[["你","吃","早饭","了","吗"],"？","Ты завтракал?","Еда и посуда"],[["我们","去","吃","午饭","吧"],"。","Пойдём пообедаем.","Еда и посуда"],[["妈妈","在","做","晚饭"],"。","Мама готовит ужин.","Еда и посуда"],[["这个","饭店","很","大"],"。","Этот ресторан большой.","Еда и посуда"],[["我们","去","吃","饭","吧"],"。","Пойдём поедим.","Еда и посуда"],[["一","年","有","十","二","个","月"],"。","В году двенадцать месяцев.","Даты и возраст"],[["今天","是","十","月","三","日"],"。","Сегодня третье октября.","Даты и возраст"],[["我","今年","二","十","岁"],"。","Мне в этом году двадцать лет.","Даты и возраст"],[["他","去年","去","中国","了"],"。","В прошлом году он ездил в Китай.","Даты и возраст"],[["星期日","你","在","家","吗"],"？","Ты будешь дома в воскресенье?","Даты и возраст"],[["一","年","有","三","百","六","十","五","天"],"。","В году триста шестьдесят пять дней.","Даты и возраст"],[["我","中午","在","学校","吃","饭"],"。","В полдень я обедаю в школе.","Время суток и длительность"],[["白天","我","工作"],"。","Днём я работаю.","Время суток и длительность"],[["我","明天","要","早","起床"],"。","Завтра мне надо рано встать.","Время суток и длительность"],[["太","晚","了"],"！","Слишком поздно!","Время суток и длительность"],[["我","看","了","十","分钟","电视"],"。","Я смотрел телевизор десять минут.","Время суток и длительность"],[["现在","八","点","十","分"],"。","Сейчас десять минут девятого.","Время суток и длительность"],[["早上","好"],"！","Доброе утро!","Время суток и длительность"],[["这","本","书","一","百","零","五","元"],"。","Эта книга стоит сто пять юаней.","Сколько? Числа и счётные слова"],[["这个","电脑","五","千","元"],"。","Этот компьютер стоит пять тысяч юаней.","Сколько? Числа и счётные слова"],[["我","吃","了","一半"],"。","Я съел половину.","Сколько? Числа и счётные слова"],[["我","会","说","一点儿","汉语"],"。","Я немного говорю по-китайски.","Сколько? Числа и счётные слова"],[["我","买","了","一些","水果"],"。","Я купил немного фруктов.","Сколько? Числа и счётные слова"],[["我","想","买","些","苹果"],"。","Я хочу купить немного яблок.","Сколько? Числа и счётные слова"],[["有的","人","喜欢","茶"],"。","Некоторые люди любят чай.","Сколько? Числа и счётные слова"],[["有些","学生","不","会","写","汉字"],"。","Некоторые студенты не умеют писать иероглифы.","Сколько? Числа и счётные слова"],[["这","是","第","二","课"],"。","Это второй урок.","Сколько? Числа и счётные слова"],[["这","件","衣服","很","漂亮"],"。","Эта одежда очень красивая.","Сколько? Числа и счётные слова"],[["我","想","学","中文"],"。","Я хочу изучать китайский.","Учёба и работа"],[["你","几","点","上学"],"？","Во сколько ты идёшь в школу?","Учёба и работа"],[["我们","几","点","下课"],"？","Во сколько у нас заканчивается урок?","Учёба и работа"],[["今天","有","汉语","课","吗"],"？","Сегодня есть урок китайского?","Учёба и работа"],[["我","问","老师"],"。","Я спрошу учителя.","Учёба и работа"],[["这个","字","怎么","读"],"？","Как читается этот иероглиф?","Учёба и работа"],[["他","在","大学","读书"],"。","Он учится в университете.","Учёба и работа"],[["这个","小学","很","大"],"。","Эта начальная школа большая.","Учёба и работа"],[["我","妹妹","是","小学生"],"。","Моя младшая сестра учится в начальной школе.","Учёба и работа"],[["他","在","中学","工作"],"。","Он работает в средней школе.","Учёба и работа"],[["我","弟弟","是","中学生"],"。","Мой младший брат учится в средней школе.","Учёба и работа"],[["我","六","点","下班"],"。","Я заканчиваю работу в шесть.","Учёба и работа"],[["我","十","点","睡"],"。","Я ложусь спать в десять.","Распорядок дня"],[["今天","很","冷","，","多","穿","衣服"],"！","Сегодня холодно, одевайся теплее!","Распорядок дня"],[["孩子","们","在","玩"],"。","Дети играют.","Распорядок дня"],[["我","想","睡觉"],"。","Я хочу спать.","Распорядок дня"],[["妈妈","给","我","一","个","苹果"],"。","Мама даёт мне яблоко.","Распорядок дня"],[["请","开","电视"],"。","Включи, пожалуйста, телевизор.","Распорядок дня"],[["我","没有","他","的","电话"],"。","У меня нет его телефона.","Телефон, кино, досуг"],[["我","的","电脑","是","新","的"],"。","Мой компьютер новый.","Телефон, кино, досуг"],[["请","不要","说话"],"。","Пожалуйста, не разговаривайте.","Телефон, кино, досуг"],[["我","听见","了"],"。","Я услышал.","Телефон, кино, досуг"],[["你","看见","我","的","手机","了","吗"],"？","Ты не видел мой телефон?","Телефон, кино, досуг"],[["她","唱","歌","很","好听"],"。","Она красиво поёт.","Телефон, кино, досуг"],[["中国","很","好玩儿"],"。","В Китае очень интересно.","Телефон, кино, досуг"],[["他","的","车","很","贵"],"。","Его машина дорогая.","Транспорт и жильё"],[["我","坐","飞机","去","中国"],"。","Я лечу в Китай на самолёте.","Транспорт и жильё"],[["我","明天","到","中国"],"。","Завтра я буду в Китае.","Транспорт и жильё"],[["这个","店","很","小"],"。","Этот магазин маленький.","Транспорт и жильё"],[["我","去","书店","买","书"],"。","Я иду в книжный магазин за книгами.","Транспорт и жильё"],[["这儿","有","椅子","吗"],"？","Здесь есть стул?","Транспорт и жильё"],[["中国","是","一","个","大","国"],"。","Китай — большая страна.","Транспорт и жильё"],[["我","去","超市","买","水果"],"。","Я иду в супермаркет за фруктами.","Транспорт и жильё"],[["我","的","桌子","很","小"],"。","Мой стол маленький.","Транспорт и жильё"],[["猫","在","桌子","下"],"。","Кошка под столом.","Где? Стороны и направления"],[["下课","后","我","回","家"],"。","После урока я иду домой.","Где? Стороны и направления"],[["学校","外","有","一","个","书店"],"。","За территорией школы есть книжный магазин.","Где? Стороны и направления"],[["他","坐","在","我","边","上"],"。","Он сидит рядом со мной.","Где? Стороны и направления"],[["学校","前","有","一","个","商店"],"。","Перед школой есть магазин.","Где? Стороны и направления"],[["今天","雨","很","大"],"。","Сегодня сильный дождь.","Погода и здоровье"],[["下","雪","了"],"！","Пошёл снег!","Погода и здоровье"],[["他","的","病","好","了"],"。","Он выздоровел.","Погода и здоровье"],[["我","和","妈妈","去","商店"],"。","Мы с мамой идём в магазин.","Служебные слова и частые глаголы"],[["我","也","是","学生"],"。","Я тоже студент.","Служебные слова и частые глаголы"],[["你","还","要","什么"],"？","Что-нибудь ещё?","Служебные слова и частые глаголы"],[["你","明天","再","来","吧"],"。","Приходи ещё раз завтра.","Служебные слова и частые глаголы"],[["今天","真","冷"],"！","Сегодня так холодно!","Служебные слова и частые глаголы"],[["我","只","有","十","块","钱"],"。","У меня только десять юаней.","Служебные слова и частые глаголы"],[["对","，","我","是","中国人"],"。","Да, я китаец.","Служебные слова и частые глаголы"],[["你","能","来","吗"],"？","Ты можешь прийти?","Служебные слова и частые глаголы"],[["认识","你","很","高兴"],"！","Рад с тобой познакомиться!","Служебные слова и частые глаголы"],[["不要","看","电视","了"],"！","Хватит смотреть телевизор!","Служебные слова и частые глаголы"],[["没事","，","我","很","好"],"。","Ничего, у меня всё хорошо.","Служебные слова и частые глаголы"],[["喂","，","你好"],"！","Алло, здравствуйте!","Служебные слова и частые глаголы"],[["我","今天","有","事"],"。","Сегодня у меня дела.","Служебные слова и частые глаголы"],[["你","想","买","什么","东西"],"？","Что ты хочешь купить?","Служебные слова и частые глаголы"],[["这个","商店","卖","水果"],"。","В этом магазине продают фрукты.","Служебные слова и частые глаголы"],[["这","是","新","书"],"。","Это новая книга.","Служебные слова и частые глаголы"],[["明天","见"],"！","До завтра!","Служебные слова и частые глаголы"],[["请","洗","手"],"。","Помойте, пожалуйста, руки.","Тело и самочувствие"],[["她","的","眼睛","很","漂亮"],"。","У неё очень красивые глаза.","Тело и самочувствие"],[["这","条","路","很","长"],"。","Эта дорога очень длинная.","Тело и самочувствие"],[["我","不","舒服"],"。","Мне нехорошо.","Тело и самочувствие"],[["你","要","吃","药"],"。","Тебе надо принять лекарство.","Тело и самочувствие"],[["药店","在","哪儿"],"？","Где аптека?","Тело и самочувствие"],[["他","笑","了"],"。","Он улыбнулся.","Тело и самочувствие"],[["我","喜欢","白色"],"。","Мне нравится белый цвет.","Цвета и вещи"],[["她","的","包","是","红色","的"],"。","Её сумка красная.","Цвета и вещи"],[["我","喜欢","绿色","的","衣服"],"。","Мне нравится зелёная одежда.","Цвета и вещи"],[["这","是","我","的","书包"],"。","Это мой рюкзак.","Цвета и вещи"],[["我","的","本子","在","桌子","上"],"。","Моя тетрадь на столе.","Цвета и вещи"],[["你","有","笔","吗"],"？","У тебя есть ручка?","Цвета и вещи"],[["我","的","床","很","大"],"。","У меня большая кровать.","Цвета и вещи"],[["请","开","门"],"。","Откройте, пожалуйста, дверь.","Цвета и вещи"],[["我","奶奶","七","十","岁","了"],"。","Моей бабушке уже семьдесят лет.","Люди и знакомство"],[["他","妻子","是","老师"],"。","Его жена учительница.","Люди и знакомство"],[["那个","男孩儿","是","我","弟弟"],"。","Тот мальчик — мой младший брат.","Люди и знакомство"],[["那个","女孩儿","是","谁"],"？","Кто та девочка?","Люди и знакомство"],[["小孩儿","都","喜欢","玩"],"。","Все дети любят играть.","Люди и знакомство"],[["我","自己","去"],"。","Я пойду сам.","Люди и знакомство"],[["请","写","你","的","姓名"],"。","Напишите, пожалуйста, свои фамилию и имя.","Люди и знакомство"],[["我们","班","有","二","十","名","学生"],"。","В нашем классе двадцать учеников.","Люди и знакомство"],[["我","喜欢","喝","红茶"],"。","Я люблю чёрный чай.","Кофе, чай и ресторан"],[["我","妈妈","喜欢","喝","绿茶"],"。","Моя мама любит зелёный чай.","Кофе, чай и ресторан"],[["奶茶","多少","钱"],"？","Сколько стоит чай с молоком?","Кофе, чай и ресторан"],[["我","想","吃","面"],"。","Я хочу лапшу.","Кофе, чай и ресторан"],[["请","拿","好","你","的","东西"],"。","Не забудьте, пожалуйста, свои вещи.","Кофе, чай и ресторан"],[["我","送","你","一","本","书"],"。","Я дарю тебе книгу.","Кофе, чай и ресторан"],[["我","坐","公交车","上班"],"。","Я езжу на работу на автобусе.","Транспорт и дорога"],[["我","买","了","机票"],"。","Я купил авиабилет.","Транспорт и дорога"],[["我们","打车","去","吧"],"。","Давай поедем на такси.","Транспорт и дорога"],[["你","买","票","了","吗"],"？","Ты купил билет?","Транспорт и дорога"],[["门票","多少","钱"],"？","Сколько стоит входной билет?","Транспорт и дорога"],[["我","不","认识","路"],"。","Я не знаю дорогу.","Транспорт и дорога"],[["路上","车","很","多"],"。","На дороге много машин.","Транспорт и дорога"],[["请","站","在","这儿"],"。","Встаньте, пожалуйста, здесь.","Транспорт и дорога"],[["我","家","在","三","楼"],"。","Я живу на третьем этаже.","Места в городе"],[["我们","去","商场","买","衣服","吧"],"。","Давай сходим в торговый центр за одеждой.","Места в городе"],[["这个","酒店","很","贵"],"。","Этот отель дорогой.","Места в городе"],[["这儿","有","很","多","外国","人"],"。","Здесь много иностранцев.","Места в городе"],[["我","家","离","这儿","很","远"],"。","Мой дом далеко отсюда.","Места в городе"],[["前面","有","一","个","超市"],"。","Впереди есть супермаркет.","Где именно? Стороны"],[["书店","在","右边"],"。","Книжный магазин справа.","Где именно? Стороны"],[["往","左","走"],"。","Идите налево.","Где именно? Стороны"],[["往","右","走"],"。","Идите направо.","Где именно? Стороны"],[["房间","里面","很","热"],"。","В комнате жарко.","Где именно? Стороны"],[["外面","下雨","了"],"。","На улице пошёл дождь.","Где именно? Стороны"],[["书","在","桌子","上面"],"。","Книга лежит на столе.","Где именно? Стороны"],[["猫","在","床","下面"],"。","Кошка под кроватью.","Где именно? Стороны"],[["这","间","房间","很","大"],"。","Эта комната большая.","Где именно? Стороны"],[["我","八","点","出门"],"。","Я выхожу из дома в восемь.","Глаголы направления"],[["出","了","什么","事"],"？","Что случилось?","Глаголы направления"],[["请","进"],"！","Входите!","Глаголы направления"],[["你","出来","一下"],"。","Выйди на минутку.","Глаголы направления"],[["我们","进去","吧"],"。","Давай зайдём.","Глаголы направления"],[["我","想","回去","了"],"。","Я хочу вернуться.","Глаголы направления"],[["你","过来"],"！","Иди сюда!","Глаголы направления"],[["我","过去","一下"],"。","Я на минутку отойду туда.","Глаголы направления"],[["你","上来","吧"],"。","Поднимайся!","Глаголы направления"],[["我们","上去","吧"],"。","Давай поднимемся.","Глаголы направления"],[["你","下去","看","一下"],"。","Спустись и посмотри.","Глаголы направления"],[["起来","，","七","点","了"],"！","Вставай, уже семь часов!","Глаголы направления"],[["我","明年","想","出国"],"。","В следующем году я хочу поехать за границу.","Глаголы направления"],[["我","喜欢","运动"],"。","Я люблю спорт.","Спорт и увлечения"],[["他","跑","得","很","快"],"。","Он быстро бегает.","Спорт и увлечения"],[["他","游","得","很","好"],"。","Он хорошо плавает.","Спорт и увлечения"],[["他们","在","打","篮球"],"。","Они играют в баскетбол.","Спорт и увлечения"],[["我们","去","打","球","吧"],"。","Пойдём поиграем в мяч.","Спорт и увлечения"],[["她","喜欢","跳舞"],"。","Она любит танцевать.","Спорт и увлечения"],[["我","喜欢","画","画"],"。","Я люблю рисовать.","Спорт и увлечения"],[["这","是","什么","花"],"？","Что это за цветок?","Спорт и увлечения"],[["我","喜欢","鸟"],"。","Я люблю птиц.","Спорт и увлечения"],[["我","晚上","经常","上网"],"。","Вечером я часто сижу в интернете.","Спорт и увлечения"],[["我","在","网上","买","衣服"],"。","Я покупаю одежду в интернете.","Спорт и увлечения"],[["她","教","我","汉语"],"。","Она учит меня китайскому.","Учёба: уроки и экзамены"],[["教室","里","有","很","多","学生"],"。","В классе много учеников.","Учёба: уроки и экзамены"],[["他","是","我们","班","的","老师"],"。","Он учитель нашего класса.","Учёба: уроки и экзамены"],[["这个","题","我","不","会"],"。","Я не могу решить эту задачу.","Учёба: уроки и экзамены"],[["你","考","得","怎么样"],"？","Как ты сдал экзамен?","Учёба: уроки и экзамены"],[["我们","九","月","开学"],"。","У нас учёба начинается в сентябре.","Учёба: уроки и экзамены"],[["你","还","记得","我","吗"],"？","Ты меня ещё помнишь?","Учёба: уроки и экзамены"],[["这个","电影","没意思"],"。","Этот фильм скучный.","Учёба: уроки и экзамены"],[["我","弟弟","在","上","高中"],"。","Мой младший брат учится в старшей школе.","Учёба: уроки и экзамены"],[["请","打开","书"],"。","Откройте книги, пожалуйста.","Учёба: уроки и экзамены"],[["我","忘","了","他","的","名字"],"。","Я забыл его имя.","Учёба: уроки и экзамены"],[["上课","时","不要","说话"],"。","Во время урока не разговаривайте.","Время и частота"],[["我","经常","去","那儿"],"。","Я часто хожу туда.","Время и частота"],[["我","有时","在","家","吃","饭"],"。","Иногда я ем дома.","Время и частота"],[["快要","下雨","了"],"。","Вот-вот пойдёт дождь.","Время и частота"],[["我","一会儿","就","来"],"。","Я скоро приду.","Время и частота"],[["电影","开始","了"],"。","Фильм начался.","Время и частота"],[["我","看","完","了"],"。","Я досмотрел.","Время и частота"],[["我","从","中国","来"],"。","Я из Китая.","Время и частота"],[["我","从小","喜欢","画","画"],"。","Я с детства люблю рисовать.","Время и частота"],[["小时候","我","住","在","中国"],"。","В детстве я жил в Китае.","Время и частота"],[["过年","的","时候","我们","吃","饺子"],"。","На праздник Весны мы едим цзяоцзы.","Время и частота"],[["我","在","准备","考试"],"。","Я готовлюсь к экзамену.","Время и частота"],[["火车","很","快"],"。","Поезд быстрый.","Сравнение и оценка"],[["请","说","慢","一点儿"],"。","Говорите, пожалуйста, помедленнее.","Сравнение и оценка"],[["生日","快乐"],"！","С днём рождения!","Сравнение и оценка"],[["我","的","手机","坏","了"],"。","Мой телефон сломался.","Сравнение и оценка"],[["今天","是","晴","天"],"。","Сегодня ясный день.","Сравнение и оценка"],[["明天","是","阴","天"],"。","Завтра будет пасмурно.","Сравнение и оценка"],[["你","怎么","这么","忙"],"？","Почему ты так занят?","Сравнение и оценка"],[["他","没有","你","那么","高"],"。","Он не такой высокий, как ты.","Сравнение и оценка"],[["你","别","这样"],"。","Не надо так.","Сравнение и оценка"],[["我","不","喜欢","那样","的","衣服"],"。","Мне не нравится такая одежда.","Сравнение и оценка"],[["因为","下雨","，","所以","我","不","去","了"],"。","Так как идёт дождь, я не пойду.","Союзы и вопросы"],[["虽然","很","累","，","但是","我","很","快乐"],"。","Хотя я устал, я очень счастлив.","Союзы и вопросы"],[["他","很","忙","，","但","很","快乐"],"。","Он очень занят, но счастлив.","Союзы и вопросы"],[["我","现在","就","去"],"。","Я сейчас же иду.","Союзы и вопросы"],[["不好意思","，","我","来","晚","了"],"。","Извините, я опоздал.","Союзы и вопросы"],[["好","啊"],"！","Давай!","Союзы и вопросы"],[["他","高兴","地","笑","了"],"。","Он радостно засмеялся.","Частицы 过, 着, 得"],[["我","正","吃","饭","呢"],"。","Я как раз ем.","Частицы 过, 着, 得"],[["你","说","错","了"],"。","Ты сказал неправильно.","Частицы 过, 着, 得"],[["这个","电脑","一","万","元"],"。","Этот компьютер стоит десять тысяч юаней.","Частицы 过, 着, 得"],[["我","买","了","一","条","裤子"],"。","Я купил брюки.","Частицы 过, 着, 得"],[["我","跟","朋友","去","旅游"],"。","Я еду путешествовать с другом.","Помощь, просьбы, действия"],[["你","能","帮忙","吗"],"？","Можешь помочь?","Помощь, просьбы, действия"],[["我","希望","明天","不","下雨"],"。","Надеюсь, завтра не будет дождя.","Помощь, просьбы, действия"],[["这","件","事情","你","知道","吗"],"？","Ты знаешь об этом деле?","Помощь, просьбы, действия"],[["别","动"],"！","Не двигайся!","Помощь, просьбы, действия"],[["鸟","在","飞"],"。","Птица летит.","Помощь, просьбы, действия"]];
+XS2.forEach(x=>{const g=WS.find(s=>s.t===x[3]);if(g)g.s.push([x[0],x[1],x[2]])});
+/* HSK 3: первая часть */
+WS.push(
+{h:3,t:'Работа и офис',g:'Коллеги, встречи, просьба отпустить.',
+w:[['经理','jīnglǐ','менеджер, руководитель'],['同事','tóngshì','коллега'],['办公室','bàngōngshì','офис, кабинет'],['会议','huìyì','совещание'],['司机','sījī','водитель'],['记者','jìzhě','журналист'],['客人','kèrén','гость, клиент'],['服务员','fúwùyuán','официант, администратор'],['欢迎','huānyíng','приветствовать'],['参加','cānjiā','участвовать'],['迟到','chídào','опаздывать'],['请假','qǐngjià','брать отгул, отпрашиваться']],
+s:[[['我','同事','是','经理'],'。','Мой коллега — менеджер.'],[['经理','在','办公室'],'。','Менеджер в офисе.'],[['你','明天','参加','会议','吗'],'？','Ты завтра будешь на совещании?'],[['欢迎','你们','来','我们','公司'],'。','Добро пожаловать в нашу компанию.'],[['他','今天','迟到','了'],'。','Сегодня он опоздал.'],[['我','想','请假'],'。','Я хочу взять отгул.'],[['他','爸爸','是','司机'],'。','Его папа — водитель.'],[['她','是','记者'],'。','Она журналист.'],[['客人','想','喝','茶'],'。','Гость хочет выпить чаю.'],[['服务员','问','客人','要','什么'],'？','Официант спрашивает гостя, что тот желает.']]},
+{h:3,t:'Дом и быт',g:'Кухня, уборка, сосед, свет и кондиционер.',
+w:[['厨房','chúfáng','кухня'],['冰箱','bīngxiāng','холодильник'],['空调','kōngtiáo','кондиционер'],['灯','dēng','лампа, свет'],['洗澡','xǐzǎo','принимать душ, мыться'],['打扫','dǎsǎo','убирать'],['干净','gānjìng','чистый'],['旧','jiù','старый (о вещах)'],['搬','bān','переносить; переезжать'],['关','guān','закрывать, выключать'],['邻居','línjū','сосед']],
+s:[[['我','家','的','厨房','很','大'],'。','Кухня в моём доме большая.'],[['冰箱','里','有','水果','和','牛奶'],'。','В холодильнике есть фрукты и молоко.'],[['天气','很','热','，','请','开','空调'],'。','Жарко, включите, пожалуйста, кондиционер.'],[['请','关','灯'],'。','Выключи, пожалуйста, свет.'],[['我','晚上','洗澡'],'。','Вечером я принимаю душ.'],[['今天','我','在','家','打扫','房间'],'。','Сегодня я дома убираю комнату.'],[['我','的','房间','很','干净'],'。','Моя комната очень чистая.'],[['这','是','一','个','旧','电脑'],'。','Это старый компьютер.'],[['我','明年','想','搬','家'],'。','В следующем году я хочу переехать.'],[['我','的','邻居','是','老师'],'。','Мой сосед — учитель.']]},
+{h:3,t:'Времена года и природа',g:'Весна, лето, осень, зима, солнце, облака.',n:'У китайских названий сезонов общий второй слог 天 (tiān): 春天, 夏天, 秋天, 冬天. 周末 — это «конец недели», выходные.',
+w:[['春天','chūntiān','весна'],['夏天','xiàtiān','лето'],['秋天','qiūtiān','осень'],['冬天','dōngtiān','зима'],['季节','jìjié','время года, сезон'],['刮风','guāfēng','дует ветер'],['云','yún','облако'],['太阳','tàiyáng','солнце'],['月亮','yuèliang','луна'],['最近','zuìjìn','в последнее время'],['爬山','páshān','ходить в горы'],['树','shù','дерево'],['草','cǎo','трава'],['周末','zhōumò','выходные']],
+s:[[['中国','有','四','个','季节'],'。','В Китае четыре времени года.'],[['我','喜欢','春天'],'。','Я люблю весну.'],[['夏天','很','热','，','冬天','很','冷'],'。','Летом жарко, зимой холодно.'],[['秋天','天气','不错'],'。','Осенью хорошая погода.'],[['今天','刮风','了'],'。','Сегодня поднялся ветер.'],[['今天','有','太阳'],'。','Сегодня светит солнце.'],[['月亮','很','漂亮'],'。','Луна очень красивая.'],[['我们','周末','去','爬山','吧'],'。','Давай в выходные сходим в горы.'],[['他','最近','很','忙'],'。','В последнее время он очень занят.'],[['这里','有','很','多','树','和','草'],'。','Здесь много деревьев и травы.'],[['今天','有','很','多','云'],'。','Сегодня много облаков.']]},
+{h:3,t:'Здоровье и тело',g:'Простуда, температура, части тела, голод и жажда.',
+w:[['感冒','gǎnmào','простуда; простудиться'],['发烧','fāshāo','температура, жар'],['健康','jiànkāng','здоровый; здоровье'],['脸','liǎn','лицо'],['腿','tuǐ','нога'],['脚','jiǎo','ступня'],['耳朵','ěrduo','ухо'],['鼻子','bízi','нос'],['饿','è','голодный'],['渴','kě','хотеть пить'],['饱','bǎo','сытый'],['胖','pàng','полный'],['瘦','shòu','худой'],['锻炼','duànliàn','тренироваться']],
+s:[[['我','感冒','了'],'。','Я простудился.'],[['他','发烧','了','，','要','吃','药'],'。','У него жар, ему нужно принять лекарство.'],[['他','的','身体','很','健康'],'。','Он очень здоров.'],[['我','的','脸','很','热'],'。','У меня горит лицо.'],[['我','的','腿','很','疼'],'。','У меня болит нога.'],[['他','的','脚','很','大'],'。','У него большая стопа.'],[['猫','的','耳朵','很','小'],'。','У кошки маленькие уши.'],[['你','的','鼻子','很','漂亮'],'。','У тебя красивый нос.'],[['我','很','饿','，','想','吃','饭'],'。','Я очень голоден, хочу поесть.'],[['我','渴','了','，','想','喝','水'],'。','Хочу пить, хочу воды.'],[['我','吃','饱','了'],'。','Я наелся.'],[['他','很','胖'],'。','Он полный.'],[['她','很','瘦'],'。','Она худая.'],[['我','每','天','锻炼'],'。','Я тренируюсь каждый день.']]},
+{h:3,t:'Люди и характер',g:'Умный, милый, старательный, грустный, довольный.',
+w:[['聪明','cōngming','умный'],['可爱','kě’ài','милый'],['年轻','niánqīng','молодой'],['老','lǎo','старый (о человеке)'],['矮','ǎi','низкий (о росте)'],['努力','nǔlì','усердный; стараться'],['认真','rènzhēn','старательный, серьёзный'],['热情','rèqíng','радушный'],['安静','ānjìng','тихий, спокойный'],['难过','nánguò','грустно, тяжело на душе'],['生气','shēngqì','сердиться'],['害怕','hàipà','бояться'],['担心','dānxīn','волноваться'],['满意','mǎnyì','довольный']],
+s:[[['她','的','孩子','很','聪明'],'。','Её ребёнок очень умный.'],[['我','的','猫','很','可爱'],'。','Моя кошка очень милая.'],[['他','很','年轻'],'。','Он очень молод.'],[['我','爷爷','老','了'],'。','Мой дедушка постарел.'],[['他','的','个子','很','矮'],'。','Он невысокого роста.'],[['学生','们','很','努力'],'。','Ученики очень стараются.'],[['他','学习','很','认真'],'。','Он учится очень старательно.'],[['这儿','的','人','很','热情'],'。','Здешние люди очень радушные.'],[['这里','很','安静'],'。','Здесь очень тихо.'],[['我','今天','很','难过'],'。','Сегодня мне очень грустно.'],[['妈妈','生气','了'],'。','Мама рассердилась.'],[['我','很','害怕'],'。','Мне очень страшно.'],[['别','担心'],'。','Не волнуйся.'],[['我','很','满意'],'。','Я очень доволен.']]},
+{h:3,t:'Учёба: предметы и задания',g:'Библиотека, домашнее задание, предметы, оценки.',
+w:[['图书馆','túshūguǎn','библиотека'],['作业','zuòyè','домашнее задание'],['复习','fùxí','повторять (пройденное)'],['练习','liànxí','упражняться; упражнение'],['回答','huídá','отвечать'],['句子','jùzi','предложение'],['成绩','chéngjì','оценки, результаты'],['数学','shùxué','математика'],['历史','lìshǐ','история'],['音乐','yīnyuè','музыка'],['体育','tǐyù','физкультура'],['校长','xiàozhǎng','директор школы'],['同意','tóngyì','соглашаться'],['明白','míngbai','понимать']],
+s:[[['我','在','图书馆','看','书'],'。','Я читаю в библиотеке.'],[['今天','的','作业','很','多'],'。','Сегодня много домашнего задания.'],[['晚上','我','复习','汉语'],'。','Вечером я повторяю китайский.'],[['请','多','练习'],'。','Пожалуйста, больше упражняйтесь.'],[['请','回答','我','的','问题'],'。','Ответьте, пожалуйста, на мой вопрос.'],[['这','个','句子','很','长'],'。','Это предложение очень длинное.'],[['他','的','成绩','很','好'],'。','У него очень хорошие оценки.'],[['我','不','喜欢','数学'],'。','Я не люблю математику.'],[['我','喜欢','历史','课'],'。','Мне нравятся уроки истории.'],[['我','爱','听','音乐'],'。','Я люблю слушать музыку.'],[['体育','课','在','下午'],'。','Физкультура во второй половине дня.'],[['校长','是','男','的'],'。','Директор школы — мужчина.'],[['我','同意'],'。','Я согласен.'],[['你','明白','了','吗'],'？','Ты понял?']]},
+{h:3,t:'Еда: сладости и посуда',g:'Меню, фрукты, напитки, посуда и «сколько всего».',
+w:[['蛋糕','dàngāo','торт, пирожное'],['香蕉','xiāngjiāo','банан'],['饮料','yǐnliào','напиток'],['啤酒','píjiǔ','пиво'],['羊肉','yángròu','баранина'],['甜','tián','сладкий'],['菜单','càidān','меню'],['盘子','pánzi','тарелка'],['碗','wǎn','миска, чашка (для еды)'],['筷子','kuàizi','палочки для еды'],['瓶子','píngzi','бутылка'],['新鲜','xīnxiān','свежий'],['一共','yígòng','всего, в общей сложности']],
+s:[[['我','想','吃','蛋糕'],'。','Я хочу торт.'],[['我','要','三','个','香蕉'],'。','Мне три банана.'],[['你','想','喝','什么','饮料'],'？','Какой напиток ты хочешь?'],[['他','不','喝','啤酒'],'。','Он не пьёт пиво.'],[['我','喜欢','吃','羊肉'],'。','Я люблю баранину.'],[['这','个','蛋糕','很','甜'],'。','Этот торт очень сладкий.'],[['请','给','我','菜单'],'。','Дайте, пожалуйста, меню.'],[['桌子','上','有','盘子','和','碗'],'。','На столе стоят тарелка и миска.'],[['这','是','我','的','筷子'],'。','Это мои палочки.'],[['这','个','瓶子','很','大'],'。','Эта бутылка очень большая.'],[['这里','的','水果','很','新鲜'],'。','Фрукты здесь очень свежие.'],[['一共','多少','钱'],'？','Сколько всего?']]},
+{h:3,t:'Город и дорога',g:'Карта, паспорт, чемодан, парк, банк, улицы.',
+w:[['地图','dìtú','карта'],['护照','hùzhào','паспорт'],['行李箱','xínglixiāng','чемодан'],['地方','dìfang','место'],['城市','chéngshì','город'],['公园','gōngyuán','парк'],['银行','yínháng','банк'],['自行车','zìxíngchē','велосипед'],['方便','fāngbiàn','удобный; удобно'],['街道','jiēdào','улица'],['换','huàn','менять, обменивать'],['经过','jīngguò','проходить мимо; через']],
+s:[[['我','有','一','个','地图'],'。','У меня есть карта.'],[['请','给','我','看','你','的','护照'],'。','Покажите, пожалуйста, ваш паспорт.'],[['他','的','行李箱','很','大'],'。','У него большой чемодан.'],[['这','是','一','个','漂亮','的','地方'],'。','Это красивое место.'],[['中国','有','很','多','大','城市'],'。','В Китае много больших городов.'],[['我们','去','公园','玩','吧'],'。','Давай сходим погуляем в парк.'],[['银行','在','商店','旁边'],'。','Банк рядом с магазином.'],[['我','的','自行车','是','新','的'],'。','Мой велосипед новый.'],[['坐','地铁','很','方便'],'。','Ездить на метро очень удобно.'],[['这','条','街道','很','长'],'。','Эта улица очень длинная.'],[['我','想','换','钱'],'。','Я хочу обменять деньги.'],[['我们','经过','书店'],'。','Мы проходим мимо книжного магазина.']]},
+{h:3,t:'Связки и степень',g:'Если, потом, обязательно, всё время, наконец.',n:'如果…就…: «если…, то…». 一边…一边…: «делать одно и одновременно другое». 才 — «только (тогда)», 就 — «уже (рано)»: 他十点才来 «пришёл лишь в десять». 比 + А + 更 + признак: «ещё более».',
+w:[['如果','rúguǒ','если'],['然后','ránhòu','потом, затем'],['或者','huòzhě','или (в утверждении)'],['必须','bìxū','должен, необходимо'],['应该','yīnggāi','следует, должен'],['一定','yídìng','обязательно'],['一直','yìzhí','всё время, всегда'],['一样','yíyàng','одинаковый, такой же'],['一边','yìbiān','в то же время (一边…一边…)'],['一般','yìbān','обычно'],['才','cái','только, лишь'],['更','gèng','ещё более'],['特别','tèbié','особенно'],['突然','tūrán','вдруг, внезапно'],['马上','mǎshàng','немедленно, сейчас же'],['终于','zhōngyú','наконец']],
+s:[[['如果','明天','下雨','，','我','就','不','去','了'],'。','Если завтра будет дождь, я не пойду.'],[['我','吃','饭','然后','看','电影'],'。','Я поем, а потом посмотрю фильм.'],[['你','喝','茶','或者','咖啡'],'？','Ты будешь чай или кофе?'],[['你','必须','早','起床'],'。','Ты должен рано вставать.'],[['你','应该','多','休息'],'。','Тебе следует больше отдыхать.'],[['我','明天','一定','来'],'。','Завтра я обязательно приду.'],[['他','一直','在','学习'],'。','Он всё время учится.'],[['我们','的','书','一样'],'。','Наши книги одинаковые.'],[['他','一边','吃','饭','一边','看','电视'],'。','Он ест и смотрит телевизор одновременно.'],[['我','一般','七','点','起床'],'。','Обычно я встаю в семь.'],[['他','十','点','才','来'],'。','Он пришёл только в десять.'],[['今天','比','昨天','更','冷'],'。','Сегодня ещё холоднее, чем вчера.'],[['我','特别','喜欢','这个','电影'],'。','Мне особенно нравится этот фильм.'],[['天气','突然','冷','了'],'。','Погода вдруг похолодала.'],[['我','马上','回','家'],'。','Я сейчас же иду домой.'],[['他','终于','来','了'],'。','Он наконец пришёл.']]},
+{h:3,t:'Дела и решения',g:'Важное, решение, план, возможность, способ.',
+w:[['重要','zhòngyào','важный'],['决定','juédìng','решать; решение'],['打算','dǎsuàn','планировать'],['机会','jīhuì','возможность, шанс'],['办法','bànfǎ','способ, выход'],['发现','fāxiàn','обнаружить, заметить'],['解决','jiějué','решать (проблему)'],['变化','biànhuà','изменение']],
+s:[[['这','件','事','很','重要'],'。','Это дело очень важное.'],[['我','决定','去','中国'],'。','Я решил ехать в Китай.'],[['我','打算','明年','学','汉语'],'。','Я планирую в следующем году учить китайский.'],[['这','是','一','个','好','机会'],'。','Это хорошая возможность.'],[['我','有','一','个','好','办法'],'。','У меня есть хороший способ.'],[['他','发现','了','一','个','问题'],'。','Он обнаружил проблему.'],[['这','个','问题','很','难','解决'],'。','Эту проблему трудно решить.'],[['中国','的','变化','很','大'],'。','Изменения в Китае очень велики.']]},
+{h:3,t:'Привычки и оценки',g:'Использовать, обращать внимание, легко, трудно, просто.',
+w:[['用','yòng','использовать, пользоваться'],['注意','zhùyì','обращать внимание, быть осторожным'],['习惯','xíguàn','привычка; привыкать'],['关系','guānxi','отношения, связь'],['关心','guānxīn','заботиться, интересоваться'],['容易','róngyì','лёгкий, легко'],['难','nán','трудный'],['简单','jiǎndān','простой'],['检查','jiǎnchá','проверять']],
+s:[[['你','会','用','筷子','吗'],'？','Ты умеешь пользоваться палочками?'],[['请','注意','听'],'。','Обратите внимание и слушайте.'],[['早','睡','是','个','好','习惯'],'。','Рано ложиться — хорошая привычка.'],[['我','和','他','的','关系','很','好'],'。','У нас с ним хорошие отношения.'],[['妈妈','很','关心','我'],'。','Мама очень обо мне заботится.'],[['汉语','不','容易'],'。','Китайский нелёгкий.'],[['汉字','很','难','写'],'。','Иероглифы трудно писать.'],[['这','个','题','很','简单'],'。','Это задание очень простое.'],[['请','检查','一下'],'。','Проверьте, пожалуйста.']]}
+);
+const D={};WS.forEach(s=>s.w.forEach(w=>D[w[0]]=w));D['，']=['，',',',''];
+const NW=WS.reduce((a,s)=>a+s.w.length,0);
+let US=null;const mst=w=>{if(!US){US=new Set();WS.forEach(s=>s.s.forEach(x=>x[0].forEach(t=>US.add(t))))}const x=S.w[w]||{b:0,u:0};return x.b>=3&&(x.u>=1||!US.has(w))};
+const mw=()=>WS.reduce((a,s)=>a+s.w.filter(w=>mst(w[0])).length,0);
+const shf=a=>[...a].sort(()=>Math.random()-.5);
+function tp(tl){
+ const fv=s=>(s.match(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/)||[''])[0];
+ const a=tl.map((w,i)=>{const n=tl[i+1]&&fv(D[tl[i+1]][1]),f=n&&/[àèìòùǜ]/.test(n);return w==='不'&&f?'bú':w==='一'&&n?(f?'yí':'yì'):D[w][1]});
+ if(a.length)a[0]=a[0][0].toUpperCase()+a[0].slice(1);
+ return a;
+}
+function py(tl,p){
+ const s=tp(tl).join(' ').replace(/ ,/g,',');
+ return s+({'？':'?','！':'!'}[p]||'.');
+}
+/* Одно слово — один пиньинь: пиньинь над каждым словом */
+const isH=c=>/[\u4e00-\u9fff]/.test(c);
+function al(zh,p){
+ const ws=p.replace(/[.,!?;:«»"“”…]/g,' ').split(/\s+/).filter(Boolean),cs=[...zh],out=[];let i=0;
+ const pend=()=>{let z='';while(i<cs.length&&!isH(cs[i]))z+=cs[i++];if(z){if(out.length)out[out.length-1][0]+=z;else return z}return ''};
+ for(const w of ws){
+  let pre=pend(),z=pre;
+  const n=(w.match(/[aeiouüāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]+/gi)||[]).length;
+  for(let k=0;k<n;k++){if(i>=cs.length||!isH(cs[i]))return null;z+=cs[i++]}
+  if(/r$/i.test(w)&&!/(^|['’])[eēéěè]r$/i.test(w)&&cs[i]==='儿')z+=cs[i++];
+  out.push([z,w]);
+ }
+ pend();
+ return i===cs.length&&out.length?out:null;
+}
+const rbH=(a,c)=>'<span class="rb '+(c||'')+'">'+a.map(x=>{const m=x[0].match(/^([^\u4e00-\u9fff]*)(.*?)([^\u4e00-\u9fff]*)$/);return `<span class="rwp${m[3]?' hp':''}">${m[1]}<span class="rw"><small>${x[1]}</small><b>${m[2]}${m[3]?'<i class="pu">'+m[3]+'</i>':''}</b></span></span>`}).join('')+'</span>';
+const rbz=(zh,p,c)=>{const a=al(zh,p);return a?rbH(a,c):`<span class="${c} d">${zh}</span><span class="py d">${p}</span>`};
+function rbt(tl,pu){const ps=tp(tl),a=[];tl.forEach((t,i)=>{if(t==='，'){if(a.length)a[a.length-1][0]+='，'}else a.push([t,ps[i]])});if(a.length)a[a.length-1][0]+=pu;return rbH(a,'zh')}
+
+/* ================= Интерфейс ================= */
+const IC={
+ share:'<svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 002 2h10a2 2 0 002-2v-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ pen:'<svg viewBox="0 0 24 24"><path d="M4 20l1-4L16.5 4.5a2 2 0 013 3L8 19l-4 1z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>',
+ x:'<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+ check:'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ star:'<svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z" fill="currentColor"/></svg>',
+ book:'<svg viewBox="0 0 24 24"><path d="M5 4.5C5 3.7 5.7 3 6.5 3H19v15H6.5C5.7 18 5 18.7 5 19.5z" fill="currentColor"/><path d="M5 19.5C5 20.3 5.7 21 6.5 21H19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+ chat:'<svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v8a2.5 2.5 0 01-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 014 14.5z" fill="currentColor"/></svg>',
+ trophy:'<svg viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 01-10 0z" fill="currentColor"/><path d="M7 5H4v1.5A3.5 3.5 0 007.5 10M17 5h3v1.5a3.5 3.5 0 01-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 14h3v3.5h-3zM7.5 18h9v3h-9z" fill="currentColor"/></svg>',
+ fire:'<svg viewBox="0 0 24 24"><path d="M12 2c1 3.6 5.6 5.7 5.6 11.1a5.6 5.6 0 01-11.2 0c0-2.4 1.2-4.3 2.6-5.4.2 1.6.9 2.8 2 3.3C10.7 8.7 11.3 5 12 2z" fill="currentColor"/></svg>',
+ bolt:'<svg viewBox="0 0 24 24"><path d="M13.6 2L4.6 13.5h6.1L9.6 22l9.9-12.6h-6.2z" fill="currentColor"/></svg>',
+ spk:'<svg viewBox="0 0 24 24"><path d="M3.5 9h3.5l5-4v14l-5-4H3.5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+ back:'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ chev:'<svg class="chv" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ user:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.2" fill="currentColor"/><path d="M4 21a8 8 0 0116 0z" fill="currentColor"/></svg>',
+ n_home:'<svg viewBox="0 0 24 24"><path d="M3.5 11L12 4l8.5 7v9a1 1 0 01-1 1h-5v-6h-5v6h-5a1 1 0 01-1-1z" fill="currentColor"/></svg>',
+ n_rv:'<svg viewBox="0 0 24 24"><path d="M2 9.5h2v5H2zM5 7h3v10H5zM16 7h3v10h-3zM20 9.5h2v5h-2zM8 11h8v2H8z" fill="currentColor"/></svg>',
+ medal:'<svg viewBox="0 0 120 120"><path d="M36 6h18l11 32H47z" fill="#1cb0f6"/><path d="M84 6H66L55 38h18z" fill="#ff4b4b"/><circle cx="60" cy="74" r="38" fill="#f5b400"/><circle cx="60" cy="74" r="30" fill="#ffd54f"/><text x="60" y="86" text-anchor="middle" font-size="34" font-weight="700" fill="#b37800" font-family="PingFang SC,Noto Sans SC,sans-serif">中</text></svg>'
+};
+IC.n_wl=IC.book;IC.n_dl=IC.chat;IC.n_pf=IC.user;
+
+/* Блоки пути: уроки, наборы слов, диалоги и итоговый тест блока */
+const UN=[
+ {h:1,t:'Звуки и первые фразы',n:[['L',0],['L',1],['L',2],['L',3],['WS',0],['WS',1],['U',0]]},
+ {h:1,t:'Числа, семья, покупки, время',n:[['WS',2],['WS',3],['WS',4],['D',1],['WS',5],['WS',6],['D',3],['U',1]]},
+ {h:1,t:'Действия, вежливость, люди',n:[['WS',7],['WS',8],['WS',9],['D',0],['WS',10],['WS',11],['U',2]]},
+ {h:1,t:'Еда, даты и учёба',n:[['WS',12],['WS',13],['D',2],['WS',14],['WS',15],['WS',16],['WS',17],['U',3]]},
+ {h:1,t:'День, транспорт, погода',n:[['WS',18],['WS',19],['WS',20],['WS',21],['WS',22],['WS',23],['U',4]]},
+ {h:2,t:'Тело, вещи и знакомство',n:[['WS',24],['WS',25],['D',4],['WS',26],['WS',27],['WS',28],['U',5]]},
+ {h:2,t:'Город, дорога, увлечения',n:[['WS',29],['WS',30],['D',5],['WS',31],['WS',32],['WS',33],['U',6]]},
+ {h:2,t:'Время, сравнение, связки',n:[['WS',34],['WS',35],['WS',36],['D',6],['WS',37],['WS',38],['U',7]]},
+ {h:3,t:'Работа, дом, природа',n:[['WS',39],['WS',40],['WS',41],['WS',42],['U',8]]},
+ {h:3,t:'Люди, учёба, еда',n:[['WS',43],['WS',44],['WS',45],['U',9]]},
+ {h:3,t:'Город, связки, дела',n:[['WS',46],['WS',47],['WS',48],['WS',49],['U',10]]}
+];
+const UC=[['#12a99f','#0b8179'],['#a560f0','#7f43c4'],['#1cb0f6','#1899d6'],['#ff9600','#cf7900'],['#e5579c','#b73f7a']];
+const uw=u=>UN[u].n.filter(x=>x[0]==='WS').flatMap(x=>WS[x[1]].w);
+const PR=['Отлично!','Верно!','Молодец!','Превосходно!','Так держать!'];
+
+let S={done:{},rev:{},w:{}},V={v:'home'},Q=null,W=null,SB=null,X=null,DG=null,POP=null,RET={v:'home'},SX=0,ST=0,CMB=0,FB='';
+try{S=Object.assign(S,JSON.parse(localStorage.getItem('zhru1')))}catch(e){}
+const save=()=>{S.ts=Date.now();try{localStorage.setItem('zhru1',JSON.stringify(S))}catch(e){}TG.push()};
+const $=id=>document.getElementById(id);
+const TN='āēīōūǖ|áéíóúǘ|ǎěǐǒǔǚ|àèìòùǜ'.split('|');
+const tc=s=>s.replace(/[āēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜ]/g,m=>'<u class="t'+(TN.findIndex(x=>x.includes(m))+1)+'">'+m+'</u>');
+const bar=p=>'<span class="pbm"><i style="width:'+Math.min(100,p)+'%"></i></span>';
+const B=(a,p,t,c)=>`<button class="b ${c||''}" data-a="${a}" data-p="${p}">${t}</button>`;
+const K=(a,p,t)=>`<button class="bk" data-a="${a}" data-p="${p}">${IC.back}<span>${t}</span></button>`;
+const SP=(t,big)=>`<button class="sp${big?' big':''}" data-s="${t}" aria-label="Прослушать">${IC.spk}</button>`;
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang='zh-CN';u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+let AC=null;
+function snd(ok){if(S.mute)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const t0=AC.currentTime;(ok?[659,880]:[311,233]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),t=t0+i*.1;o.type=ok?'sine':'triangle';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.24);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26)})}catch(e){}}
+const td=()=>new Date().toISOString().slice(0,10);
+const yd=()=>new Date(Date.now()-864e5).toISOString().slice(0,10);
+function gx(n){const d=td();S.x=S.x||{};S.x[d]=(S.x[d]||0)+n;if(S.sd!==d){S.sn=S.sd===yd()?(S.sn||0)+1:1;S.sd=d}SX+=n;save()}
+const streak=()=>(S.sd===td()||S.sd===yd())?S.sn||0:0;
+const xpToday=()=>(S.x||{})[td()]||0;
+const xpTotal=()=>Object.values(S.x||{}).reduce((a,b)=>a+b,0);
+const weak=()=>WS.flatMap(s=>s.w).filter(w=>S.w[w[0]]&&S.w[w[0]].b<3);
+
+/* ---------- путь ---------- */
+function nodeInfo(a,p,ui){
+ if(a==='L'){const ok=S.done[p]!=null;return{a,p,ui,k:'L'+p,ic:'book',t:'Урок '+(p+1)+'. '+LS[p].t,ok,pr:ok?100:0}}
+ if(a==='WS'){const s=WS[p],m=s.w.filter(w=>mst(w[0])).length;return{a,p,ui,k:'W'+p,ic:'star',t:s.t,ok:m===s.w.length,pr:Math.round(m/s.w.length*100),m,n:s.w.length}}
+ if(a==='D'){const ok=!!(S.dd||{})[p];return{a,p,ui,k:'D'+p,ic:'chat',t:'Диалог: '+DLG[p].t,ok,pr:ok?100:0}}
+ const ok=!!(S.ud||{})[p];return{a,p,ui,k:'U'+p,ic:'trophy',t:'Итог блока '+(p+1),ok,pr:ok?100:0};
+}
+const nodes=()=>UN.flatMap((u,ui)=>u.n.map(([a,p])=>nodeInfo(a,p,ui)));
+const TOP=()=>{const x=xpToday();return `<div class="top"><span class="crs" title="Китайский язык">中</span><span class="st fire${x?'':' off'}" title="Дней подряд">${IC.fire}${streak()}</span><span class="st bolt" title="Опыт сегодня">${IC.bolt}${x}</span><span class="st gem" title="Слов освоено">${IC.book}${mw()}</span></div>`};
+function popH(n,o){
+ let h=`<div class="pop" style="--o:${o}px;--u:${UC[n.ui%UC.length][0]};--ud:${UC[n.ui%UC.length][1]}"><b class="pt">${n.t}</b>`;
+ if(n.a==='L')h+=`<p>${LS[n.p].g}</p>`+B('L',n.p,'Начать','w');
+ else if(n.a==='WS')h+=`<p>Освоено ${n.m} из ${n.n} слов</p>`+B('wtest',n.p,'Тест слов','w')+B('sbstart',n.p,'Составить предложения','w2')+`<button class="lk2" data-a="WS" data-p="${n.p}">Карточки и грамматика</button>`;
+ else if(n.a==='D')h+=`<p>${DLG[n.p].g}</p>`+B('dstart',n.p,'Начать','w');
+ else h+=`<p>Проверьте слова всего блока. Чтобы пройти, нужно 70% верных ответов.</p>`+B('ustart',n.p,'Начать','w');
+ return h+'</div>';
+}
+function H(){
+ const ns=nodes(),cur=ns.find(n=>!n.ok),g=S.goal||30,x=xpToday();
+ let h=TOP()+`<div class="card goal">${IC.bolt}<span class="gx"><b>Цель дня: ${Math.min(x,g)} из ${g} XP</b>${bar(x/g*100)}</span></div>`;
+ UN.forEach((u,ui)=>{
+  const c=UC[ui%UC.length],un=ns.filter(n=>n.ui===ui),dn=un.filter(n=>n.ok).length;
+  h+=`<section style="--u:${c[0]};--ud:${c[1]}"><div class="ub"><div><span class="us">HSK ${u.h} · Блок ${ui+1}</span><b class="un">${u.t}</b><span class="up">Пройдено ${dn} из ${un.length}</span></div><button class="ug" data-a="UG" data-p="${ui}" aria-label="Справочник блока">${IC.book}</button></div><div class="path">`;
+  un.forEach((n,k)=>{
+   const o=[0,46,70,46,0,-46,-70,-46][k%8],st=n.ok?'ok':n===cur?'on':'fu';
+   h+=`<div class="nd${n===cur?' hastip':''}" style="transform:translateX(${o}px)">${n===cur?'<span class="tip">Начать</span>':''}<span class="ring ${st}" style="--p:${n.pr}%"><button class="node ${st}" data-a="pop" data-p="${n.k}" aria-label="${n.t}">${IC[n.ok&&n.a!=='U'?'check':n.ic]}</button></span></div>`;
+   if(POP===n.k)h+=popH(n,o);
+  });
+  h+='</div></section>';
+ });
+ return h+'<div class="soon">HSK 3 · продолжение — скоро</div>';
+}
+function UGV(){
+ const u=UN[V.i];
+ return K('home','','Назад')+`<h1 class="ph">Справочник</h1><p class="m">HSK ${u.h} · Блок ${V.i+1}: ${u.t}</p>`+u.n.map(([a,p])=>a==='L'?`<div class="card note"><b class="nt">${IC.book}Урок ${p+1}. ${LS[p].t}</b>${LS[p].x}</div>`:a==='WS'&&WS[p].n?`<div class="card note"><b class="nt">${IC.book}${WS[p].t}</b><p>${WS[p].n}</p></div>`:'').join('');
+}
+/* ---------- вкладки ---------- */
+function WLV(){
+ const m=mw();
+ let h=`<h1 class="ph">Слова</h1><div class="card sum"><b>${m} из ${NW}</b> <span class="m">слов освоено</span>${bar(m/NW*100)}<p class="m">Слово освоено, когда вы три раза подряд верно ответили в тесте и правильно использовали его в предложении.</p></div>`;
+ [1,2,3].forEach(lv=>{h+=`<h2>HSK ${lv}</h2>`+WS.map((s,i)=>[s,i]).filter(([s])=>(s.h||1)===lv).map(([s,i])=>{const mm=s.w.filter(w=>mst(w[0])).length;return `<button class="card row" data-a="WS" data-p="${i}"><span class="gi">${s.w[0][0].slice(0,2)}</span><span class="gx"><b>${s.t}</b><span class="m">${mm} из ${s.w.length}</span>${bar(mm/s.w.length*100)}</span>${IC.chev}</button>`}).join('')});
+ return h;
+}
+function WSV(){
+ const s=WS[V.i];
+ return K(V.from==='wl'?'WL':'home','','Назад')+`<h1 class="ph">${s.t}</h1><p class="m">HSK ${s.h||1} · ${s.g}</p>${s.n?`<div class="card note"><b class="nt">${IC.book}Грамматика</b><p>${s.n}</p></div>`:''}<div class="wl">`+
+ s.w.map((w,wi)=>{const x=S.w[w[0]]||{b:0,u:0},ok=mst(w[0]);return `<div class="wc${ok?' ok':''}"><div class="wz"><span class="zh">${w[0]}</span><span class="py">${w[1]}</span><span>${w[2]}</span></div><div class="wr"><span class="bt2">${SP(w[0])}<button class="sp pn" data-a="hw" data-p="${wi}" aria-label="Писать иероглифы">${IC.pen}</button></span><span class="dots" title="Верных ответов подряд">${[0,1,2].map(k=>`<i class="${k<x.b?'on':''}"></i>`).join('')}</span></div></div>`}).join('')+
+ `</div><div class="dual">${B('wtest',V.i,'Тест слов')}${B('sbstart',V.i,'Предложения','g')}</div>`;
+}
+function DLV(){
+ return `<h1 class="ph">Диалоги</h1><p class="m">Живые сценки: слушайте реплику и выбирайте естественный ответ. Все слова — из списков HSK 1 и HSK 2.</p>`+DLG.map((d,i)=>`<button class="card row" data-a="dstart" data-p="${i}"><span class="gi chat">${IC.chat}</span><span class="gx"><b>${d.t}</b><span class="m">HSK ${d.h||1} · ${d.g}</span></span>${(S.dd||{})[i]?'<span class="okm">'+IC.check+'</span>':IC.chev}</button>`).join('');
+}
+function RVV(){
+ const wn=weak().length,qn=Object.keys(S.rev).length;
+ return `<h1 class="ph">Практика</h1><p class="m">Письмо, звуки и повторение.</p>`+
+ `<button class="card row" data-a="hwl" data-p=""><span class="gi gold">${IC.pen}</span><span class="gx"><b>Прописи</b><span class="m">Пишите иероглифы из выученных слов: от простых к сложным</span></span>${IC.chev}</button>`+
+ `<button class="card row" data-a="PYH" data-p=""><span class="gi chat">拼</span><span class="gx"><b>Пиньинь</b><span class="m">Звуки и тоны: справочник и упражнения</span></span>${IC.chev}</button><h2>Повторение</h2>`+
+ `<button class="card row" data-a="wtest" data-p="-1"${wn?'':' disabled'}><span class="gi gold">${IC.star}</span><span class="gx"><b>Слабые слова</b><span class="m">${wn?'На повторение: '+wn:'Пока нет: пройдите тест слов на пути'}</span></span>${IC.chev}</button>`+
+ `<button class="card row" data-a="RV" data-p=""${qn?'':' disabled'}><span class="gi red">${IC.x}</span><span class="gx"><b>Ошибки в уроках</b><span class="m">${qn?'Вопросов: '+qn+'. Вопрос уходит после двух верных ответов подряд':'Ошибок нет'}</span></span>${IC.chev}</button>`;
+}
+const stat=(ic,c,v,l)=>`<div class="sc"><span class="c-${c}">${IC[ic]}</span><div><b>${v}</b><span>${l}</span></div></div>`;
+function PFV(){
+ const g=S.goal||30;
+ return `<h1 class="ph">Профиль</h1><div class="pfh"><span class="pav">我</span><div><b>${TG.name||'Ученик'}</b><span class="m">Китайский для русскоязычных · HSK 3.0 (программа 2025)</span></div></div>`+
+ `<h2>Статистика</h2><div class="sg">${stat('fire','fire',streak(),'дней подряд')}${stat('bolt','bolt',xpTotal(),'всего опыта')}${stat('book','gem',mw()+'/'+NW,'слов освоено')}${stat('star','gold',Object.keys(S.done).length+'/'+LS.length,'уроков')}${stat('chat','blu',Object.keys(S.dd||{}).length+'/'+DLG.length,'диалогов')}${stat('trophy','pur',Object.keys(S.ud||{}).length+'/'+UN.length,'блоков')}</div>`+
+ `<h2>Цель на день</h2><div class="gs">${[[10,'Легко'],[20,'Нормально'],[30,'Серьёзно'],[50,'Интенсивно']].map(([v,l])=>`<button class="gch${v===g?' on':''}" data-a="goal" data-p="${v}"><b>${v} XP</b><span>${l}</span></button>`).join('')}</div>`+
+ `<h2>Друзья</h2><button class="card row" data-a="share" data-p=""><span class="gi">${IC.share}</span><span class="gx"><b>Пригласить друга</b><span class="m">Отправьте ссылку на приложение в Telegram</span></span>${IC.chev}</button><h2>Настройки</h2><button class="card row" data-a="snd" data-p=""><span class="gx"><b>Звуковые эффекты</b><span class="m">Сигнал при верном и неверном ответе</span></span><span class="tg${S.mute?'':' on'}"><i></i></span></button><p class="m">Произношение использует китайский голос вашего устройства.</p>`;
+}
+/* ---------- прописи (Hanzi Writer) ---------- */
+let HWW=null,HWL=null;
+const hwLoad=()=>HWL||(HWL=new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js';s.onload=ok;s.onerror=()=>{HWL=null;no()};document.head.appendChild(s)}));
+const hwSay=t=>{const e=$('hws');if(e)e.textContent=t};
+const SC={};'1:一|2:人二七八九十了儿几力|3:三个么下上工习大小女士子千口也飞门丈己已万干山马于才|4:不友水中六五太什少今天车午书气见牛日月分元文公开手火认以长夫介从比为办风云心历方化|5:生他四去出写汉电对叫们它边包奶号白半本司打只市正外可东头左右鸟记乐让务议加旧冬节末发业句史必用|6:吗师她老米吃妈有买多回在那会欢字忙好关再问名先同年早岁百件休衣机后兴西色红自爷肉地场动过交网考次因阴冰灯扫阳耳朵安成羊共行如决|7:我你饭弟两没这块医来坐听作冷系男里吧条鸡间时床找住还识身体位走远近进运步足花词忘每完快坏但告诉别希员迎迟邻努饮李护园应更|8:学朋国爸姐妹果苹宜店明现视非些呢狗杯的知服到房话雨和玩事卖表妻姓绍咖鱼往泳画试经周始备所者参净空居刮爬饱怕季担图练育单或定该直终变法注易|9:是茶要贵便院哪昨点星看说语很亮客怎孩饺面钟觉穿给前药送洗室思虽帮春秋冒树草胖炼轻复音香城须突重查|10:哥家钱校租读热起请谁爱样候班课息脑病桌都真能高笑疼笔拿铁站酒离旁旅准啊调夏健烧饿难害料瓶换般特容|11:商晚做常您猫菜蛋第唱雪得眼累绿啡馆票球教着望情理假脚康脸甜盘银绩啤惯检|12:喝期喜谢道超椅喂舒裤黑跑游等最晴然就厨渴答街|13:想零睡新睛楼路跳意错跟搬感腿矮满数筷碗照解简|14:漂歌舞慢鼻锻静瘦鲜算|15:题影颜踢懂箱聪蕉|16:篮澡糕'.split('|').forEach(g=>{const[n,cs]=g.split(':');[...cs].forEach(c=>SC[c]=+n)});
+const learned=()=>WS.flatMap(s=>s.w).filter(w=>{const x=S.w[w[0]];return x&&(x.b>0||x.u>0)});
+/* иероглифы выученных слов: от простых (мало черт) к сложным */
+function hwChars(){
+ let lw=learned();if(!lw.length)lw=WS.slice(0,3).flatMap(s=>s.w);
+ const m=new Map();
+ lw.forEach(w=>[...w[0]].filter(isH).forEach(c=>{const o=m.get(c);if(!o||w[0].length<o.w[0].length)m.set(c,{c,w,n:SC[c]||99})}));
+ return[...m.values()].sort((a,b)=>a.n-b.n);
+}
+const hwSession=()=>{const l=hwChars(),w=S.hwc||{};return l.slice().sort((a,b)=>(w[a.c]||0)-(w[b.c]||0)||a.n-b.n).slice(0,5).sort((a,b)=>a.n-b.n)};
+const hwQ=ws=>{const seen=new Set(),q=[];ws.forEach(w=>[...w[0]].filter(isH).forEach(c=>{if(!seen.has(c)){seen.add(c);q.push({c,w,n:SC[c]||0})}}));return q};
+const hwGo=(q,back)=>{if(q.length)go({v:'hw',q,qi:0,dn:{},back})};
+function HWLV(){
+ const l=hwChars(),w=S.hwc||{},done=l.filter(x=>w[x.c]).length;
+ let h=K('RVT','','Назад')+`<h1 class="ph">Прописи</h1><p class="m">Иероглифы из слов, которые вы уже учили, от простых к сложным.</p>`;
+ if(!learned().length)h+=`<div class="card note"><p>Вы ещё не учили слова, поэтому здесь простые иероглифы из первых тем. Пройдите тест слов на вкладке «Слова»: сюда попадут иероглифы из ваших слов.</p></div>`;
+ h+=`<div class="card sum"><b>${done} из ${l.length}</b> <span class="m">иероглифов написано</span>${bar(done/Math.max(1,l.length)*100)}</div>`+B('hwgo','','Писать: 5 иероглифов','big');
+ [[1,4,'1–4 черты'],[5,7,'5–7 черт'],[8,10,'8–10 черт'],[11,99,'11 и больше']].forEach(([a,b,t])=>{const g=l.filter(x=>x.n>=a&&x.n<=b);if(g.length)h+=`<h2>${t}</h2><div class="hwg">`+g.map(x=>`<button class="hwt${w[x.c]?' dn':''}" data-a="hwone" data-p="${x.c}"><span class="zh2">${x.c}</span><small>${x.n}</small></button>`).join('')+'</div>'});
+ return h;
+}
+const hwCh=()=>V.q.map(x=>x.c);
+const hwLast=()=>V.qi>=V.q.length-1;
+function HWV(){
+ const it=V.q[V.qi],w=it.w,cs=hwCh(),d=V.dn[V.qi];
+ return K('hwback','','Назад')+`<h1 class="ph">Пропись</h1><p class="m">Напишите иероглиф пальцем по чёрточкам. После двух ошибок появится подсказка.</p>`+
+ `<div class="card hwh"><span class="zh2">${it.c}</span><span class="gx"><b>${w[0]} · ${w[1]}</b><span class="m">${w[2]}${it.n?' · черт: '+it.n:''}</span></span>${SP(it.c)}</div>`+
+ (cs.length>1?`<div class="hwk">${cs.map((x,i)=>`<button class="${i===V.qi?'cur':''}${V.dn[i]?' dn':''}" data-a="hwc" data-p="${i}"><span class="zh2">${x}</span></button>`).join('')}</div>`:'')+
+ `<div class="hwb"><div id="hw" data-c="${cs[V.qi]}"></div></div><p class="m hws" id="hws"></p>`+
+ `<div class="dual">${B('hwshow','','Порядок черт','g')}${B('hwredo','','Заново','g')}</div>`+B('hwnext','',d?(hwLast()?'Готово':'Дальше'):'Пропустить',d?'ok':'g');
+}
+function hwQuiz(){
+ HWW.quiz({onMistake:()=>{TG.hap(false);hwSay('Не та чёрточка. Попробуйте ещё раз.')},onCorrectStroke:()=>hwSay(''),
+  onComplete:()=>{
+   const c=V.q[V.qi].c;if(!V.dn[V.qi]){gx(5);S.hw=(S.hw||0)+1;S.hwc=S.hwc||{};S.hwc[c]=(S.hwc[c]||0)+1;save()}V.dn[V.qi]=1;snd(true);TG.hap(true);hwSay('Верно! +5 XP');
+   const b=document.querySelector('[data-a="hwnext"]');if(b){b.className='b ok';b.textContent=hwLast()?'Готово':'Дальше'}
+   const k=document.querySelectorAll('.hwk button')[V.qi];if(k)k.classList.add('dn')}});
+}
+function hwInit(){
+ const el=$('hw');if(!el)return;HWW=null;hwSay('Загрузка…');
+ hwLoad().then(()=>{
+  if($('hw')!==el)return;
+  const cs=getComputedStyle(document.documentElement),c=n=>cs.getPropertyValue(n).trim(),w=el.clientWidth;
+  HWW=HanziWriter.create(el,el.dataset.c,{width:w,height:w,padding:14,showCharacter:false,showOutline:true,leniency:1.3,showHintAfterMisses:2,drawingWidth:7,
+   strokeColor:c('--fg'),outlineColor:c('--m2'),drawingColor:c('--pri'),highlightColor:c('--sel'),
+   onLoadCharDataError:()=>hwSay('Для этого иероглифа нет данных.')});
+  hwSay('Проведите пальцем по чёрточкам.');hwQuiz();
+ }).catch(()=>hwSay('Нужен интернет: данные прописей загружаются при первом открытии.'));
+}
+/* ---------- пиньинь: справочник и упражнения ---------- */
+const PYD=[
+{t:'Тоны',g:'Четыре тона и нейтральный тон.',e:[
+['妈','mā','<b>1-й тон</b>: высокий и ровный, как долгое «а-а-а» на одной высокой ноте.'],
+['麻','má','<b>2-й тон</b>: восходящий, как удивлённое «а?».'],
+['马','mǎ','<b>3-й тон</b>: вниз и вверх. В середине фразы обычно читается только нижняя часть.'],
+['骂','mà','<b>4-й тон</b>: резкое падение, как команда «а!».'],
+['吗','ma','<b>Нейтральный тон</b>: лёгкий, короткий, без своей мелодии. Над слогом значка нет: māma, ma.'],
+['你好','nǐ hǎo','<b>3-й + 3-й</b>: первый читается как 2-й: ní hǎo. Пишется по-прежнему nǐ hǎo.'],
+['不是','bù shì','<b>不 bù</b> перед 4-м тоном меняется на <b>bú</b>: bú shì, bú qù. Перед остальными остаётся bù: bù hǎo, bù lái.'],
+['一个','yī gè','<b>一 yī</b> перед 4-м тоном читается <b>yí</b> (yí gè), перед 1-м, 2-м и 3-м — <b>yì</b> (yì tiān, yì nián, yì qǐ). Одно, в конце числа — yī (dì yī).']]},
+{t:'Начальные звуки',g:'Согласные: от b до s.',e:[
+'Губные',
+['爸','bà','<b>b</b> — «п» без придыхания, как в слове «спать».'],['怕','pà','<b>p</b> — «п» с сильным выдохом (придыханием).'],['妈','mā','<b>m</b> — как русское «м».'],['发','fā','<b>f</b> — как русское «ф».'],
+'Язычные',
+['大','dà','<b>d</b> — «т» без придыхания, как в слове «стол».'],['他','tā','<b>t</b> — «т» с сильным выдохом.'],['那','nà','<b>n</b> — как русское «н».'],['拉','lā','<b>l</b> — как «л», кончик языка у дёсен.'],
+'Заднеязычные',
+['哥','gē','<b>g</b> — «к» без придыхания, как в слове «скала».'],['可','kě','<b>k</b> — «к» с сильным выдохом.'],['和','hé','<b>h</b> — похоже на «х», но мягче и глубже, из горла.'],
+'Шипящие мягкие: j, q, x',
+['鸡','jī','<b>j</b> — мягкое «дзь», без придыхания.'],['七','qī','<b>q</b> — то же, но с сильным выдохом, «цьх».'],['西','xī','<b>x</b> — мягкое «сь», среднее между «с» и «щ».'],
+'Загнутый язык: zh, ch, sh, r',
+['这','zhè','<b>zh</b> — «чж», кончик языка загнут назад, без придыхания.'],['吃','chī','<b>ch</b> — то же с сильным выдохом, твёрдое «ч».'],['是','shì','<b>sh</b> — твёрдое «ш», язык загнут назад.'],['热','rè','<b>r</b> — как мягкое «ж», язык загнут назад.'],
+'Свистящие: z, c, s',
+['再','zài','<b>z</b> — «дз», без придыхания.'],['菜','cài','<b>c</b> — «ц» с сильным выдохом.'],['四','sì','<b>s</b> — как русское «с».']]},
+{t:'Конечные звуки',g:'Гласные и их сочетания, носовые «n» и «ng».',e:[
+'Простые',
+['马','mǎ','<b>a</b> — «а».'],['破','pò','<b>o</b> — «о» с лёгким «у» впереди.'],['可','kě','<b>e</b> — звук между «ы» и «э», из горла.'],['你','nǐ','<b>i</b> — «и». После zh, ch, sh, r, z, c, s читается как глухое «ы»: shì, sì.'],['五','wǔ','<b>u</b> — «у».'],['女','nǚ','<b>ü</b> — «ю» без «й»: губы вытянуты, как для «у», язык говорит «и».'],['二','èr','<b>er</b> — «эр», кончик языка загнут назад.'],
+'Составные',
+['爱','ài','<b>ai</b> — «ай».'],['北','běi','<b>ei</b> — «эй».'],['好','hǎo','<b>ao</b> — «ао», близко к «ау».'],['手','shǒu','<b>ou</b> — «оу».'],
+['家','jiā','<b>ia</b> — «я».'],['写','xiě','<b>ie</b> — «е», в начале слога «и» слышно слабо.'],['小','xiǎo','<b>iao</b> — «яо».'],['六','liù','<b>iu</b> — «ю» (iou).'],
+['花','huā','<b>ua</b> — «уа».'],['我','wǒ','<b>uo</b> — «уо».'],['快','kuài','<b>uai</b> — «уай».'],['水','shuǐ','<b>ui</b> — «уэй» (uei).'],['月','yuè','<b>üe</b> — «юэ».'],
+'Носовые',
+['山','shān','<b>an</b> — «ань», язык у дёсен.'],['人','rén','<b>en</b> — «эн».'],['天','tiān','<b>ian</b> — «иень».'],['新','xīn','<b>in</b> — «инь».'],['玩','wán','<b>uan</b> — «уань».'],['问','wèn','<b>un</b> — «уэнь» (uen).'],['远','yuǎn','<b>üan</b> — «юань».'],['云','yún','<b>ün</b> — «юнь».'],
+['上','shàng','<b>ang</b> — «ан», с задненёбным «нг» на конце.'],['冷','lěng','<b>eng</b> — «эн» с «нг» на конце.'],['星','xīng','<b>ing</b> — «ин» с «нг» на конце.'],['中','zhōng','<b>ong</b> — «ун» с «нг» на конце.'],['想','xiǎng','<b>iang</b> — «ян» с «нг» на конце.'],['黄','huáng','<b>uang</b> — «уан» с «нг» на конце.'],['用','yòng','<b>iong</b> — «юн» с «нг» на конце.']]},
+{t:'Правила написания',g:'y и w, ü, сокращения, значок тона, апостроф.',e:[
+['y и w в начале слога','Если слог начинается с i, u, ü, пишут y или w: i → <b>yi</b> (一 yī), u → <b>wu</b> (五 wǔ), ü → <b>yu</b> (雨 yǔ), ia → ya, uo → wo.'],
+['ü и u','После j, q, x, y буква ü пишется как <b>u</b> без точек: 去 qù, 月 yuè. После n и l остаётся <b>ü</b>: 女 nǚ, 绿 lǜ.'],
+['Сокращения iu, ui, un','Вместо iou, uei, uen пишут <b>iu, ui, un</b>: 六 liù, 水 shuǐ, 问 wèn. Звук при этом полный.'],
+['Где ставить значок тона','Над <b>a</b>. Если a нет, то над <b>o</b> или <b>e</b>. В сочетаниях <b>iu</b> и <b>ui</b> — над последней буквой: liú, guì. Над i точку убирают: nǐ.'],
+['Апостроф','Он разделяет слоги там, где можно спутать границу: xī’ān (西安, «Сиань») и xiān («сначала»).'],
+['Нейтральный тон','Значка нет: māma (妈妈), ma (吗). Слог читается коротко и легко.']]}
+];
+/* упражнения: вопросы строятся из таблиц, порядок всегда одинаковый */
+const PTON=[['妈麻马骂','mā má mǎ mà'],['八拔把爸','bā bá bǎ bà'],['书熟鼠树','shū shú shǔ shù'],['衣姨椅意','yī yí yǐ yì'],['七骑起气','qī qí qǐ qì'],['西习洗细','xī xí xǐ xì'],['鸡急几记','jī jí jǐ jì'],['汤糖躺烫','tāng táng tǎng tàng']];
+const pyTon=f=>PTON.flatMap(([cs,ps])=>{const p=ps.split(' ');return[...cs].map((c,t)=>f(c,p,t))});
+const pyAud=a=>a.map(([ch,py,w,n])=>({k:'Аудирование',q:'Какой слог вы слышите?',a:ch,o:[py,...w],c:0,e:ch+' — '+py+'.'+(n?' '+n:'')}));
+const pyTxt=a=>a.map(([zh,ok,w,n])=>({k:'Выберите',q:'Как на самом деле звучит '+zh+'?',o:[ok,...w],c:0,e:n}));
+const PL=[
+{t:'Тоны на слух',g:'Услышьте иероглиф и назовите тон.',q:pyTon((c,p,t)=>({k:'Аудирование',q:'Какой тон вы слышите?',a:c,o:['1-й тон','2-й тон','3-й тон','4-й тон'],c:t,e:c+' — '+p[t]+': '+(t+1)+'-й тон.'}))},
+{t:'Читаем слоги',g:'Выберите правильный пиньинь для иероглифа.',q:pyTon((c,p,t)=>({k:'Выберите',q:'Как читается иероглиф '+c+'?',o:p,c:t,e:c+' читается '+p[t]+'.'}))},
+{t:'b–p, d–t, g–k',g:'Без придыхания и с придыханием.',q:pyAud([['八','bā',['pā','mā','fā']],['怕','pà',['bà','mà','fà']],['爸','bà',['pà','mà','dà']],['大','dà',['tà','nà','là']],['他','tā',['dā','nā','lā']],['哥','gē',['kē','hē','dē']],['可','kě',['gě','hě','tě']],['土','tǔ',['dǔ','nǔ','lǔ']],['开','kāi',['gāi','hāi','tāi']],['贵','guì',['kuì','huì','duì']]])},
+{t:'j–q–x, z–c–s, zh–ch–sh',g:'Мягкие, свистящие и с загнутым языком.',q:pyAud([['家','jiā',['qiā','xiā','zhā']],['七','qī',['jī','xī','chī']],['西','xī',['jī','qī','shī']],['这','zhè',['chè','shè','zè']],['吃','chī',['zhī','shī','cī']],['是','shì',['zhì','chì','sì']],['再','zài',['cài','sài','zhài']],['菜','cài',['zài','sài','chài']],['四','sì',['zì','cì','shì']],['请','qǐng',['jǐng','xǐng','chǐng']],['想','xiǎng',['jiǎng','qiǎng','shǎng']],['中','zhōng',['chōng','shōng','zōng']]])},
+{t:'l, n, r, f, h',g:'Звуки, которые легко перепутать.',q:pyAud([['来','lái',['nái','rái','hái']],['那','nà',['là','rà','fà']],['热','rè',['lè','nè','hè']],['发','fā',['hā','lā','bā']],['和','hé',['fé','gé','lé']],['你','nǐ',['lǐ','rǐ','mǐ']],['路','lù',['nù','rù','hù']],['花','huā',['fā','kuā','guā']],['冷','lěng',['něng','rěng','hěng']],['人','rén',['lén','nén','zhén']]])},
+{t:'Концы n и ng',g:'an–ang, en–eng, in–ing.',q:pyAud([['山','shān',['shāng','shēn','shēng']],['上','shàng',['shàn','shèn','shèng']],['身','shēn',['shēng','shān','shāng']],['生','shēng',['shēn','shān','shāng']],['新','xīn',['xīng','xiān','xiāng']],['星','xīng',['xīn','xiān','xiāng']],['天','tiān',['tīn','tīng','tān']],['钱','qián',['qíng','qín','qiáng']],['请','qǐng',['qǐn','qiǎn','qiǎng']],['想','xiǎng',['xiǎn','xǐng','xǐn']],['冷','lěng',['lěn','lǎng','lǐng']],['门','mén',['méng','mán','máng']]])},
+{t:'Составные гласные',g:'ai, ei, ao, ou, ü, ie, üe.',q:pyAud([['爱','ài',['èi','ào','òu']],['北','běi',['bǎi','bǎo','bǒu']],['好','hǎo',['hǎi','hěi','hǒu']],['手','shǒu',['shǎo','shǎi','shěi']],['女','nǚ',['nǔ','nǐ','nuǒ']],['绿','lǜ',['lù','lì','luò']],['月','yuè',['yè','yòu','yuàn']],['写','xiě',['xuě','xiǎo','xǐ']],['学','xué',['xiáo','xuán','xín']],['水','shuǐ',['shǐ','shuǎi','shěi']]])},
+{t:'Правила тонов',g:'你好, 不, 一 и нейтральный тон.',q:[...pyTxt([['你好','ní hǎo',['nǐ hǎo','nī hǎo','nì hǎo'],'Два 3-х тона подряд: первый читается как 2-й. В пиньине пишется nǐ hǎo.'],['不是','bú shì',['bù shì','bǔ shì','bū shì'],'不 перед 4-м тоном (是 shì) читается во 2-м тоне: bú.'],['不好','bù hǎo',['bú hǎo','bǔ hǎo','bū hǎo'],'Перед 3-м тоном 不 остаётся 4-м: bù.'],['不对','bú duì',['bù duì','bǔ duì','bū duì'],'对 duì — 4-й тон, значит 不 читается bú.'],['不去','bú qù',['bù qù','bǔ qù','bū qù'],'去 qù — 4-й тон: bú qù.'],['不来','bù lái',['bú lái','bǔ lái','bū lái'],'来 lái — 2-й тон: 不 остаётся bù.'],['一个','yí gè',['yī gè','yì gè','yǐ gè'],'Перед 4-м тоном 一 читается yí.'],['一天','yì tiān',['yī tiān','yí tiān','yǐ tiān'],'Перед 1-м, 2-м и 3-м тоном 一 читается yì.'],['一起','yì qǐ',['yī qǐ','yí qǐ','yǐ qǐ'],'Перед 3-м тоном 一 читается yì.'],['一样','yí yàng',['yī yàng','yì yàng','yǐ yàng'],'样 yàng — 4-й тон: yí.'],['第一','dì yī',['dì yí','dì yì','dì yǐ'],'В конце слова и в числе 一 сохраняет 1-й тон: yī.']]),
+ {k:'Выберите',q:'Какой тон у слога 吗 (ma)?',o:['Нейтральный','1-й тон','2-й тон','4-й тон'],c:0,e:'吗 — вопросительная частица, читается легко и коротко, без значка.'},
+ {k:'Выберите',q:'Как читается второй слог в слове 妈妈?',o:['Нейтральным тоном: māma','1-м тоном: mā mā','4-м тоном: mā mà'],c:0,e:'Во многих родственных словах второй слог — нейтральный: māma, bàba, gēge.'}]}
+];
+const LQ=l=>l>=100?PL[l-100]:LS[l];
+function PYV(){
+ const pd=S.pd||{};
+ return K('RVT','','Назад')+`<h1 class="ph">Пиньинь</h1><p class="m">Звуки и тоны китайского языка по программе HSK. Сначала справочник, потом упражнения.</p><h2>Справочник</h2>`+
+ PYD.map((r,i)=>`<button class="card row" data-a="pyr" data-p="${i}"><span class="gi chat">${IC.book}</span><span class="gx"><b>${r.t}</b><span class="m">${r.g}</span></span>${IC.chev}</button>`).join('')+
+ `<h2>Упражнения</h2>`+PL.map((l,i)=>`<button class="card row" data-a="pstart" data-p="${i}"><span class="gi">${i+1}</span><span class="gx"><b>${l.t}</b><span class="m">${l.g}${pd[i]!=null?' · лучший результат '+pd[i]+'%':''}</span></span>${pd[i]!=null?'<span class="okm">'+IC.check+'</span>':IC.chev}</button>`).join('');
+}
+function PYRV(){
+ const r=PYD[V.i];
+ return K('PYH','','Назад')+`<h1 class="ph">${r.t}</h1><p class="m">${r.g}</p>`+(V.i===1||V.i===2?'<p class="m">Сравнение с русскими звуками приблизительное. Нажимайте на кнопку со звуком и повторяйте.</p>':'')+
+ r.e.map(x=>typeof x==='string'?`<h2>${x}</h2>`:x.length===3&&/[一-鿿]/.test(x[0])?`<div class="card exr"><div><span class="zh2">${x[0]}</span> <b>${x[1]}</b><div class="m">${x[2]}</div></div>${SP(x[0])}</div>`:`<div class="card note"><b class="nt">${x[0]}</b><p>${x[1]}</p></div>`).join('');
+}
+/* ---------- упражнения ---------- */
+const shell=(p,body,ft)=>`<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:${p}%"></i></span>${CMB>=2?`<span class="cmbt">${IC.fire}${CMB}</span>`:''}</div>${body}${ft}`;
+function opts(list,sel,chk,cor,act,grid){
+ return `<div class="${grid?'g2':'ol'}">`+list.map(o=>{let c='opt';if(chk!=null)c+=o.i===cor?' ok':o.i===chk?' no':' dim';else if(o.i===sel)c+=' sel';return `<button class="${c}" data-a="${act}" data-p="${o.i}">${o.h}</button>`}).join('')+'</div>';
+}
+function foot(chkAct,can,res,nextAct){
+ if(!res)return `<div class="ft"><div class="fi"><button class="b big" data-a="${chkAct}" data-p=""${can?'':' disabled'}>Проверить</button></div></div>`;
+ return `<div class="ft ${res.ok?'okf':'nof'}" role="status"><div class="fi"><div class="fh"><span class="fic">${res.ok?IC.check:IC.x}</span><div><b class="ftt">${res.title}${res.ok&&CMB>=3?`<span class="cmb">${IC.fire}${CMB} подряд</span>`:''}</b>${res.body?'<div class="ftb">'+res.body+'</div>':''}</div></div><button class="b big ${res.ok?'ok':'no'}" data-a="${nextAct}" data-p="">Продолжить</button></div></div>`;
+}
+function LE(){
+ const i=V.i,s=LS[i];
+ return `<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:0%"></i></span></div><div class="lk">Новая тема</div><div class="lt">Урок ${i+1}. ${s.t}</div><p class="m">Цель: ${s.g}</p><div class="card note">${s.x}</div>`+
+ s.ex.map(e=>`<div class="card exr"><div>${rbz(e[0],e[1],'zh')}<div>${e[2]}</div></div>${SP(e[0])}</div>`).join('')+`<div class="ft"><div class="fi">${B('start',i,'Начать упражнения','big')}</div></div>`;
+}
+function QV(){
+ const[l,n]=Q.it[Q.i],q=LQ(l).q[n];if(!Q.o)Q.o=shf(q.o.map((_,j)=>j));
+ const ck=Q.p!=null,ok=Q.p===q.c;
+ const body=`<div class="lk">${q.k}</div><div class="lt">${q.q}</div>`+(q.a?`<div class="ctr">${SP(q.a,1)}<span class="m">Нажмите, чтобы прослушать</span></div>`:'')+opts(Q.o.map(j=>({i:j,h:q.o[j]})),Q.s,ck?Q.p:null,q.c,'pick',q.o.every(o=>o.length<=6));
+ return shell((Q.i+(ck?1:0))/Q.it.length*100,body,foot('qchk',Q.s!=null,ck?{ok,title:ok?FB:'Правильный ответ:',body:(ok?'':'<b>'+q.o[q.c]+'</b><br>')+q.e}:null,'nxt'));
+}
+function WQV(){
+ const q=W.it[W.i],w=q.w,ck=W.p!=null,cor=q.o.indexOf(w),ok=W.p===cor;
+ const lab=['Что означает это слово?','Как это по-китайски?','Что вы слышите?'][q.t];
+ const stem=q.t===0?`<div class="say">${SP(w[0])}<div class="bub"><span class="zh">${w[0]}</span></div></div>`:q.t===1?`<div class="say"><span class="av">师</span><div class="bub">${w[2]}</div></div>`:`<div class="ctr">${SP(w[0],1)}<span class="m">Нажмите, чтобы прослушать</span></div>`;
+ const body=`<div class="lt">${lab}</div>${stem}`+opts(q.o.map((x,j)=>({i:j,h:q.t===0?x[2]:`<span class="zh2">${x[0]}</span>`})),W.s,ck?W.p:null,cor,'wpick',q.t!==0);
+ const info=`<span class="zh2">${w[0]}</span> ${w[1]} — ${w[2]}<br>${SP(w[0])}`;
+ return shell((W.i+(ck?1:0))/W.it.length*100,body,foot('wchk',W.s!=null,ck?{ok,title:ok?FB:'Правильный ответ:',body:info}:null,'wnxt'));
+}
+function SBV(){
+ const[tl,pu,ru]=SB.it[SB.i],ck=SB.c!=null;
+ const inner=i=>`<span class="zh2">${SB.t[i]}</span><small>${SB.t[i]==='，'?'&nbsp;':D[SB.t[i]][1]}</small>`;
+ const chip=(i,a)=>`<button class="chip" data-a="${a}" data-p="${i}"${ck?' disabled':''}>${inner(i)}</button>`;
+ const body=`<div class="lt">Составьте предложение по-китайски</div><div class="say"><span class="av">师</span><div class="bub">${ru}</div></div><div class="ans">${SB.p.map(i=>chip(i,'tu')).join('')}</div><div class="bank">${SB.t.map((_,i)=>SB.p.includes(i)?`<span class="chip ph" aria-hidden="true">${inner(i)}</span>`:chip(i,'tp')).join('')}</div>`;
+ return shell((SB.i+(ck?1:0))/SB.it.length*100,body,foot('chk',SB.p.length>0,ck?{ok:SB.c,title:SB.c?FB:'Правильный ответ:',body:rbt(tl,pu)+'<div>'+ru+'</div>'+(SB.c?'':'<div>В наборе было одно лишнее слово.</div>')+SP(tl.join(''))}:null,'snx'));
+}
+function DGV(){
+ const d=DLG[DG.d],t=d.s[DG.i],ck=DG.p!=null,ok=DG.p===0;
+ const msg=(x,me)=>`<div class="msg${me?' me':''}">${me?'':'<span class="av">'+IC.user+'</span>'}<div class="bub">${rbz(x[0],x[1],'zh2')}<div class="m">${x[2]}</div>${SP(x[0])}</div></div>`;
+ let body=`<div class="dt">Диалог: ${d.t}</div>`;
+ d.s.forEach((x,j)=>{if(j<=DG.i)body+=msg(x.n);if(j<DG.i)body+=msg(x.o[0],1)});
+ body+=`<div class="tk">Ваша задача: ${t.g}</div>`+opts(DG.o.map(k=>({i:k,h:rbz(t.o[k][0],t.o[k][1],'zh2')})),DG.s,ck?DG.p:null,0,'dpick',0);
+ return shell((DG.i+(ck?1:0))/d.s.length*100,body,foot('dchk',DG.s!=null,ck?{ok,title:ok?FB:'Так говорят:',body:(ok?'':rbz(t.o[0][0],t.o[0][1],'zh2'))+'<div>'+t.o[0][2]+'</div><div>'+t.e+'</div>'}:null,'dnx'));
+}
+function RES(){
+ const acc=X.n?Math.round(X.ok/X.n*100):0,s=X.sec||0;
+ return `<div class="res"><div class="medal">${IC.medal}</div><h1>${acc>=80?'Отличная работа!':acc>=50?'Готово!':'Хорошая попытка!'}</h1><p class="m">${X.t}</p><div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}${X.xp}</span></div><div class="stb grn"><b>Точность</b><span>${acc}%</span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>${X.note?'<p>'+X.note+'</p>':''}</div><div class="ft"><div class="fi">${B('done','','Продолжить','big')}</div></div>`;
+}
+function WTL(src,cnt,info){
+ const ws=src.map(w=>[(S.w[w[0]]||{b:0}).b+Math.random(),w]).sort((a,b)=>a[0]-b[0]).slice(0,cnt).map(x=>x[1]);
+ const dup=w=>Object.values(D).some(x=>x[0]!==w[0]&&x[1]===w[1]);
+ const gl=s=>s.split(/[,;]\s*/).map(x=>x.replace(/\(.*?\)/g,'').trim().toLowerCase()).filter(Boolean);
+ const near=(a,b)=>{const A=gl(a[2]),B2=gl(b[2]);return A.some(x=>B2.includes(x))};
+ const pool=WS.flatMap(z=>z.w);
+ const it=ws.map((w,j)=>{let t=j%3;if(t===2&&dup(w))t=0;
+  const pl=pool.filter(x=>x[0]!==w[0]&&x[1]!==w[1]&&!near(x,w));
+  return{w,t,o:shf([w,...shf(pl).slice(0,3)])}});
+ W={i:0,ok:0,p:null,s:null,it,src:info};go({v:'wq'});
+}
+function sbn(){
+ const tl=SB.it[SB.i][0],ex=WS[SB.s].w.map(w=>w[0]).filter(w=>!tl.includes(w));
+ SB.t=shf([...tl,ex[Math.floor(Math.random()*ex.length)]]);SB.p=[];SB.c=null;
+}
+const LES=['q','wq','sb','dg','ls','res'],TABS=['home','wl','dl','rv','pf'],SUB=['ws','ug'];
+const NAV=()=>{const c={home:'home',ug:'home',wl:'wl',ws:V.from==='wl'?'wl':'home',dl:'dl',rv:'rv',pf:'pf',hw:V.back&&V.back.v==='ws'?(V.back.from==='wl'?'wl':'home'):'rv',hwl:'rv',pyh:'rv',pyr:'rv'}[V.v];
+ return '<nav>'+[['home','home','Путь'],['WL','wl','Слова'],['DL','dl','Диалоги'],['RVT','rv','Практика'],['PF','pf','Профиль']].map(([a,k,t])=>`<button class="${c===k?'cur':''}" data-a="${a}" data-p="" aria-label="${t}">${IC['n_'+k]}<span>${t}</span></button>`).join('')+'</nav>'};
+function R(){
+ const v=V.v,m=$('a'),views={home:H,ug:UGV,wl:WLV,ws:WSV,hw:HWV,hwl:HWLV,pyh:PYV,pyr:PYRV,dl:DLV,rv:RVV,pf:PFV,ls:LE,q:QV,wq:WQV,sb:SBV,dg:DGV,res:RES};
+ m.className=LES.includes(v)?'les':'tab';
+ m.innerHTML=tc(views[v]())+(LES.includes(v)?'':NAV());
+ TG.sync();
+ if(v==='hw')hwInit();
+}
+const go=v=>{if(v)V=v;R();try{if(V.v==='home'){const c=document.querySelector('.ring.on');if(c){c.scrollIntoView({block:'center'});return}}scrollTo(0,0)}catch(e){}};
+const begin=()=>{if(!LES.includes(V.v))RET={...V};SX=0;ST=Date.now();CMB=0;POP=null};
+function judge(ok){if(ok){CMB++;FB=PR[Math.floor(Math.random()*PR.length)]}else CMB=0;snd(ok);TG.hap(ok)}
+function finish(x){x.sec=Math.round((Date.now()-ST)/1000);x.xp=SX;X=x;go({v:'res'})}
+/* ---------- Telegram Mini App ---------- */
+const TG=(()=>{
+ const w=window.Telegram&&Telegram.WebApp,on=!!(w&&w.platform&&w.platform!=='unknown'),T={on,name:'',sync(){},hap(){},push(){}};
+ if(!on)return T;
+ const ok=v=>w.isVersionAtLeast(v),run=f=>{try{f()}catch(e){}};
+ const u=w.initDataUnsafe&&w.initDataUnsafe.user;
+ if(u&&u.first_name)T.name=u.first_name.replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+ run(()=>{w.ready();w.expand();if(ok('7.7'))w.disableVerticalSwipes()});
+ const theme=()=>{document.documentElement.dataset.theme=w.colorScheme==='dark'?'dark':'light';
+  const bg=getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+  if(ok('6.9'))run(()=>{w.setHeaderColor(bg);w.setBackgroundColor(bg)});
+  if(ok('7.10'))run(()=>w.setBottomBarColor(bg))};
+ theme();w.onEvent('themeChanged',theme);
+ let bv=null,cc=null;
+ w.BackButton.onClick(()=>{const v=V.v;if(v==='res')F.done();else if(LES.includes(v))F.quit();else if(v==='hw')F.hwback();else if(v==='hwl'||v==='pyh')F.RVT();else if(v==='pyr')F.PYH();else if(v==='ws'&&V.from==='wl')F.WL();else F.home()});
+ T.sync=()=>{const v=V.v,b=v!=='home',c=LES.includes(v)&&v!=='res';
+  if(b!==bv){bv=b;run(()=>b?w.BackButton.show():w.BackButton.hide())}
+  if(c!==cc){cc=c;run(()=>c?w.enableClosingConfirmation():w.disableClosingConfirmation())}};
+ T.hap=g=>run(()=>w.HapticFeedback.notificationOccurred(g?'success':'error'));
+ /* прогресс в облаке Telegram: общий для всех устройств аккаунта */
+ const CS=ok('6.9')&&w.CloudStorage;
+ if(CS){
+  const M='zhru_m',C='zhru_c',N=3000,
+   get=k=>new Promise((s,j)=>CS.getItems(k,(e,v)=>e?j(e):s(v||{}))),
+   set=(k,v)=>new Promise((s,j)=>CS.setItem(k,v,e=>e?j(e):s())),
+   del=k=>new Promise((s,j)=>CS.removeItems(k,e=>e?j(e):s())),
+   mx=(p,q)=>{const r=Object.assign({},p);for(const k in q)r[k]=Math.max(r[k]||0,q[k]);return r};
+  let n0=0,tm=0,busy=Promise.resolve();
+  const merge=(a,b)=>{const nw=(b.ts||0)>(a.ts||0),p=nw?b:a,o=nw?a:b,r=Object.assign({},p);
+   r.done=mx(a.done,b.done);r.x=mx(a.x,b.x);r.dd=Object.assign({},a.dd,b.dd);r.ud=Object.assign({},a.ud,b.ud);r.w=Object.assign({},o.w,p.w);
+   if((o.sd||'')>(p.sd||'')||(o.sd===p.sd&&(o.sn||0)>(p.sn||0))){r.sd=o.sd;r.sn=o.sn}
+   r.ts=Math.max(a.ts||0,b.ts||0);return r};
+  const flush=()=>{clearTimeout(tm);tm=0;const j=JSON.stringify(S),c=[],ts=S.ts;
+   for(let i=0;i<j.length;i+=N)c.push(j.slice(i,i+N));
+   busy=busy.then(async()=>{for(let i=0;i<c.length;i++)await set(C+i,c[i]);await set(M,JSON.stringify({n:c.length,ts}));
+    if(n0>c.length)await del(Array.from({length:n0-c.length},(_,i)=>C+(c.length+i)));n0=c.length}).catch(()=>{})};
+  T.push=()=>{clearTimeout(tm);tm=setTimeout(flush,2000)};
+  const now=()=>{if(tm)flush()};
+  addEventListener('visibilitychange',()=>{if(document.hidden)now()});addEventListener('pagehide',now);
+  (async()=>{try{
+   const m=JSON.parse((await get([M]))[M]||'null');
+   if(!m){if(S.ts)flush();return}
+   n0=m.n;
+   const ks=Array.from({length:m.n},(_,i)=>C+i),v=await get(ks),cl=JSON.parse(ks.map(k=>v[k]).join('')),mg=merge(S,cl);
+   if(JSON.stringify(mg)!==JSON.stringify(S)){S=mg;try{localStorage.setItem('zhru1',JSON.stringify(S))}catch(e){}if(!LES.includes(V.v))R()}
+   if(JSON.stringify(mg)!==JSON.stringify(cl))flush();
+  }catch(e){}})();
+ }
+ return T;
+})();
+const F={
+ home:()=>{POP=null;go({v:'home'})},WL:()=>go({v:'wl'}),DL:()=>go({v:'dl'}),RVT:()=>go({v:'rv'}),PF:()=>go({v:'pf'}),
+ UG:i=>go({v:'ug',i:+i}),
+ pop:k=>{POP=POP===k?null:k;R();try{const p=document.querySelector('.pop');p&&p.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}},
+ WS:i=>go({v:'ws',i:+i,from:V.v==='wl'?'wl':'home'}),
+ share:()=>{const u='https://t.me/zhongwen_ru_bot/learn',t='Учу китайский в Telegram: HSK, иероглифы и диалоги, бесплатно. Присоединяйся!',l='https://t.me/share/url?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t);
+  if(TG.on)try{return Telegram.WebApp.openTelegramLink(l)}catch(e){}
+  if(navigator.share)navigator.share({text:t,url:u}).catch(()=>{});else open(l,'_blank')},
+ hw:i=>hwGo(hwQ([WS[V.i].w[+i]]),{...V}),hwback:()=>go(V.back),hwc:i=>go({...V,qi:+i}),hwredo:()=>go({...V}),
+ hwl:()=>go({v:'hwl'}),hwgo:()=>hwGo(hwSession(),{...V}),hwone:c=>{const x=hwChars().find(y=>y.c===c);if(x)hwGo([x],{...V})},
+ PYH:()=>go({v:'pyh'}),pyr:i=>go({v:'pyr',i:+i}),
+ pstart:i=>{i=+i;begin();const L=PL[i];Q={m:'p',li:100+i,it:shf(L.q.map((_,j)=>j)).slice(0,8).map(j=>[100+i,j]),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
+ hwshow:()=>{if(!HWW)return;HWW.cancelQuiz();HWW.animateCharacter({onComplete:()=>setTimeout(()=>{HWW.hideCharacter();hwQuiz()},500)})},
+ hwnext:()=>{if(V.qi<V.q.length-1)go({...V,qi:V.qi+1});else go(V.back)},
+ quit:()=>go(RET),done:()=>go(RET),
+ goal:v=>{S.goal=+v;save();R()},
+ snd:()=>{S.mute=!S.mute;save();R()},
+ L:i=>{begin();go({v:'ls',i:+i})},
+ start:i=>{i=+i;begin();Q={m:'l',li:i,it:LS[i].q.map((_,j)=>[i,j]),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
+ RV:()=>{if(!Object.keys(S.rev).length)return;begin();Q={m:'r',it:Object.keys(S.rev).slice(0,8).map(k=>k.split('.').map(Number)),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
+ pick:j=>{if(Q.p!=null)return;Q.s=+j;R()},
+ qchk:()=>{if(Q.s==null||Q.p!=null)return;const[l,n]=Q.it[Q.i],ok=Q.s===LQ(l).q[n].c,k=l+'.'+n;Q.p=Q.s;if(ok){Q.ok++;gx(10)}judge(ok);if(ok){if(S.rev[k]&&++S.rev[k].s>=2)delete S.rev[k]}else S.rev[k]={s:0};save();R()},
+ nxt:()=>{Q.i++;Q.o=null;Q.p=null;Q.s=null;
+  if(Q.i>=Q.it.length){if(Q.m==='p'){S.pd=S.pd||{};S.pd[Q.li-100]=Math.max(S.pd[Q.li-100]||0,Math.round(Q.ok/Q.it.length*100));save()}if(Q.m==='l'){S.done[Q.li]=Math.max(S.done[Q.li]||0,Math.round(Q.ok/Q.it.length*100));save()}
+   return finish({t:Q.m==='l'?'Урок '+(Q.li+1)+'. '+LS[Q.li].t:Q.m==='p'?'Пиньинь: '+PL[Q.li-100].t:'Повторение ошибок',ok:Q.ok,n:Q.it.length,note:Object.keys(S.rev).length?'Ошибки сохранены во вкладке «Практика».':''})}
+  go({v:'q'})},
+ wtest:i=>{i=+i;const src=i<0?weak():WS[i].w;if(!src.length)return;begin();WTL(src,8,{s:i})},
+ ustart:u=>{u=+u;begin();WTL(uw(u),10,{u})},
+ wpick:j=>{if(W.p!=null)return;W.s=+j;R()},
+ wchk:()=>{if(W.s==null||W.p!=null)return;const q=W.it[W.i],ok=q.o[W.s]===q.w,k=q.w[0],x=S.w[k]=S.w[k]||{b:0,u:0};W.p=W.s;if(ok){W.ok++;gx(10)}judge(ok);x.b=ok?Math.min(3,x.b+1):0;save();R()},
+ wnxt:()=>{W.i++;W.p=null;W.s=null;
+  if(W.i>=W.it.length){let t,note='';
+   if(W.src.u!=null){t='Итог блока '+(W.src.u+1)+': '+UN[W.src.u].t;if(W.ok/W.it.length>=.7){S.ud=S.ud||{};S.ud[W.src.u]=1;save();note='Блок пройден!'}else note='Чтобы пройти блок, нужно 70% верных ответов. Попробуйте ещё раз.'}
+   else t=W.src.s>=0?'Тест слов: '+WS[W.src.s].t:'Повторение слов';
+   return finish({t,ok:W.ok,n:W.it.length,note})}
+  go({v:'wq'})},
+ sbstart:i=>{i=+i;begin();SB={s:i,it:shf(WS[i].s.map(x=>[x[0].filter(t=>t!=='，'&&!(S.w[t]&&S.w[t].u)).length+Math.random(),x]).sort((a,b)=>b[0]-a[0]).slice(0,5).map(y=>y[1])),i:0,ok:0};sbn();go({v:'sb'})},
+ tp:i=>{if(SB.c!=null)return;SB.p.push(+i);R()},
+ tu:i=>{if(SB.c!=null)return;SB.p=SB.p.filter(x=>x!==+i);R()},
+ rst:()=>{SB.p=[];R()},
+ chk:()=>{if(!SB.p.length||SB.c!=null)return;const tl=SB.it[SB.i][0];SB.c=SB.p.map(i=>SB.t[i]).join('|')===tl.join('|');
+  if(SB.c){SB.ok++;gx(15);tl.forEach(w=>{const x=S.w[w]=S.w[w]||{b:0,u:0};x.u++});save()}judge(SB.c);R()},
+ snx:()=>{SB.i++;if(SB.i>=SB.it.length)return finish({t:'Предложения: '+WS[SB.s].t,ok:SB.ok,n:SB.it.length});sbn();go({v:'sb'})},
+ dstart:i=>{begin();DG={d:+i,i:0,ok:0,p:null,s:null,o:shf([0,1,2])};go({v:'dg'})},
+ dpick:j=>{if(DG.p!=null)return;DG.s=+j;R()},
+ dchk:()=>{if(DG.s==null||DG.p!=null)return;DG.p=DG.s;const ok=DG.p===0;if(ok){DG.ok++;gx(10)}judge(ok);R()},
+ dnx:()=>{DG.i++;DG.p=null;DG.s=null;DG.o=shf([0,1,2]);
+  if(DG.i>=DLG[DG.d].s.length){S.dd=S.dd||{};S.dd[DG.d]=1;save();return finish({t:'Диалог: '+DLG[DG.d].t,ok:DG.ok,n:DLG[DG.d].s.length})}
+  go({v:'dg'})}
+};
+document.addEventListener('click',e=>{
+ const s=e.target.closest('[data-s]');if(s)return say(s.dataset.s);
+ const t=e.target.closest('[data-a]');
+ if(t){if(!t.disabled)F[t.dataset.a](t.dataset.p)}
+ else if(POP&&V.v==='home'&&!e.target.closest('.pop')){POP=null;R()}
+});
+R();
+</script>
+<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
+</body>
+</html>
