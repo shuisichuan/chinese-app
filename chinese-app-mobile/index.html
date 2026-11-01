@@ -240,6 +240,33 @@ main.in.up>:not(nav):not(.ft):not(.cf){animation:pgup .3s cubic-bezier(.2,.9,.3,
 .hws{text-align:center;min-height:26px}
 .hwg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.hwt{height:62px;border:2px solid var(--bd);border-bottom-width:4px;border-radius:14px;background:var(--cd);color:var(--fg);cursor:pointer;line-height:1.1}
 .hwt small{display:block;font-size:11px;color:var(--m)}.hwt.dn{border-color:var(--ok)}.hwt:active{transform:translateY(2px)}
+/* уровень: что нужно, чтобы его пройти */
+.lvc{display:flex;align-items:flex-start;gap:14px;text-align:left;animation:stbin .4s .1s ease-out both}.lvc.ok{border-color:var(--ok)}
+.lvi{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;flex:none;background:var(--bd);color:var(--m)}.lvi svg{width:26px;height:26px}.lvc.ok .lvi{background:var(--okl);color:var(--okt)}
+.lvc .gx{flex:1;min-width:0}.lvc b{display:block;font-size:17px;font-weight:900}.lvc .m{display:block;font-size:14px}.lvc .pbm{margin:8px 0}
+.lvw{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.lvw>span{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--bd);border-radius:10px;padding:2px 8px;font-size:12px;font-weight:800;color:var(--m)}
+.lvw em{font:500 18px var(--cjk);font-style:normal;color:var(--fg)}.lvw small{font-size:12px}
+.lvl{display:flex;gap:8px;align-items:flex-start;margin:8px 0 4px}.lvl svg{width:20px;height:20px;margin-top:2px;color:var(--m2)}.lvl.ok{color:var(--okt);font-weight:800}.lvl.ok svg{color:var(--okt)}
+.lvd{margin-top:8px}.lvd summary{cursor:pointer;color:var(--sel);font-weight:800;font-size:14px;padding:4px 0}
+.res .sts+.lvc{animation-delay:.5s}.res .lvc+.rs{animation-delay:.6s}
+@media(max-width:350px){.wk{gap:3px}.wd i{width:24px;height:24px}}
+.pop .lvh{font-size:13px;opacity:.85}
+.rsi.grn{background:var(--okl);color:var(--okt)}.rsi.blu{background:var(--sell);color:var(--sel)}
+/* знакомство и проверка уровня */
+.obh{font-size:27px;font-weight:900;line-height:1.25;text-align:center;margin:10px 0 6px}
+.obs{text-align:center;color:var(--m);font-size:16px;margin:0 6px 16px}
+.obf{display:flex;align-items:center;gap:14px;margin:10px 0}.obf .gx{flex:1;min-width:0}.obf b{display:block;font-size:17px;font-weight:900}.obf .m{display:block;font-size:14px}
+.lvo{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:inherit;color:inherit;background:var(--cd);border:2px solid var(--bd);border-bottom-width:4px;border-radius:16px;padding:14px 16px;margin:10px 0;cursor:pointer}
+.lvo:active{transform:translateY(2px);border-bottom-width:2px}.lvo.on{border-color:var(--sel);background:var(--sell)}
+.lvo .gx{flex:1;min-width:0}.lvo b{display:block;font-size:18px;font-weight:900}.lvo .m{display:block;font-size:14px}
+.rad{width:26px;height:26px;border-radius:50%;border:3px solid var(--bd);flex:none;position:relative}.lvo.on .rad{border-color:var(--sel);background:var(--sel)}.lvo.on .rad::after{content:"";position:absolute;inset:4px;border-radius:50%;background:#fff}
+.stg{display:flex;gap:8px;justify-content:center;margin:16px 0}
+.stg span{flex:1;max-width:116px;text-align:center;border:2px solid var(--bd);border-radius:14px;padding:8px 4px;font-weight:900;font-size:13px;color:var(--m)}.stg b{display:block;font-size:21px;color:var(--fg)}
+.stg .ok{border-color:var(--ok);color:var(--okt)}.stg .ok b{color:var(--okt)}.stg .no{border-color:var(--no);color:var(--not)}.stg .no b{color:var(--not)}
+.skb{display:flex;align-items:center;gap:12px;margin:22px 0 6px;border-style:dashed}.skb .gx{flex:1;min-width:0}.skb b{display:block;font-weight:900}.skb .m{display:block;font-size:14px}
+.skb .chv{width:22px;height:22px;transition:transform .2s}.skb.on .chv{transform:rotate(90deg)}
+.idk{display:block;margin:14px auto 0;background:none;border:0;color:var(--m);font:800 15px var(--fn);text-decoration:underline;cursor:pointer}
+.obt{display:flex;gap:10px;align-items:flex-start;margin:12px 0;color:var(--m);font-size:14px}.obt svg{width:22px;height:22px;color:var(--pri);margin-top:1px}
 </style>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="manifest" href="manifest.webmanifest">
@@ -424,7 +451,8 @@ s:[[['你','会','用','筷子','吗'],'？','Ты умеешь пользова
 );
 const D={};WS.forEach(s=>s.w.forEach(w=>D[w[0]]=w));D['，']=['，',',',''];
 const NW=WS.reduce((a,s)=>a+s.w.length,0);
-let US=null;const mst=w=>{if(!US){US=new Set();WS.forEach(s=>s.s.forEach(x=>x[0].forEach(t=>US.add(t))))}const x=S.w[w]||{b:0,u:0};return x.b>=3&&(x.u>=1||!US.has(w))};
+let US=null;const usd=()=>{if(!US){US=new Set();WS.forEach(s=>s.s.forEach(x=>x[0].forEach(t=>US.add(t))))}return US};
+const mst=w=>{const x=S.w[w]||{b:0,u:0};return x.b>=3&&(x.u>=1||!usd().has(w))};
 const mw=()=>WS.reduce((a,s)=>a+s.w.filter(w=>mst(w[0])).length,0);
 const shf=a=>[...a].sort(()=>Math.random()-.5);
 function tp(tl){
@@ -498,7 +526,7 @@ const UC=[['#12a99f','#0b8179'],['#a560f0','#7f43c4'],['#1cb0f6','#1899d6'],['#f
 const uw=u=>UN[u].n.filter(x=>x[0]==='WS').flatMap(x=>WS[x[1]].w);
 const PR=['Отлично!','Верно!','Молодец!','Превосходно!','Так держать!'];
 
-let S={done:{},rev:{},w:{}},V={v:'home'},Q=null,W=null,SB=null,X=null,DG=null,POP=null,RET={v:'home'},SX=0,ST=0,CMB=0,FB='';
+let S={done:{},rev:{},w:{}},V={v:'home'},Q=null,W=null,SB=null,X=null,DG=null,POP=null,RET={v:'home'},SX=0,ST=0,CMB=0,FB='',OB={c:null,sk:0,r:null},PT=null,SKO={};
 try{S=Object.assign(S,JSON.parse(localStorage.getItem('zhru1')))}catch(e){}
 const save=()=>{S.ts=Date.now();try{localStorage.setItem('zhru1',JSON.stringify(S))}catch(e){}TG.push()};
 const $=id=>document.getElementById(id);
@@ -572,7 +600,7 @@ const weekStrip=()=>{const x=S.x||{},dow=(new Date().getUTCDay()+6)%7,L='ПВС�
 /* приветствие панды на главной */
 function homeHi(){
  const x=xpToday(),g=S.goal||30,st=streak(),n=Object.keys(S.done).length+Object.keys(S.dd||{}).length;
- const t=!n&&!x?'Привет! Я Бао. Начнём с первого урока?':x>=g?'Цель дня выполнена! Так держать!':x>0?'Отлично идёте! До цели осталось '+(g-x)+' XP.':st>1?'Ваша серия — '+st+' '+dword(st)+'. Не прерывайте её!':'Время для урока! Хватит и пяти минут.';
+ const t=!n&&!x?(S.sk?'Начинаем с HSK '+(S.sk+1)+'. Нажмите на светящийся круг!':'Привет! Я Бао. Начнём с первого урока?'):x>=g?'Цель дня выполнена! Так держать!':x>0?'Отлично идёте! До цели осталось '+(g-x)+' XP.':st>1?'Ваша серия — '+st+' '+dword(st)+'. Не прерывайте её!':'Время для урока! Хватит и пяти минут.';
  return `<div class="say hi"><span class="av pa">${PANDA(x>=g?'cheer':'happy')}</span><div class="bub">${t}</div></div>`}
 /* полоса прогресса в уроке плавно доезжает до нового значения */
 function pbRun(){const i=document.querySelector('.pb i[data-to]');if(!i)return;const to=+i.dataset.to;requestAnimationFrame(()=>requestAnimationFrame(()=>{i.style.width=to+'%'}));PBP=to}
@@ -595,10 +623,33 @@ const xpToday=()=>(S.x||{})[td()]||0;
 const xpTotal=()=>Object.values(S.x||{}).reduce((a,b)=>a+b,0);
 const weak=()=>WS.flatMap(s=>s.w).filter(w=>S.w[w[0]]&&S.w[w[0]].b<3);
 
+/* ---------- уровни: когда набор слов считается пройденным ---------- */
+// Уровень пройден, когда освоены все его слова: 3 верных ответа подряд в тесте и верное предложение. Пройденный уровень таким и остаётся.
+const lvDone=i=>!!(S.wd&&S.wd[i]);
+function lvSync(){let c=0;WS.forEach((s,i)=>{if(!lvDone(i)&&s.w.every(w=>mst(w[0]))){S.wd=S.wd||{};S.wd[i]=1;c=1}});if(c)save()}
+function lvInfo(i){
+ const s=WS[i],r=s.w.map(w=>{const b=Math.min(3,(S.w[w[0]]||{}).b||0),ok=mst(w[0]);return{z:w[0],ok,b,su:!ok&&b>=3}}),m=r.filter(x=>x.ok).length;
+ return{t:s.t,n:r.length,m,r,done:lvDone(i)||m===r.length}
+}
+const lvOk=(t,m)=>`<div class="card lvc ok"><span class="lvi">${IC.check}</span><div class="gx"><b>${t}</b><span class="m">${m}</span></div></div>`;
+/* карточка на экране результата: пройден ли уровень, а если нет — чего не хватает */
+function lvCard(i,was){
+ const L=lvInfo(i),left=L.n-L.m;
+ if(L.done)return !was?lvOk('Уровень пройден!','«'+L.t+'»: все слова освоены. Следующий шаг уже ждёт на пути.'):left?lvOk('Уровень пройден ранее','Слов на повторение: '+left+'. Повторите их в тесте слов.'):'';
+ const rest=L.r.filter(x=>!x.ok);
+ return `<div class="card lvc"><span class="lvi">${IC.lock}</span><div class="gx"><b>Уровень ещё не пройден</b><span class="m">«${L.t}»: освоено ${L.m} из ${L.n} слов</span>${bar(L.m/L.n*100)}<span class="m">Чтобы пройти уровень, нужно освоить <strong>все слова</strong>: 3 верных ответа подряд в тесте (ошибка сбрасывает счёт слова) и верное предложение с этим словом.</span><details class="lvd"><summary>Осталось слов: ${rest.length}</summary><div class="lvw">`+
+  rest.slice(0,12).map(x=>`<span><em>${x.z}</em><span class="dots">${[0,1,2].map(k=>`<i class="${k<x.b?'on':''}"></i>`).join('')}</span>${x.su?'<small>+ предложение</small>':''}</span>`).join('')+(rest.length>12?`<span>и ещё ${rest.length-12}</span>`:'')+`</div></details></div></div>`;
+}
+/* строка под заголовком набора слов: пройден ли уровень и как его пройти */
+function lvLine(i){const L=lvInfo(i);
+ return L.done?`<p class="m lvl ok">${IC.check}<span>Уровень пройден${L.m<L.n?'. Слов на повторение: '+(L.n-L.m):''}</span></p>`
+  :`<p class="m lvl">${IC.lock}<span>Освоено ${L.m} из ${L.n}. Чтобы пройти уровень, освойте все слова: 3 верных ответа подряд в тесте и верное предложение с каждым словом.</span></p>`}
+const ucCard=(ok,pct,was)=>ok?(was?'':lvOk('Блок пройден!','Итоговый тест сдан: '+pct+'%.')):was?lvOk('Блок пройден ранее','Блок остаётся пройденным: этот результат на путь не влияет.'):`<div class="card lvc"><span class="lvi">${IC.lock}</span><div class="gx"><b>Блок ещё не пройден</b><span class="m">Чтобы пройти блок, нужно набрать 70% верных ответов. У вас ${pct}%. Повторите слова блока и попробуйте ещё раз.</span></div></div>`;
+
 /* ---------- путь ---------- */
 function nodeInfo(a,p,ui){
  if(a==='L'){const ok=S.done[p]!=null;return{a,p,ui,k:'L'+p,ic:'book',t:'Урок '+(p+1)+'. '+LS[p].t,ok,pr:ok?100:0}}
- if(a==='WS'){const s=WS[p],m=s.w.filter(w=>mst(w[0])).length;return{a,p,ui,k:'W'+p,ic:'star',t:s.t,ok:m===s.w.length,pr:Math.round(m/s.w.length*100),m,n:s.w.length}}
+ if(a==='WS'){const s=WS[p],m=s.w.filter(w=>mst(w[0])).length,ok=m===s.w.length||lvDone(p);return{a,p,ui,k:'W'+p,ic:'star',t:s.t,ok,pr:ok?100:Math.round(m/s.w.length*100),m,n:s.w.length}}
  if(a==='D'){const ok=!!(S.dd||{})[p];return{a,p,ui,k:'D'+p,ic:'chat',t:'Диалог: '+DLG[p].t,ok,pr:ok?100:0}}
  const ok=!!(S.ud||{})[p];return{a,p,ui,k:'U'+p,ic:'trophy',t:'Итог блока '+(p+1),ok,pr:ok?100:0};
 }
@@ -607,15 +658,19 @@ const TOP=()=>{const x=xpToday();return `<div class="top"><span class="crs" titl
 function popH(n,o){
  let h=`<div class="pop" style="--o:${o}px;--u:${UC[n.ui%UC.length][0]};--ud:${UC[n.ui%UC.length][1]}"><b class="pt">${n.t}</b>`;
  if(n.a==='L')h+=`<p>${LS[n.p].g}</p>`+B('L',n.p,'Начать','w');
- else if(n.a==='WS')h+=`<p>Освоено ${n.m} из ${n.n} слов</p>`+B('wtest',n.p,'Тест слов','w')+B('sbstart',n.p,'Составить предложения','w2')+`<button class="lk2" data-a="WS" data-p="${n.p}">Карточки и грамматика</button>`;
+ else if(n.a==='WS')h+=(n.ok?`<p>Уровень пройден${n.m<n.n?' · слов на повторение: '+(n.n-n.m):''}</p>`:`<p>Освоено ${n.m} из ${n.n} слов</p><p class="lvh">Чтобы пройти уровень, освойте все слова: 3 верных ответа подряд в тесте и верное предложение с каждым словом.</p>`)+B('wtest',n.p,'Тест слов','w')+B('sbstart',n.p,'Составить предложения','w2')+`<button class="lk2" data-a="WS" data-p="${n.p}">Карточки и грамматика</button>`;
  else if(n.a==='D')h+=`<p>${DLG[n.p].g}</p>`+B('dstart',n.p,'Начать','w');
  else h+=`<p>Проверьте слова всего блока. Чтобы пройти, нужно 70% верных ответов.</p>`+B('ustart',n.p,'Начать','w');
  return h+'</div>';
 }
 function H(){
- const ns=nodes(),cur=ns.find(n=>!n.ok),g=S.goal||30,x=xpToday();
+ const ns=nodes(),sk=S.sk||0,cur=ns.find(n=>!n.ok&&UN[n.ui].h>sk)||ns.find(n=>!n.ok),g=S.goal||30,x=xpToday();
  let h=TOP()+homeHi()+`<div class="card goal">${IC.bolt}<span class="gx"><b>Цель дня: ${Math.min(x,g)} из ${g} XP</b>${bar(x/g*100)}</span></div>`+vipBn();
  UN.forEach((u,ui)=>{
+  if(u.h<=sk){/* уровень пропущен по результатам проверки: блоки свёрнуты, их можно открыть */
+   if(!ui||UN[ui-1].h!==u.h)h+=`<button class="card skb${SKO[u.h]?' on':''}" data-a="sko" data-p="${u.h}"><span class="rsi grn">${IC.check}</span><span class="gx"><b>HSK ${u.h} пропущен</b><span class="m">${SKO[u.h]?'Нажмите, чтобы скрыть блоки':'Засчитан по проверке. Нажмите, чтобы открыть блоки'}</span></span>${IC.chev}</button>`;
+   if(!SKO[u.h])return;
+  }
   const c=UC[ui%UC.length],un=ns.filter(n=>n.ui===ui),dn=un.filter(n=>n.ok).length;
   h+=`<section style="--u:${c[0]};--ud:${c[1]}"><div class="ub"><div><span class="us">HSK ${u.h} · Блок ${ui+1}</span><b class="un">${u.t}</b><span class="up">Пройдено ${dn} из ${un.length}</span></div><button class="ug" data-a="UG" data-p="${ui}" aria-label="Справочник блока">${IC.book}</button></div><div class="path">`;
   un.forEach((n,k)=>{
@@ -640,7 +695,7 @@ function WLV(){
 }
 function WSV(){
  const s=WS[V.i];
- return K(V.from==='wl'?'WL':'home','','Назад')+`<h1 class="ph">${s.t}</h1><p class="m">HSK ${s.h||1} · ${s.g}</p>${s.n?`<div class="card note"><b class="nt">${IC.book}Грамматика</b><p>${s.n}</p></div>`:''}<div class="wl">`+
+ return K(V.from==='wl'?'WL':'home','','Назад')+`<h1 class="ph">${s.t}</h1><p class="m">HSK ${s.h||1} · ${s.g}</p>${lvLine(V.i)}${s.n?`<div class="card note"><b class="nt">${IC.book}Грамматика</b><p>${s.n}</p></div>`:''}<div class="wl">`+
  s.w.map((w,wi)=>{const x=S.w[w[0]]||{b:0,u:0},ok=mst(w[0]);return `<div class="wc${ok?' ok':''}"><div class="wz"><span class="zh">${w[0]}</span><span class="py">${w[1]}</span><span>${w[2]}</span></div><div class="wr"><span class="bt2">${SP(w[0])}<button class="sp pn" data-a="hw" data-p="${wi}" aria-label="Писать иероглифы">${IC.pen}</button></span><span class="dots" title="Верных ответов подряд">${[0,1,2].map(k=>`<i class="${k<x.b?'on':''}"></i>`).join('')}</span></div></div>`}).join('')+
  `</div><div class="dual">${B('wtest',V.i,'Тест слов')}${B('sbstart',V.i,'Предложения','g')}</div>`;
 }
@@ -657,10 +712,10 @@ function RVV(){
 }
 const stat=(ic,c,v,l)=>`<div class="sc"><span class="c-${c}">${IC[ic]}</span><div><b>${v}</b><span>${l}</span></div></div>`;
 function PFV(){
- const g=S.goal||30;
  return `<h1 class="ph">Профиль</h1><div class="pfh"><span class="pav">我</span><div><b>${TG.name||'Ученик'}</b><span class="m">Китайский для русскоязычных · HSK 3.0 (программа 2025)</span></div></div>`+vipCard()+
  `<h2>Статистика</h2><div class="sg">${stat('fire','fire',streak(),'дней подряд')}${stat('bolt','bolt',xpTotal(),'всего опыта')}${stat('book','gem',mw()+'/'+NW,'слов освоено')}${stat('star','gold',Object.keys(S.done).length+'/'+LS.length,'уроков')}${stat('chat','blu',Object.keys(S.dd||{}).length+'/'+DLG.length,'диалогов')}${stat('trophy','pur',Object.keys(S.ud||{}).length+'/'+UN.length,'блоков')}</div>`+
- `<h2>Цель на день</h2><div class="gs">${[[10,'Легко'],[20,'Нормально'],[30,'Серьёзно'],[50,'Интенсивно']].map(([v,l])=>`<button class="gch${v===g?' on':''}" data-a="goal" data-p="${v}"><b>${v} XP</b><span>${l}</span></button>`).join('')}</div>`+
+ `<h2>Мой уровень</h2><button class="card row" data-a="obre" data-p=""><span class="gi chat">${['零','一','二'][Math.min(S.sk||0,2)]}</span><span class="gx"><b>Старт с HSK ${(S.sk||0)+1}</b><span class="m">Пройти проверку уровня заново</span></span>${IC.chev}</button>`+
+ `<h2>Цель на день</h2>${GC()}`+
  `<h2>Друзья</h2><button class="card row" data-a="share" data-p=""><span class="gi">${IC.share}</span><span class="gx"><b>Пригласить друга</b><span class="m">${charging()&&TG.on?'Вам и другу по '+(vp().r||3)+' дня VIP':'Отправьте ссылку на приложение в Telegram'}</span></span>${IC.chev}</button>${statsCard()}<h2>Настройки</h2>${notifyCard()}<button class="card row" data-a="snd" data-p=""><span class="gx"><b>Звуковые эффекты</b><span class="m">Сигнал при верном и неверном ответе</span></span><span class="tg${S.mute?'':' on'}"><i></i></span></button><p class="m">Произношение использует китайский голос вашего устройства.</p>`;
 }
 /* ---------- прописи (Hanzi Writer) ---------- */
@@ -787,7 +842,7 @@ function PYRV(){
  r.e.map(x=>typeof x==='string'?`<h2>${x}</h2>`:x.length===3&&/[一-鿿]/.test(x[0])?`<div class="card exr"><div><span class="zh2">${x[0]}</span> <b>${x[1]}</b><div class="m">${x[2]}</div></div>${SP(x[0])}</div>`:`<div class="card note"><b class="nt">${x[0]}</b><p>${x[1]}</p></div>`).join('');
 }
 /* ---------- упражнения ---------- */
-const shell=(p,body,ft)=>`<div class="lh"><button class="x" data-a="quit" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:${PBP}%" data-to="${p}"></i></span>${CMB>=2?`<span class="cmbt">${IC.fire}${CMB}</span>`:''}</div>${body}${ft}`;
+const shell=(p,body,ft,qa='quit')=>`<div class="lh"><button class="x" data-a="${qa}" data-p="" aria-label="Выйти">${IC.x}</button><span class="pb"><i style="width:${PBP}%" data-to="${p}"></i></span>${CMB>=2?`<span class="cmbt">${IC.fire}${CMB}</span>`:''}</div>${body}${ft}`;
 function opts(list,sel,chk,cor,act,grid){
  return `<div class="${grid?'g2':'ol'}">`+list.map(o=>{let c='opt';if(chk!=null)c+=o.i===cor?' ok':o.i===chk?' no':' dim';else if(o.i===sel)c+=' sel';return `<button class="${c}" data-a="${act}" data-p="${o.i}">${o.h}</button>`}).join('')+'</div>';
 }
@@ -806,13 +861,14 @@ function QV(){
  const body=`<div class="lk">${q.k}</div><div class="lt">${q.q}</div>`+(q.a?`<div class="ctr">${SP(q.a,1)}<span class="m">Нажмите, чтобы прослушать</span></div>`:'')+opts(Q.o.map(j=>({i:j,h:q.o[j]})),Q.s,ck?Q.p:null,q.c,'pick',q.o.every(o=>o.length<=6));
  return shell((Q.i+(ck?1:0))/Q.it.length*100,body,foot('qchk',Q.s!=null,ck?{ok,title:ok?FB:'Правильный ответ:',body:(ok?'':'<b>'+q.o[q.c]+'</b><br>')+q.e}:null,'nxt'));
 }
-function WQV(){
- const q=W.it[W.i],w=q.w,ck=W.p!=null,cor=q.o.indexOf(w),ok=W.p===cor;
+function WQV(){/* тот же экран вопроса служит и для проверки уровня при знакомстве (PT) */
+ const P=V.v==='pt',Z=P?PT:W,A=P?['ptpick','ptchk','ptnxt','ptx']:['wpick','wchk','wnxt','quit'];
+ const q=Z.it[Z.i],w=q.w,ck=Z.p!=null,cor=q.o.indexOf(w),ok=Z.p===cor;
  const lab=['Что означает это слово?','Как это по-китайски?','Что вы слышите?'][q.t];
  const stem=q.t===0?`<div class="say">${SP(w[0])}<div class="bub"><span class="zh">${w[0]}</span></div></div>`:q.t===1?`<div class="say"><span class="av pa">${PANDA('happy')}</span><div class="bub">${w[2]}</div></div>`:`<div class="ctr">${SP(w[0],1)}<span class="m">Нажмите, чтобы прослушать</span></div>`;
- const body=`<div class="lt">${lab}</div>${stem}`+opts(q.o.map((x,j)=>({i:j,h:q.t===0?x[2]:`<span class="zh2">${x[0]}</span>`})),W.s,ck?W.p:null,cor,'wpick',q.t!==0);
+ const body=(P?`<div class="lk">Проверка уровня · HSK ${q.st}</div>`:'')+`<div class="lt">${lab}</div>${stem}`+opts(q.o.map((x,j)=>({i:j,h:q.t===0?x[2]:`<span class="zh2">${x[0]}</span>`})),Z.s,ck?Z.p:null,cor,A[0],q.t!==0)+(P&&!ck?`<button class="idk" data-a="ptskip" data-p="">Не знаю</button>`:'');
  const info=`<span class="zh2">${w[0]}</span> ${w[1]} — ${w[2]}<br>${SP(w[0])}`;
- return shell((W.i+(ck?1:0))/W.it.length*100,body,foot('wchk',W.s!=null,ck?{ok,title:ok?FB:'Правильный ответ:',body:info}:null,'wnxt'));
+ return shell((Z.i+(ck?1:0))/Z.it.length*100,body,foot(A[1],Z.s!=null,ck?{ok,title:ok?FB:'Правильный ответ:',body:info}:null,A[2]),A[3]);
 }
 function SBV(){
  const[tl,pu,ru]=SB.it[SB.i],ck=SB.c!=null;
@@ -840,16 +896,16 @@ function RES(){
  const stm=fz?'Заморозка VIP сохранила вашу серию!':!st?'Ответьте верно хотя бы на один вопрос, чтобы начать серию.':first?(st===1?'Серия началась!':'Занятие засчитано: серия растёт.'):'Серия сохранена. Приходите завтра!';
  const gp=Math.min(100,pre/g*100),gt=Math.min(100,tx/g*100);
  return cf+`<div class="res"><div class="hero"><div class="pnd ${acc>=80?'hop':acc>=50?'sway':''}">${PANDA(acc>=80?'cheer':acc>=50?'happy':'sad')}</div>${acc>=50?`<div class="medal mp">${IC.medal}</div>`:''}</div><h1>${ttl}</h1><p class="m">${sub}</p><p class="m rt">${X.t}</p>`+
- `<div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}<i data-n="${X.xp}">0</i></span></div><div class="stb grn"><b>Точность</b><span><i data-n="${acc}" data-u="%">0%</i></span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>`+
+ `<div class="sts"><div class="stb gold"><b>Опыт</b><span>${IC.bolt}<i data-n="${X.xp}">0</i></span></div><div class="stb grn"><b>Точность</b><span><i data-n="${acc}" data-u="%">0%</i></span></div><div class="stb blu"><b>Время</b><span>${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}</span></div></div>${X.lv||''}`+
  `<div class="card rs"><span class="rsi fire">${IC.fire}</span><div class="gx"><b>${st} ${dn(st)} подряд</b><span class="m">${stm}</span><div class="wk">${weekStrip()}</div></div></div>`+
  `<div class="card rs${hit?' hit':''}"><span class="rsi gold">${IC.bolt}</span><div class="gx"><b>${hit?'Цель дня выполнена!':'Цель дня: '+Math.min(tx,g)+' из '+g+' XP'}</b><span class="pbm"><i class="gf" style="width:${gp}%" data-to="${gt}"></i></span></div></div>`+
- `${X.note?'<p class="m">'+X.note+'</p>':''}</div><div class="ft"><div class="fi">${B('done','','Продолжить','big')}</div></div>`;
+ `${X.note?'<p class="m">'+X.note+'</p>':''}${acc>=50?B('share','res','Поделиться результатом','g'):''}</div><div class="ft"><div class="fi">${B('done','','Продолжить','big')}</div></div>`;
 }
+const gl=s=>s.split(/[,;]\s*/).map(x=>x.replace(/\(.*?\)/g,'').trim().toLowerCase()).filter(Boolean);
+const near=(a,b)=>{const A=gl(a[2]),B2=gl(b[2]);return A.some(x=>B2.includes(x))};
 function WTL(src,cnt,info){
  const ws=src.map(w=>[(S.w[w[0]]||{b:0}).b+Math.random(),w]).sort((a,b)=>a[0]-b[0]).slice(0,cnt).map(x=>x[1]);
  const dup=w=>Object.values(D).some(x=>x[0]!==w[0]&&x[1]===w[1]);
- const gl=s=>s.split(/[,;]\s*/).map(x=>x.replace(/\(.*?\)/g,'').trim().toLowerCase()).filter(Boolean);
- const near=(a,b)=>{const A=gl(a[2]),B2=gl(b[2]);return A.some(x=>B2.includes(x))};
  const pool=WS.flatMap(z=>z.w);
  const it=ws.map((w,j)=>{let t=j%3;if(t===2&&dup(w))t=0;
   const pl=pool.filter(x=>x[0]!==w[0]&&x[1]!==w[1]&&!near(x,w));
@@ -860,13 +916,51 @@ function sbn(){
  const tl=SB.it[SB.i][0],ex=WS[SB.s].w.map(w=>w[0]).filter(w=>!tl.includes(w));
  SB.t=shf([...tl,ex[Math.floor(Math.random()*ex.length)]]);SB.p=[];SB.c=null;
 }
-const LES=['q','wq','sb','dg','ls','res'],TABS=['home','wl','dl','rv','pf'],SUB=['ws','ug'];
+/* ---------- знакомство: уровень HSK, короткая проверка, план ---------- */
+const LVN=h=>WS.filter(s=>(s.h||1)===h).reduce((a,s)=>a+s.w.length,0);
+const wrd=n=>n+' '+(n%10===1&&n%100!==11?'слово':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20))?'слова':'слов');
+const HSKT=h=>UN.filter(u=>u.h===h).map(u=>u.t).join(' · ');
+function hasProg(){return !!(Object.keys(S.done).length||Object.keys(S.w).length||Object.keys(S.dd||{}).length||Object.keys(S.x||{}).length||S.sd)}
+const GC=()=>{const g=S.goal||30;return `<div class="gs">${[[10,'Легко'],[20,'Нормально'],[30,'Серьёзно'],[50,'Интенсивно']].map(([v,l])=>`<button class="gch${v===g?' on':''}" data-a="goal" data-p="${v}"><b>${v} XP</b><span>${l}</span></button>`).join('')}</div>`};
+/* проверка уровня: по 5 вопросов на каждый уровень HSK, уровень засчитан при 4 верных ответах из 5 */
+function ptItems(h){
+ const ss=WS.filter(s=>(s.h||1)===h),pool=ss.flatMap(s=>s.w);
+ return shf(ss).slice(0,5).map((s,j)=>{const c=s.w.filter(w=>w[2].length<=30),a=c.length?c:s.w,w=a[Math.floor(Math.random()*a.length)];
+  return{w,t:j%2,st:h,o:shf([w,...shf(pool.filter(x=>x[0]!==w[0]&&x[1]!==w[1]&&!near(x,w))).slice(0,3)])}});
+}
+const OBP=[14,38,0,70,100];
+function OBV(){
+ let i=V.i||0;if(i===3&&!OB.r)i=1;
+ const c=OB.c,ft=f=>`<div class="ft"><div class="fi">${f}</div></div>`,
+  top=`<div class="lh"><button class="x" data-a="obb" data-p=""${i||OB.re?'':' style="visibility:hidden"'} aria-label="Назад">${IC.back}</button><span class="pb"><i style="width:${OBP[i]}%"></i></span></div>`;
+ if(i===0)return top+`<div class="hero"><div class="pnd hop">${PANDA('cheer')}</div></div><h1 class="obh">Привет! Я Бао</h1><p class="obs">Помогу выучить китайский по программе HSK. Достаточно пяти минут в день.</p>`+
+  [['book','','Короткие уроки','Слова и диалоги: HSK 1–2 и первая часть HSK 3'],['pen','gold','Прописи','Иероглифы по чертам: от простых к сложным'],['spk','chat','Звуки и пиньинь','Тоны, произношение и озвучка слов']].map(([ic,cl,t,d])=>`<div class="card obf"><span class="gi ${cl}">${IC[ic]}</span><div class="gx"><b>${t}</b><span class="m">${d}</span></div></div>`).join('')+ft(B('obn','','Начать','big')+`<button class="idk" data-a="obskip" data-p="">Пропустить знакомство</button>`);
+ if(i===1)return top+`<h1 class="obh">Что вы уже знаете?</h1><p class="obs">Выберите свой уровень HSK, чтобы не тратить время на знакомое.</p>`+
+  [[0,'零','','Я новичок','Китайского не знаю. Начнём с основ: звуки, тоны, первые фразы'],[1,'一','chat','Знаю HSK 1','Базовые слова и фразы (в приложении: '+wrd(LVN(1))+')'],[2,'二','gold','Знаю HSK 2','Простые диалоги на бытовые темы (в приложении ещё '+wrd(LVN(2))+')'],[3,'测','red','Не уверен(а)','Короткий тест подберёт уровень за минуту']].map(([k,z,cl,t,d])=>`<button class="lvo${c===k?' on':''}" data-a="obc" data-p="${k}"><span class="gi ${cl}">${z}</span><span class="gx"><b>${t}</b><span class="m">${d}</span></span><i class="rad"></i></button>`).join('')+
+  `<p class="m obs">${c>0?'Сначала — короткая проверка: по 5 вопросов на каждый уровень. Это не экзамен: можно отвечать «Не знаю».':'Уровень можно поменять в любой момент в Профиле.'}</p>`+ft(`<button class="b big" data-a="obg1" data-p=""${c==null?' disabled':''}>Продолжить</button>`);
+ if(i===3){
+  const r=OB.r,p=r.pass,n=r.n,sk=Math.min(p,2),alt=c>=1&&c<=2&&p<c?c:-1,
+   ttl=p===0?'Начнём с основ':p<n?'Ваш уровень: HSK '+p:p>=3?'Отличный уровень!':'Вы знаете HSK '+p+'!',
+   txt=p===0?'В тесте HSK 1 верных ответов: '+(r.sc[1]||0)+' из 5. Ничего страшного: первые уроки объясняют всё с нуля.':p<n?'HSK '+p+' вы знаете, а в HSK '+(p+1)+' пока есть пробелы. Начнём с HSK '+(p+1)+', знакомое пропустим.':p>=3?'В приложении пока первая часть HSK 3: будем повторять и расширять словарь.':'Пропускаем HSK '+p+' и начинаем с HSK '+(p+1)+'.';
+  return top+`<div class="hero"><div class="pnd ${p?'hop':'sway'}">${PANDA(p?'cheer':'happy')}</div></div><h1 class="obh">${ttl}</h1><p class="obs">${txt}</p><div class="stg">`+
+   [1,2,3].filter(h=>r.sc[h]!=null).map(h=>`<span class="${r.sc[h]>=4?'ok':'no'}"><b>${r.sc[h]}/5</b>HSK ${h}</span>`).join('')+'</div>'+
+   ft(B('obacc',sk,'Продолжить','big')+(alt>=0?`<button class="idk" data-a="obacc" data-p="${alt}">Всё равно начать с HSK ${alt+1}</button>`:''));
+ }
+ const sk=OB.sk||0,ns=nodes(),st=ns.find(n=>!n.ok&&UN[n.ui].h>sk)||ns[0],u=UN[st.ui],cc=UC[st.ui%UC.length];
+ return top+`<div class="hero"><div class="pnd sway">${PANDA('happy')}</div></div><h1 class="obh">Ваш план готов</h1>`+
+  `<div class="ub" style="--u:${cc[0]};--ud:${cc[1]};margin-top:6px"><div><span class="us">Старт · HSK ${u.h} · Блок ${st.ui+1}</span><b class="un">${u.t}</b><span class="up">Темы HSK ${u.h}: ${HSKT(u.h)}</span></div></div><h2>Как это работает</h2>`+
+  [['star','gold','Идите по пути','Нажимайте на светящийся круг — это ваш следующий шаг. Уроки, тесты слов и диалоги идут по порядку.'],['check','grn','Как пройти уровень со словами','Нужно освоить все слова: 3 верных ответа подряд в тесте и верное предложение с каждым словом. Ошибка сбрасывает счёт слова — зато знание остаётся надолго.'],['fire','fire','Занимайтесь каждый день','Выполняйте цель дня — и серия будет расти.']].map(([ic,cl,t,d])=>`<div class="card obf"><span class="rsi ${cl}">${IC[ic]}</span><div class="gx"><b>${t}</b><span class="m">${d}</span></div></div>`).join('')+
+  (sk===0?`<div class="obt">${IC.spk}<span>Совет: загляните в «Практика → Пиньинь». Там справочник и 8 коротких упражнений на звуки и тоны.</span></div>`:'')+
+  `<h2>Цель на день</h2>${GC()}<p class="m">Изменить цель можно в Профиле.</p>`+ft(B('obfin','','Начать учиться','big'));
+}
+const LES=['q','wq','sb','dg','ls','res','pt'],TABS=['home','wl','dl','rv','pf'],SUB=['ws','ug'];
 const NAV=()=>{const c={home:'home',ug:'home',wl:'wl',ws:V.from==='wl'?'wl':'home',dl:'dl',rv:'rv',pf:'pf',hw:V.back&&V.back.v==='ws'?(V.back.from==='wl'?'wl':'home'):'rv',hwl:'rv',pyh:'rv',pyr:'rv',vip:'pf',st:'pf'}[V.v];
  return '<nav>'+[['home','home','Путь'],['WL','wl','Слова'],['DL','dl','Диалоги'],['RVT','rv','Практика'],['PF','pf','Профиль']].map(([a,k,t])=>`<button class="${c===k?'cur':''}" data-a="${a}" data-p="" aria-label="${t}">${IC['n_'+k]}<span>${t}</span></button>`).join('')+'</nav>'};
 function R(){
- const v=V.v,m=$('a'),views={home:H,ug:UGV,wl:WLV,ws:WSV,hw:HWV,hwl:HWLV,pyh:PYV,pyr:PYRV,vip:VPV,st:STV,dl:DLV,rv:RVV,pf:PFV,ls:LE,q:QV,wq:WQV,sb:SBV,dg:DGV,res:RES};
- m.className=LES.includes(v)?'les':'tab';
- m.innerHTML=tc(views[v]())+(LES.includes(v)?'':NAV());
+ if(V.v==='ob'&&!OB.re&&(S.ob||hasProg()))V={v:'home'};/* знакомство уже пройдено (например, прогресс пришёл из облака Telegram) */
+ const v=V.v,m=$('a'),views={home:H,ug:UGV,wl:WLV,ws:WSV,hw:HWV,hwl:HWLV,pyh:PYV,pyr:PYRV,vip:VPV,st:STV,dl:DLV,rv:RVV,pf:PFV,ls:LE,q:QV,wq:WQV,pt:WQV,sb:SBV,dg:DGV,res:RES,ob:OBV},fl=LES.includes(v)||v==='ob';
+ m.className=fl?'les':'tab';
+ m.innerHTML=tc(views[v]())+(fl?'':NAV());
  TG.sync();
  if(v==='hw')hwInit();
  if(v==='res')resFx();
@@ -875,7 +969,7 @@ function R(){
 function resFx(){
  document.querySelectorAll('.res [data-n]').forEach(e=>{const n=+e.dataset.n,u=e.dataset.u||'',t0=performance.now();const step=t=>{const k=Math.min(1,(t-t0)/800);e.textContent=Math.round(n*(1-Math.pow(1-k,3)))+u;if(k<1&&e.isConnected)requestAnimationFrame(step)};requestAnimationFrame(step)});
  requestAnimationFrame(()=>requestAnimationFrame(()=>{const f=document.querySelector('.res .gf');if(f)f.style.width=f.dataset.to+'%'}));
- if(X&&X.n){const a=X.ok/X.n;sfx(a>=.5?'done':'soft',{perfect:a===1});if(a>=.5)TG.hap(true);if(document.querySelector('.res .rs.hit'))setTimeout(()=>sfx('goal'),1500)}
+ if(X&&X.n){const a=X.ok/X.n,lu=X.lu;sfx(a>=.5?'done':'soft',{perfect:a===1});if(a>=.5)TG.hap(true);if(lu)setTimeout(()=>sfx('goal'),1100);if(document.querySelector('.res .rs.hit'))setTimeout(()=>sfx('goal'),lu?2400:1500)}
 }
 const pgIn=pv=>{const m=$('a');m.classList.remove('in','up');void m.offsetWidth;m.classList.add('in');if(LES.includes(V.v)&&!LES.includes(pv))m.classList.add('up')};
 ['gesturestart','gesturechange'].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
@@ -897,8 +991,8 @@ const TG=(()=>{
   if(ok('7.10'))run(()=>w.setBottomBarColor(bg))};
  theme();w.onEvent('themeChanged',theme);
  let bv=null,cc=null;
- w.BackButton.onClick(()=>{const v=V.v;if(v==='res')F.done();else if(LES.includes(v))F.quit();else if(v==='hw')F.hwback();else if(v==='hwl'||v==='pyh')F.RVT();else if(v==='vip'||v==='st')F.PF();else if(v==='pyr')F.PYH();else if(v==='ws'&&V.from==='wl')F.WL();else F.home()});
- T.sync=()=>{const v=V.v,b=v!=='home',c=LES.includes(v)&&v!=='res';
+ w.BackButton.onClick(()=>{const v=V.v;if(v==='res')F.done();else if(v==='pt')F.ptx();else if(v==='ob')F.obb();else if(LES.includes(v))F.quit();else if(v==='hw')F.hwback();else if(v==='hwl'||v==='pyh')F.RVT();else if(v==='vip'||v==='st')F.PF();else if(v==='pyr')F.PYH();else if(v==='ws'&&V.from==='wl')F.WL();else F.home()});
+ T.sync=()=>{const v=V.v,b=v!=='home'&&!(v==='ob'&&!V.i&&!OB.re),c=LES.includes(v)&&v!=='res';
   if(b!==bv){bv=b;run(()=>b?w.BackButton.show():w.BackButton.hide())}
   if(c!==cc){cc=c;run(()=>c?w.enableClosingConfirmation():w.disableClosingConfirmation())}};
  T.hap=g=>run(()=>w.HapticFeedback.notificationOccurred(g?'success':'error'));
@@ -914,7 +1008,7 @@ const TG=(()=>{
    mx=(p,q)=>{const r=Object.assign({},p);for(const k in q)r[k]=Math.max(r[k]||0,q[k]);return r};
   let n0=0,tm=0,busy=Promise.resolve();
   const merge=(a,b)=>{const nw=(b.ts||0)>(a.ts||0),p=nw?b:a,o=nw?a:b,r=Object.assign({},p);
-   r.done=mx(a.done,b.done);r.x=mx(a.x,b.x);r.dd=Object.assign({},a.dd,b.dd);r.ud=Object.assign({},a.ud,b.ud);r.w=Object.assign({},o.w,p.w);
+   r.done=mx(a.done,b.done);r.x=mx(a.x,b.x);r.dd=Object.assign({},a.dd,b.dd);r.ud=Object.assign({},a.ud,b.ud);r.wd=Object.assign({},a.wd,b.wd);r.w=Object.assign({},o.w,p.w);
    if((o.sd||'')>(p.sd||'')||(o.sd===p.sd&&(o.sn||0)>(p.sn||0))){r.sd=o.sd;r.sn=o.sn}
    const t0=[a.t0,b.t0].filter(Boolean);if(t0.length)r.t0=Math.min(...t0);r.bs=Math.max(a.bs||0,b.bs||0);
    r.ts=Math.max(a.ts||0,b.ts||0);return r};
@@ -1018,7 +1112,7 @@ const F={
  UG:i=>go({v:'ug',i:+i}),
  pop:k=>{POP=POP===k?null:k;R();try{const p=document.querySelector('.pop');p&&p.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}},
  WS:i=>go({v:'ws',i:+i,from:V.v==='wl'?'wl':'home'}),
- share:()=>{const me=window.Telegram&&Telegram.WebApp&&(Telegram.WebApp.initDataUnsafe||{}).user,ref=charging()&&TG.on&&me?'?startapp=r'+me.id:'',u='https://t.me/zhongwen_ru_bot/learn'+ref,t='Учу китайский в Telegram: HSK, иероглифы и диалоги, бесплатно. Присоединяйся!'+(ref?' Нам обоим подарят дни VIP.':''),l='https://t.me/share/url?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t);
+ share:p=>{const me=window.Telegram&&Telegram.WebApp&&(Telegram.WebApp.initDataUnsafe||{}).user,ref=charging()&&TG.on&&me?'?startapp=r'+me.id:'?startapp=share',u='https://t.me/zhongwen_ru_bot/learn'+ref,t=(p==='res'&&X&&X.n?'Я прошёл урок «'+X.t+'» на '+Math.round(X.ok/X.n*100)+'%! Серия: '+streak()+' '+dword(streak())+' 🔥 Присоединяйся, это бесплатно!':'Учу китайский в Telegram: HSK, иероглифы и диалоги, бесплатно. Присоединяйся!')+(ref.includes('startapp=r')?' Нам обоим подарят дни VIP.':''),l='https://t.me/share/url?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t);
   if(TG.on)try{return Telegram.WebApp.openTelegramLink(l)}catch(e){}
   if(navigator.share)navigator.share({text:t,url:u}).catch(()=>{});else open(l,'_blank')},
  hw:i=>hwGo(hwQ([WS[V.i].w[+i]]),{...V}),hwback:()=>go(V.back),hwc:i=>go({...V,qi:+i}),hwredo:()=>go({...V}),
@@ -1030,6 +1124,24 @@ const F={
  quit:()=>go(RET),done:()=>go(RET),
  goal:v=>{S.goal=+v;save();R()},
  snd:()=>{S.mute=!S.mute;save();R()},
+ /* знакомство и проверка уровня */
+ obn:()=>go({v:'ob',i:1}),
+ obc:k=>{OB.c=+k;R()},
+ obg1:()=>{if(OB.c==null)return;if(OB.c===0){OB.sk=0;return go({v:'ob',i:4})}
+  PBP=0;CMB=0;LXP=0;PT={n:OB.c,it:[].concat(...[...Array(OB.c)].map((_,k)=>ptItems(k+1))),i:0,ok:0,p:null,s:null,sc:{}};go({v:'pt'})},
+ ptpick:j=>{if(PT.p!=null)return;PT.s=+j;tap();R()},
+ ptchk:()=>{if(PT.s==null||PT.p!=null)return;const q=PT.it[PT.i],ok=q.o[PT.s]===q.w;PT.p=PT.s;PT.sc[q.st]=(PT.sc[q.st]||0)+(ok?1:0);judge(ok);R()},
+ ptskip:()=>{if(PT.p!=null)return;const q=PT.it[PT.i];PT.p=-1;PT.s=-1;PT.sc[q.st]=PT.sc[q.st]||0;judge(false);R()},
+ ptnxt:()=>{const q=PT.it[PT.i],nx=PT.it[PT.i+1];PT.i++;PT.p=null;PT.s=null;
+  if(!nx||nx.st!==q.st){if(!nx||(PT.sc[q.st]||0)<4){let k=0;while(k<PT.n&&(PT.sc[k+1]||0)>=4)k++;OB.r={sc:PT.sc,pass:k,n:PT.n};return go({v:'ob',i:3})}}
+  go({v:'pt'})},
+ ptx:()=>go({v:'ob',i:1}),
+ obacc:k=>{OB.sk=+k;go({v:'ob',i:4})},
+ obb:()=>{const i=V.i||0;if(i>=4)return go({v:'ob',i:OB.c===0?1:3});if(i===3)return go({v:'ob',i:1});if(i===1)return OB.re?go({v:'pf'}):go({v:'ob',i:0})},
+ obfin:()=>{const sk=OB.sk||0;S.ob=Date.now();S.sk=sk;save();const c=nodes().find(n=>!n.ok&&UN[n.ui].h>sk);OB={c:null,sk:0,r:null};POP=c?c.k:null;go({v:'home'})},
+ obskip:()=>{OB.sk=0;F.obfin()},
+ obre:()=>{OB={c:null,sk:S.sk||0,r:null,re:1};go({v:'ob',i:1})},
+ sko:h=>{SKO[+h]=!SKO[+h];R()},
  L:i=>{begin();go({v:'ls',i:+i})},
  start:i=>{i=+i;begin();Q={m:'l',li:i,it:LS[i].q.map((_,j)=>[i,j]),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
  RV:()=>{if(!Object.keys(S.rev).length)return;begin();Q={m:'r',it:Object.keys(S.rev).slice(0,8).map(k=>k.split('.').map(Number)),i:0,ok:0,o:null,p:null,s:null};go({v:'q'})},
@@ -1044,10 +1156,11 @@ const F={
  wpick:j=>{if(W.p!=null)return;W.s=+j;tap();R()},
  wchk:()=>{if(W.s==null||W.p!=null)return;const q=W.it[W.i],ok=q.o[W.s]===q.w,k=q.w[0],x=S.w[k]=S.w[k]||{b:0,u:0};W.p=W.s;if(ok){W.ok++;gx(10)}judge(ok);const pb=x.b;x.b=ok?Math.min(3,x.b+1):0;x.i=ok?(pb>=3&&x.i?Math.min(90,x.i*2):[0,1,3,7][x.b]):0;x.d=dayN()+x.i;save();R()},
  wnxt:()=>{W.i++;W.p=null;W.s=null;
-  if(W.i>=W.it.length){let t,note='';
-   if(W.src.u!=null){t='Итог блока '+(W.src.u+1)+': '+UN[W.src.u].t;if(W.ok/W.it.length>=.7){S.ud=S.ud||{};S.ud[W.src.u]=1;save();note='Блок пройден!'}else note='Чтобы пройти блок, нужно 70% верных ответов. Попробуйте ещё раз.'}
-   else t=W.src.sr?'Умное повторение':W.src.s>=0?'Тест слов: '+WS[W.src.s].t:'Повторение слов';
-   return finish({t,ok:W.ok,n:W.it.length,note})}
+  if(W.i>=W.it.length){let t,lv='',lu=0;const si=W.src.s,was=si>=0&&lvDone(si);
+   if(W.src.u!=null){const u=W.src.u,pw=!!(S.ud||{})[u],ok=W.ok/W.it.length>=.7;t='Итог блока '+(u+1)+': '+UN[u].t;if(ok){S.ud=S.ud||{};S.ud[u]=1;save()}lv=ucCard(ok,Math.round(W.ok/W.it.length*100),pw);lu=ok&&!pw}
+   else t=W.src.sr?'Умное повторение':si>=0?'Тест слов: '+WS[si].t:'Повторение слов';
+   lvSync();if(si>=0){lv=lvCard(si,was);lu=lvDone(si)&&!was}
+   return finish({t,ok:W.ok,n:W.it.length,lv,lu})}
   go({v:'wq'})},
  sbstart:i=>{i=+i;begin();SB={s:i,it:shf(WS[i].s.map(x=>[x[0].filter(t=>t!=='，'&&!(S.w[t]&&S.w[t].u)).length+Math.random(),x]).sort((a,b)=>b[0]-a[0]).slice(0,5).map(y=>y[1])),i:0,ok:0};sbn();go({v:'sb'})},
  tp:i=>{if(SB.c!=null)return;SB.p.push(+i);SB.n=+i;tap();R()},
@@ -1055,7 +1168,7 @@ const F={
  rst:()=>{SB.p=[];R()},
  chk:()=>{SB.n=null;if(!SB.p.length||SB.c!=null)return;const tl=SB.it[SB.i][0];SB.c=SB.p.map(i=>SB.t[i]).join('|')===tl.join('|');
   if(SB.c){SB.ok++;gx(15);tl.forEach(w=>{const x=S.w[w]=S.w[w]||{b:0,u:0};x.u++});save()}judge(SB.c);R()},
- snx:()=>{SB.i++;if(SB.i>=SB.it.length)return finish({t:'Предложения: '+WS[SB.s].t,ok:SB.ok,n:SB.it.length});sbn();go({v:'sb'})},
+ snx:()=>{SB.i++;if(SB.i>=SB.it.length){const was=lvDone(SB.s);lvSync();return finish({t:'Предложения: '+WS[SB.s].t,ok:SB.ok,n:SB.it.length,lv:lvCard(SB.s,was),lu:lvDone(SB.s)&&!was})}sbn();go({v:'sb'})},
  dstart:i=>{begin();DG={d:+i,i:0,ok:0,p:null,s:null,o:shf([0,1,2])};go({v:'dg'})},
  dpick:j=>{if(DG.p!=null)return;DG.s=+j;tap();R()},
  dchk:()=>{if(DG.s==null||DG.p!=null)return;DG.p=DG.s;const ok=DG.p===0;if(ok){DG.ok++;gx(10)}judge(ok);R()},
@@ -1069,6 +1182,8 @@ document.addEventListener('click',e=>{
  if(t){if(!t.disabled)F[t.dataset.a](t.dataset.p)}
  else if(POP&&V.v==='home'&&!e.target.closest('.pop')){POP=null;R()}
 });
+lvSync();
+if(!S.ob&&!hasProg())V={v:'ob',i:0};/* новый ученик начинает со знакомства; у тех, кто уже занимался, его нет */
 R();
 </script>
 <script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
